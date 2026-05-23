@@ -1,11 +1,11 @@
 import { PERFUMES } from '../data/perfumes'
 import { parsePx } from '../utils/storage'
 
-export default function ComparePanel({ ids, onClear }) {
+export default function ComparePanel({ ids, onClear, perfumes = PERFUMES }) {
   const open = ids.length === 2
   if (ids.length === 0) return null
 
-  const perfs = ids.map(id => PERFUMES.find(p => p.id === id)).filter(Boolean)
+  const perfs = ids.map(id => perfumes.find(p => p.id === id)).filter(Boolean)
   const [pA, pB] = perfs.length === 2 ? perfs : [perfs[0], null]
   const allA = pA ? [...pA.notes.top, ...pA.notes.mid, ...pA.notes.base] : []
   const allB = pB ? [...pB.notes.top, ...pB.notes.mid, ...pB.notes.base] : []

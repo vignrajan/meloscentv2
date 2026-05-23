@@ -1,7 +1,7 @@
 import { PERFUMES } from '../data/perfumes'
 
-export default function ScentOfTheDay({ onOpenQuiz }) {
-  const p = PERFUMES[new Date().getDate() % PERFUMES.length]
+export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES }) {
+  const p = perfumes[new Date().getDate() % perfumes.length]
   const light = p.textCol !== "#FAF3E8"
   const oBg = light ? "rgba(0,0,0,.1)" : "rgba(255,255,255,.16)"
   const oBd = light ? "rgba(0,0,0,.18)" : "rgba(255,255,255,.26)"

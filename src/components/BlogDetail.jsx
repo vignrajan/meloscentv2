@@ -1,7 +1,7 @@
 import { BLOGS } from '../data/blogs'
 
-export default function BlogDetail({ blog, onBack }) {
-  const related = BLOGS.filter(b => b.id !== blog.id).slice(0, 3)
+export default function BlogDetail({ blog, onBack, blogs = BLOGS }) {
+  const related = blogs.filter(b => b.id !== blog.id).slice(0, 3)
 
   return (
     <main style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px 88px" }}>
