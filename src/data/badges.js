@@ -1,0 +1,18 @@
+export const BADGES = [
+  { id: "fw", name: "First Whiff", sym: "✧", bg: "linear-gradient(135deg,#5a2a7a,#9b6bb0)", desc: "Flipped your first card", hint: "Flip any perfume card",
+    earned: s => s.fIds.length >= 1, prog: s => Math.min(1, s.fIds.length / 1) },
+  { id: "oe", name: "Oud Explorer", sym: "◈", bg: "linear-gradient(135deg,#1a0a2e,#6b2d7a)", desc: "Explored 3 dark fragrances", hint: "Flip 3 woody/mysterious cards",
+    earned: s => s.fIds.filter(i => [1, 2, 8].includes(i)).length >= 3, prog: s => Math.min(1, s.fIds.filter(i => [1, 2, 8].includes(i)).length / 3) },
+  { id: "cc", name: "Citrus Collector", sym: "◉", bg: "linear-gradient(135deg,#1a5f7a,#2d9bb0)", desc: "Explored 3 fresh scents", hint: "Flip 3 fresh/aquatic cards",
+    earned: s => s.fIds.filter(i => [3, 6, 9].includes(i)).length >= 3, prog: s => Math.min(1, s.fIds.filter(i => [3, 6, 9].includes(i)).length / 3) },
+  { id: "dh", name: "Dupe Hunter", sym: "⬡", bg: "linear-gradient(135deg,#8b4513,#d4af37)", desc: "Viewed 5 dupe reveals", hint: "Flip any 5 perfume cards",
+    earned: s => s.fIds.length >= 5, prog: s => Math.min(1, s.fIds.length / 5) },
+  { id: "fd", name: "Floral Devotee", sym: "✿", bg: "linear-gradient(135deg,#7a2a4a,#e8a8b8)", desc: "Explored 3 floral scents", hint: "Flip 3 floral cards",
+    earned: s => s.fIds.filter(i => [4, 7, 10, 11].includes(i)).length >= 3, prog: s => Math.min(1, s.fIds.filter(i => [4, 7, 10, 11].includes(i)).length / 3) },
+  { id: "dd", name: "Daily Devotee", sym: "◎", bg: "linear-gradient(135deg,#8b5a1a,#d4af37)", desc: "Visited 3 days in a row", hint: "Open Meloscent 3 days in a row",
+    earned: s => s.streak >= 3, prog: s => Math.min(1, s.streak / 3) },
+  { id: "wc", name: "Wardrobe Curator", sym: "◇", bg: "linear-gradient(135deg,#9a7b4f,#f0dec8)", desc: "Saved 3 to your wardrobe", hint: "Add 3 perfumes to wardrobe",
+    earned: s => s.wIds.length >= 3, prog: s => Math.min(1, s.wIds.length / 3) },
+  { id: "nk", name: "The Nose Knows", sym: "✦", bg: "linear-gradient(135deg,#8b1a1a,#d4af37)", desc: "Explored all 11 fragrances", hint: "Flip every perfume card",
+    earned: s => s.fIds.length >= 11, prog: s => Math.min(1, s.fIds.length / 11) },
+]
