@@ -13,6 +13,8 @@ import { PERFUMES } from './data/perfumes'
 import { BLOGS } from './data/blogs'
 import { BADGES } from './data/badges'
 import { rLS, wLS } from './utils/storage'
+import { fetchPerfumes } from './services/perfumes'
+import { fetchBlogs } from './services/blogs'
 
 const MOOD_FILTERS = ["Woody", "Floral", "Gourmand", "Fresh", "Oriental", "Niche"]
 
@@ -26,6 +28,8 @@ export default function App() {
   const [showProfile, setShowProfile] = useState(false)
   const [toast, setToast] = useState(null)
   const [selectedBlog, setSelectedBlog] = useState(null)
+  const [perfumes, setPerfumes] = useState(PERFUMES)
+  const [blogs, setBlogs] = useState(BLOGS)
   const [stats, setStats] = useState({
     fIds: rLS("melo_fids", []),
     wIds: rLS("melo_wids", []),
@@ -56,6 +60,11 @@ export default function App() {
     else if (s.lv === yest) n = s.n + 1
     wLS("melo_streak", { lv: today, n })
     setStats(st => ({ ...st, streak: n }))
+  }, [])
+
+  useEffect(() => {
+    fetchPerfumes().then(data => { if (data?.length) setPerfumes(data) })
+    fetchBlogs().then(data => { if (data?.length) setBlogs(data) })
   }, [])
 
   const showToast = msg => { setToast(msg); setTimeout(() => setToast(null), 2400) }
@@ -90,7 +99,7 @@ export default function App() {
   const clearAll = () => { setQuery(""); setActiveFilter(""); setNoteFilter("") }
 
   const eq = activeFilter || query
-  const filtered = PERFUMES.filter(p => {
+  const filtered = perfumes.filter(p => {
     const q = eq.toLowerCase()
     const mS = !q || p.designer.toLowerCase().includes(q) || p.name.toLowerCase().includes(q)
       || p.mood.toLowerCase().includes(q) || p.badge.toLowerCase().includes(q)
@@ -112,7 +121,7 @@ export default function App() {
   if (selectedBlog) return (
     <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
       <NavBar {...sharedNavProps} />
-      <BlogDetail blog={selectedBlog} onBack={closeBlog} />
+      <BlogDetail blog={selectedBlog} onBack={closeBlog} blogs={blogs} />
       {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
@@ -124,7 +133,8 @@ export default function App() {
     <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
       <NavBar {...sharedNavProps} />
       <WardrobePage wIds={stats.wIds} onBack={() => navigateTo("discovery")}
-        onRemove={wardrobeToggle} onGoQuiz={() => { navigateTo("discovery"); setShowQuiz(true) }} />
+        onRemove={wardrobeToggle} onGoQuiz={() => { navigateTo("discovery"); setShowQuiz(true) }}
+        perfumes={perfumes} />
       {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
@@ -135,7 +145,7 @@ export default function App() {
   return (
     <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif", paddingBottom: compareIds.length > 0 ? 200 : 0, transition: "padding-bottom .4s" }}>
       <NavBar {...sharedNavProps} />
-      <ScentOfTheDay onOpenQuiz={() => setShowQuiz(true)} />
+      <ScentOfTheDay onOpenQuiz={() => setShowQuiz(true)} perfumes={perfumes} />
 
       <section style={{ textAlign: "center", padding: "56px 28px 32px", maxWidth: 1400, margin: "0 auto" }}>
         <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", fontWeight: 400, letterSpacing: 4, textTransform: "uppercase", color: "#C17F3A", marginBottom: 14 }}>✦ Fragrance Discovery Platform ✦</div>
@@ -216,7 +226,7 @@ export default function App() {
           <h2 style={{ fontSize: "2.3rem", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#2C1810", marginBottom: 14, letterSpacing: "-.2px" }}>Fragrance Stories</h2>
           <p style={{ fontSize: 15, fontFamily: "'DM Sans',sans-serif", fontWeight: 300, color: "rgba(44,24,16,.52)", maxWidth: 460, margin: "0 auto", lineHeight: 1.75 }}>Deep dives into the world of scent — guides, reviews, and the stories behind the bottle.</p>
         </div>
-        <div className="melo-blog-grid">{BLOGS.map(b => <BlogCard key={b.id} b={b} onClick={() => openBlog(b)} />)}</div>
+        <div className="melo-blog-grid">{blogs.map(b => <BlogCard key={b.id} b={b} onClick={() => openBlog(b)} />)}</div>
       </section>
 
       <footer style={{ borderTop: "0.5px solid rgba(193,127,58,.2)", padding: "28px 32px", maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
@@ -235,7 +245,7 @@ export default function App() {
       {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
-      <ComparePanel ids={compareIds} onClear={() => setCompareIds([])} />
+      <ComparePanel ids={compareIds} onClear={() => setCompareIds([])} perfumes={perfumes} />
       <Toast message={toast} />
     </div>
   )

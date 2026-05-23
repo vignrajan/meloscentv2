@@ -1,8 +1,8 @@
 import { PERFUMES } from '../data/perfumes'
 import { parsePx } from '../utils/storage'
 
-export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz }) {
-  const items = PERFUMES.filter(p => wIds.includes(p.id))
+export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfumes = PERFUMES }) {
+  const items = perfumes.filter(p => wIds.includes(p.id))
   const totalRetail = items.reduce((s, p) => s + p.retail, 0)
   const totalDupe = items.reduce((s, p) => s + parsePx(p.dupe.price), 0)
   const saved = (totalRetail - totalDupe).toFixed(0)
