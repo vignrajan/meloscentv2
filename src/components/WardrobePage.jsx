@@ -1,11 +1,12 @@
 import { PERFUMES } from '../data/perfumes'
 import { parsePx } from '../utils/storage'
+import { fmt } from '../utils/currency'
 
-export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfumes = PERFUMES }) {
+export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfumes = PERFUMES, currency = "USD" }) {
   const items = perfumes.filter(p => wIds.includes(p.id))
-  const totalRetail = items.reduce((s, p) => s + p.retail, 0)
-  const totalDupe = items.reduce((s, p) => s + parsePx(p.dupe.price), 0)
-  const saved = (totalRetail - totalDupe).toFixed(0)
+  const totalRetail_usd = items.reduce((s, p) => s + p.retail, 0)
+  const totalDupe_usd   = items.reduce((s, p) => s + parsePx(p.dupe.price), 0)
+  const saved_usd       = totalRetail_usd - totalDupe_usd
 
   return (
     <main className="wd-enter" style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px 80px" }}>
@@ -35,14 +36,21 @@ export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfume
             <div style={{ position: "relative", zIndex: 1, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
               <div>
                 <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 2, textTransform: "uppercase", color: "#d4af37", marginBottom: 6 }}>Your Smart Savings</div>
-                <div style={{ fontSize: "2.4rem", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#d4af37", lineHeight: 1, marginBottom: 6 }} aria-label={`$${saved} saved`}>${saved} saved</div>
+                <div style={{ fontSize: "2.4rem", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#d4af37", lineHeight: 1, marginBottom: 6 }} aria-label={`${fmt(saved_usd, currency)} saved`}>
+                  <span key={currency} className="price-anim">{fmt(saved_usd, currency)}</span>
+                </div>
                 <div style={{ fontSize: 14, fontFamily: "'DM Sans',sans-serif", fontWeight: 300, color: "rgba(212,175,55,.7)" }}>vs. buying originals at retail</div>
               </div>
               <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                {[{ l: "Original Value", v: `$${totalRetail}`, strike: true }, { l: "You Paid", v: `$${totalDupe.toFixed(0)}`, strike: false }].map(({ l, v, strike }) => (
+                {[
+                  { l: "Original Value", v: fmt(totalRetail_usd, currency), strike: true },
+                  { l: "You Paid",       v: fmt(totalDupe_usd, currency),   strike: false },
+                ].map(({ l, v, strike }) => (
                   <div key={l} style={{ textAlign: "center" }}>
                     <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 1, textTransform: "uppercase", color: "rgba(212,175,55,.6)", marginBottom: 4 }}>{l}</div>
-                    <div style={{ fontSize: 22, fontFamily: "'Playfair Display',serif", fontWeight: 600, color: !strike ? "#d4af37" : "rgba(255,255,255,.45)", textDecoration: strike ? "line-through" : "none" }}>{v}</div>
+                    <div style={{ fontSize: 22, fontFamily: "'Playfair Display',serif", fontWeight: 600, color: !strike ? "#d4af37" : "rgba(255,255,255,.45)", textDecoration: strike ? "line-through" : "none" }}>
+                      <span key={currency} className="price-anim">{v}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -51,7 +59,7 @@ export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfume
 
           <div className="wd-grid">
             {items.map(p => {
-              const itemSaved = (p.retail - parsePx(p.dupe.price)).toFixed(0)
+              const itemSaved_usd = p.retail - parsePx(p.dupe.price)
               return (
                 <article key={p.id} className="wd-item" aria-label={`${p.name} by ${p.designer}`}>
                   <div style={{ width: 110, background: p.gradient, flexShrink: 0, position: "relative", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 14 }} aria-hidden="true">
@@ -72,9 +80,15 @@ export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfume
                         </div>
                       </div>
                       <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
-                        <div style={{ fontSize: 18, fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#2C1810" }}>{p.dupe.price}</div>
-                        <div style={{ fontSize: 13, fontFamily: "'DM Sans',sans-serif", color: "rgba(44,24,16,.35)", textDecoration: "line-through" }}>${p.retail}</div>
-                        <div style={{ padding: "2px 10px", borderRadius: 50, background: "linear-gradient(135deg,#C17F3A,#d4af37)", color: "white", fontSize: 11, fontFamily: "'DM Sans',sans-serif", fontWeight: 500 }}>-${itemSaved}</div>
+                        <div style={{ fontSize: 18, fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#2C1810" }}>
+                          <span key={currency} className="price-anim">{fmt(parsePx(p.dupe.price), currency)}</span>
+                        </div>
+                        <div style={{ fontSize: 13, fontFamily: "'DM Sans',sans-serif", color: "rgba(44,24,16,.35)", textDecoration: "line-through" }}>
+                          <span key={currency} className="price-anim">{fmt(p.retail, currency)}</span>
+                        </div>
+                        <div style={{ padding: "2px 10px", borderRadius: 50, background: "linear-gradient(135deg,#C17F3A,#d4af37)", color: "white", fontSize: 11, fontFamily: "'DM Sans',sans-serif", fontWeight: 500 }}>
+                          <span key={currency} className="price-anim">-{fmt(itemSaved_usd, currency)}</span>
+                        </div>
                       </div>
                     </div>
                     <div style={{ marginTop: 12 }}>

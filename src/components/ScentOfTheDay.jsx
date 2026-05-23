@@ -1,6 +1,8 @@
 import { PERFUMES } from '../data/perfumes'
+import { fmt } from '../utils/currency'
+import { parsePx } from '../utils/storage'
 
-export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES }) {
+export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES, currency = "USD" }) {
   const p = perfumes[new Date().getDate() % perfumes.length]
   const light = p.textCol !== "#FAF3E8"
   const oBg = light ? "rgba(0,0,0,.1)" : "rgba(255,255,255,.16)"
@@ -37,7 +39,9 @@ export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES }) {
           <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 1.5, textTransform: "uppercase", color: p.accent, marginBottom: 4 }}>{p.dupe.brand}</div>
           <div style={{ fontSize: 20, fontFamily: "'Playfair Display',serif", fontWeight: 600, color: dTxt, marginBottom: 10 }}>{p.dupe.name}</div>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-            <div style={{ fontSize: 22, fontFamily: "'Playfair Display',serif", fontWeight: 700, color: dTxt }}>{p.dupe.price}</div>
+            <div style={{ fontSize: 22, fontFamily: "'Playfair Display',serif", fontWeight: 700, color: dTxt }}>
+              <span key={currency} className="price-anim">{fmt(parsePx(p.dupe.price), currency)}</span>
+            </div>
             <div style={{ padding: "4px 12px", borderRadius: 50, background: oBg, color: oTxt, fontSize: 12, fontFamily: "'DM Sans',sans-serif", fontWeight: 500, border: `0.5px solid ${oBd}` }}>{p.dupe.match}% match</div>
           </div>
         </div>

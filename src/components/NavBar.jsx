@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
+import { CURRENCIES } from '../utils/currency'
 
-export default function NavBar({ page, stats, earnedCount, onNavigate, onOpenProfile, onScrollToBlog, onFilterNiche }) {
+export default function NavBar({ page, stats, earnedCount, onNavigate, onOpenProfile, onScrollToBlog, onFilterNiche, currency, onCurrencyChange }) {
   const [mob, setMob] = useState(false)
   const wdCount = stats.wIds.length
 
@@ -10,6 +11,17 @@ export default function NavBar({ page, stats, earnedCount, onNavigate, onOpenPro
   }, [mob])
 
   const close = () => setMob(false)
+
+  const CurrencyToggle = ({ style }) => (
+    <div className="currency-toggle" style={style} role="group" aria-label="Select currency">
+      {CURRENCIES.map(c => (
+        <button key={c.code} className={`currency-btn${currency === c.code ? " active" : ""}`}
+          onClick={() => onCurrencyChange(c.code)} aria-pressed={currency === c.code}>
+          {c.symbol} {c.code}
+        </button>
+      ))}
+    </div>
+  )
 
   return (
     <>
@@ -30,6 +42,7 @@ export default function NavBar({ page, stats, earnedCount, onNavigate, onOpenPro
           </button>
           <button className="nav-link" onClick={() => { onNavigate("discovery"); onFilterNiche() }}>Niche</button>
           <button className="nav-link" onClick={() => { onNavigate("discovery"); setTimeout(onScrollToBlog, 120) }}>Journal</button>
+          <CurrencyToggle />
           <button className="prof-btn" onClick={onOpenProfile} aria-label={`Open profile — ${earnedCount} badges earned`}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /></svg>
             {earnedCount > 0 && <div aria-hidden="true" style={{ position: "absolute", top: -3, right: -3, width: 16, height: 16, borderRadius: "50%", background: "#2C1810", color: "#d4af37", fontSize: 9, fontFamily: "'DM Sans',sans-serif", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #FAF3E8" }}>{earnedCount}</div>}
@@ -58,7 +71,11 @@ export default function NavBar({ page, stats, earnedCount, onNavigate, onOpenPro
             <button className="mob-nav-item" onClick={() => { onNavigate("discovery"); onFilterNiche(); close() }}>Niche</button>
             <button className="mob-nav-item" onClick={() => { onNavigate("discovery"); setTimeout(onScrollToBlog, 200); close() }}>Journal</button>
           </div>
-          <div style={{ padding: "16px 0 0", borderTop: "0.5px solid rgba(193,127,58,.12)" }}>
+          <div style={{ padding: "20px 28px", borderTop: "0.5px solid rgba(193,127,58,.12)" }}>
+            <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 2, textTransform: "uppercase", color: "#C17F3A", marginBottom: 12 }}>Currency</div>
+            <CurrencyToggle style={{ width: "fit-content" }} />
+          </div>
+          <div style={{ padding: "16px 0", borderTop: "0.5px solid rgba(193,127,58,.12)" }}>
             {["Instagram", "Pinterest", "TikTok"].map(s => (
               <button key={s} className="mob-nav-sub" onClick={close}>{s}</button>
             ))}
