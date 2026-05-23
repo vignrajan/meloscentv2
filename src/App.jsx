@@ -7,6 +7,7 @@ import QuizModal from './components/QuizModal'
 import ProfileDrawer from './components/ProfileDrawer'
 import WardrobePage from './components/WardrobePage'
 import ComparePanel from './components/ComparePanel'
+import BlogDetail from './components/BlogDetail'
 import Toast from './components/Toast'
 import { PERFUMES } from './data/perfumes'
 import { BLOGS } from './data/blogs'
@@ -24,6 +25,7 @@ export default function App() {
   const [showQuiz, setShowQuiz] = useState(false)
   const [showProfile, setShowProfile] = useState(false)
   const [toast, setToast] = useState(null)
+  const [selectedBlog, setSelectedBlog] = useState(null)
   const [stats, setStats] = useState({
     fIds: rLS("melo_fids", []),
     wIds: rLS("melo_wids", []),
@@ -58,7 +60,13 @@ export default function App() {
 
   const showToast = msg => { setToast(msg); setTimeout(() => setToast(null), 2400) }
 
-  const navigateTo = pg => { setPage(pg); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const navigateTo = pg => { setPage(pg); setSelectedBlog(null); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const openBlog = blog => { setSelectedBlog(blog); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const closeBlog = blog => {
+    if (blog && typeof blog === 'object') { setSelectedBlog(blog); window.scrollTo({ top: 0, behavior: "smooth" }); return }
+    setSelectedBlog(null)
+    setTimeout(() => { const el = document.getElementById("melo-blog"); if (el) el.scrollIntoView({ behavior: "smooth" }) }, 80)
+  }
   const scrollToBlog = () => { const el = document.getElementById("melo-blog"); if (el) el.scrollIntoView({ behavior: "smooth" }) }
   const filterNiche = () => { setActiveFilter("Niche"); setQuery(""); setNoteFilter("") }
 
@@ -100,6 +108,17 @@ export default function App() {
     onScrollToBlog: scrollToBlog,
     onFilterNiche: filterNiche,
   }
+
+  if (selectedBlog) return (
+    <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
+      <NavBar {...sharedNavProps} />
+      <BlogDetail blog={selectedBlog} onBack={closeBlog} />
+      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
+      <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
+        onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
+      <Toast message={toast} />
+    </div>
+  )
 
   if (page === "wardrobe") return (
     <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
@@ -197,7 +216,7 @@ export default function App() {
           <h2 style={{ fontSize: "2.3rem", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#2C1810", marginBottom: 14, letterSpacing: "-.2px" }}>Fragrance Stories</h2>
           <p style={{ fontSize: 15, fontFamily: "'DM Sans',sans-serif", fontWeight: 300, color: "rgba(44,24,16,.52)", maxWidth: 460, margin: "0 auto", lineHeight: 1.75 }}>Deep dives into the world of scent — guides, reviews, and the stories behind the bottle.</p>
         </div>
-        <div className="melo-blog-grid">{BLOGS.map(b => <BlogCard key={b.id} b={b} />)}</div>
+        <div className="melo-blog-grid">{BLOGS.map(b => <BlogCard key={b.id} b={b} onClick={() => openBlog(b)} />)}</div>
       </section>
 
       <footer style={{ borderTop: "0.5px solid rgba(193,127,58,.2)", padding: "28px 32px", maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
