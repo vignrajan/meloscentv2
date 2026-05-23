@@ -1,6 +1,6 @@
-export default function BlogCard({ b }) {
+export default function BlogCard({ b, onClick }) {
   return (
-    <article className="blog-card">
+    <article className="blog-card" onClick={onClick} role="button" tabIndex={0} onKeyDown={e => e.key === "Enter" && onClick?.()} aria-label={`Read article: ${b.title}`}>
       <div style={{ height: 148, background: b.gradient, position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", right: -20, bottom: -20, width: 90, height: 90, borderRadius: "50%", background: "rgba(255,255,255,.12)" }} />
         <div style={{ position: "absolute", left: 20, top: 20, padding: "4px 12px", borderRadius: 50, background: "rgba(0,0,0,.25)", color: "rgba(255,255,255,.9)", fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: .7 }}>
