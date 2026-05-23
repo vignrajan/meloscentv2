@@ -74,11 +74,54 @@ INSERT INTO perfumes (id, designer, name, badge, mood, retail_price, gradient, a
   ARRAY['Green Mandarin','Ginger'], ARRAY['Jasmine','Water Jasmine'], ARRAY['Sandalwood','Cashmere Wood','Ambergris']),
 
 (22, 'Burberry',         'Her',                   'British Niche',      'Fruity Floral',  120, 'linear-gradient(155deg,#6b1a2a 0%,#a03050 50%,#d06080 100%)', '#ffc0d0', '#FAF3E8', 395,
-  ARRAY['Blackcurrant','Strawberry','Raspberry'], ARRAY['Jasmine','Violet'], ARRAY['Amber','Musk','Sandalwood'])
+  ARRAY['Blackcurrant','Strawberry','Raspberry'], ARRAY['Jasmine','Violet'], ARRAY['Amber','Musk','Sandalwood']),
+
+-- Second expansion (IDs 23–36)
+(23, 'YSL',              'Libre',                 'Mainstream Luxury',  'Floral Woody',   115, 'linear-gradient(155deg,#2a1050 0%,#6a2a90 45%,#d4602a 100%)', '#ffaa60', '#FAF3E8', 440,
+  ARRAY['Lavender','Bergamot','Mandarin'], ARRAY['Orange Blossom','Lavender','Jasmine'], ARRAY['Vanilla','White Musk','Cedarwood']),
+
+(24, 'Dior',             'Miss Dior Blooming Bouquet', 'Prestige',      'Fruity Floral',  145, 'linear-gradient(155deg,#c04060 0%,#e08098 50%,#f8c8d4 100%)', '#7a1030', '#2C1810', 415,
+  ARRAY['Peach','Bergamot','Pink Pepper'], ARRAY['Peony','Rose','Apricot Flower'], ARRAY['White Musk','Patchouli']),
+
+(25, 'Carolina Herrera', 'Good Girl',             'Mainstream Luxury',  'Oriental Floral',130, 'linear-gradient(155deg,#080818 0%,#18184a 40%,#b89010 100%)', '#d4af37', '#FAF3E8', 458,
+  ARRAY['Coffee','Almond','Bergamot'], ARRAY['Tuberose','Jasmine','Cocoa'], ARRAY['Sandalwood','Patchouli','Benzoin']),
+
+(26, 'Lancôme',          'La Vie Est Belle',      'Mainstream Luxury',  'Floral Gourmand',120, 'linear-gradient(155deg,#7a1a5a 0%,#b84a88 50%,#e898c0 100%)', '#ffc8e8', '#FAF3E8', 422,
+  ARRAY['Blackcurrant','Pear'], ARRAY['Iris','Jasmine','Orange Blossom'], ARRAY['Praline','Vanilla','Patchouli']),
+
+(27, 'Parfums de Marly', 'Layton',                'Ultra-Niche',        'Oriental Woody', 325, 'linear-gradient(155deg,#0f0820 0%,#2a1248 40%,#6a3a18 75%,#c48030 100%)', '#e8c870', '#FAF3E8', 492,
+  ARRAY['Apple','Bergamot','Cardamom'], ARRAY['Vanilla','Jasmine','Violet'], ARRAY['Sandalwood','Pepper','Guaiac Wood']),
+
+(28, 'Hermès',           'Terre d''Hermès',       'Prestige',           'Woody Earthy',   150, 'linear-gradient(155deg,#2a1005 0%,#7a3a10 50%,#c87030 100%)', '#ffa850', '#FAF3E8', 432,
+  ARRAY['Orange','Grapefruit','Flint'], ARRAY['Pepper','Geranium','Pelargonium'], ARRAY['Vetiver','Benzoin','Cedar']),
+
+(29, 'Tom Ford',         'Oud Wood',              'Niche Luxury',       'Woody Oriental', 195, 'linear-gradient(155deg,#150505 0%,#3a1210 40%,#8a3a10 100%)', '#c4783a', '#FAF3E8', 448,
+  ARRAY['Oud Wood','Rosewood','Cardamom'], ARRAY['Sandalwood','Vetiver','Amber'], ARRAY['Tonka Bean','Vanilla','Musk']),
+
+(30, 'Gucci',            'Bloom',                 'Mainstream Luxury',  'Floral',         120, 'linear-gradient(155deg,#1a3a0a 0%,#4a7a2a 50%,#c8e0a0 100%)', '#2a4a10', '#1a3a0a', 395,
+  ARRAY['Tuberose','Rangoon Creeper'], ARRAY['Jasmine','Tuberose','Rangoon Creeper'], ARRAY['Orris','Sandalwood']),
+
+(31, 'Le Labo',          'Santal 33',             'Ultra-Niche',        'Woody Leathery', 260, 'linear-gradient(155deg,#3a2005 0%,#7a4a15 50%,#c89845 100%)', '#f0d060', '#FAF3E8', 472,
+  ARRAY['Violet','Cardamom','Iris'], ARRAY['Papyrus','Ambrox','Cedarwood'], ARRAY['Sandalwood','Leather','Musk']),
+
+(32, 'Dior',             'J''adore',              'Prestige',           'Floral',         140, 'linear-gradient(155deg,#786005 0%,#b89020 50%,#f0d060 100%)', '#5a4000', '#2C1810', 425,
+  ARRAY['Melon','Bergamot','Magnolia'], ARRAY['Rose','Jasmine','Violet'], ARRAY['Musk','Blackberry','Sandalwood']),
+
+(33, 'Parfums de Marly', 'Delina',                'Ultra-Niche',        'Floral Chypre',  270, 'linear-gradient(155deg,#901848 0%,#c04878 50%,#e898b8 100%)', '#ffe0f0', '#FAF3E8', 465,
+  ARRAY['Rhubarb','Nutmeg','Lychee'], ARRAY['Turkish Rose','Peony','Musk'], ARRAY['Cashmeran','Vetiver','Vanilla']),
+
+(34, 'Davidoff',         'Cool Water',            'Mainstream Luxury',  'Fresh Aquatic',   75, 'linear-gradient(155deg,#001828 0%,#003868 50%,#1a68a8 100%)', '#80ccff', '#FAF3E8', 385,
+  ARRAY['Dihydromyrcenol','Mint','Coriander'], ARRAY['Sandalwood','Neroli','Geranium'], ARRAY['Tobacco','Musk','Amber']),
+
+(35, 'Versace',          'Bright Crystal',        'Mainstream Luxury',  'Fruity Floral',   90, 'linear-gradient(155deg,#1a4a6a 0%,#3a80aa 50%,#a8cce0 100%)', '#ddf0ff', '#FAF3E8', 400,
+  ARRAY['Pomegranate','Yuzu','Lotus'], ARRAY['Peony','Magnolia','Rose'], ARRAY['Musk','Amber','Mahogany']),
+
+(36, 'Giorgio Armani',   'Sì',                    'Prestige',           'Floral Chypre',  125, 'linear-gradient(155deg,#3a0810 0%,#780a28 50%,#c04060 100%)', '#ffb8c8', '#FAF3E8', 435,
+  ARRAY['Blackcurrant','Freesia','Bergamot'], ARRAY['Rose','Neroli','Freesia'], ARRAY['Ambroxan','Patchouli','Vanilla'])
 
 ON CONFLICT (id) DO NOTHING;
 
--- Reset identity sequence
+-- Reset identity sequences
 SELECT setval(pg_get_serial_sequence('perfumes','id'), (SELECT MAX(id) FROM perfumes));
 
 
@@ -106,7 +149,21 @@ INSERT INTO dupes (perfume_id, brand, name, price_usd, match_score) VALUES
 (19, 'Dossier', 'Gourmand Patchouli',         '$29.00', 90),
 (20, 'Dossier', 'Floral Musk',               '$29.00', 87),
 (21, 'Zara',    'Vibrant Leather',            '$19.00', 85),
-(22, 'Zara',    'Rich Warm',                  '$18.00', 84)
+(22, 'Zara',    'Rich Warm',                  '$18.00', 84),
+(23, 'Dossier', 'Floral Orange Blossom',      '$29.00', 88),
+(24, 'Zara',    'Fleur D''Or',               '$16.00', 87),
+(25, 'Lattafa', 'Yara Moi',                   '$18.00', 89),
+(26, 'Zara',    'Joy',                         '$17.00', 87),
+(27, 'Armaf',   'Tag Him',                    '$28.00', 89),
+(28, 'Rasasi',  'Al Wisam Day',               '$22.00', 85),
+(29, 'Lattafa', 'Oud Mood',                   '$25.00', 88),
+(30, 'Zara',    'White Jasmine',              '$16.00', 84),
+(31, 'Dossier', 'Woody Sandalwood',           '$29.00', 87),
+(32, 'Zara',    'Golden Years',               '$18.00', 86),
+(33, 'Zara',    'Rose Gourmand',              '$16.00', 88),
+(34, 'Zara',    'Marine',                     '$14.00', 83),
+(35, 'Zara',    'Crystal',                    '$15.00', 84),
+(36, 'Dossier', 'Floral Blackcurrant',        '$29.00', 87)
 
 ON CONFLICT DO NOTHING;
 
