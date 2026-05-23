@@ -43,4 +43,75 @@ export const PERFUMES = [
     gradient: "linear-gradient(155deg,#4a2a6a 0%,#8a5aa8 50%,#c8a0d8 100%)", accent: "#f0d8ff", textCol: "#FAF3E8",
     notes: { top: ["Bergamot", "Lavender"], mid: ["Jasmine Sambac", "Lavender"], base: ["Sandalwood", "Vanilla", "Tonka Bean"] },
     dupe: { brand: "L'Oreal", name: "La Vie Est Belle", price: "$24.00", match: 88 } },
+
+  // Expanded catalog
+  { id: 23, designer: "YSL", name: "Libre", badge: "Mainstream Luxury", mood: "Floral Woody", height: 440, retail: 115,
+    gradient: "linear-gradient(155deg,#2a1050 0%,#6a2a90 45%,#d4602a 100%)", accent: "#ffaa60", textCol: "#FAF3E8",
+    notes: { top: ["Lavender", "Bergamot", "Mandarin"], mid: ["Orange Blossom", "Lavender", "Jasmine"], base: ["Vanilla", "White Musk", "Cedarwood"] },
+    dupe: { brand: "Dossier", name: "Floral Orange Blossom", price: "$29.00", match: 88 } },
+
+  { id: 24, designer: "Dior", name: "Miss Dior Blooming Bouquet", badge: "Prestige", mood: "Fruity Floral", height: 415, retail: 145,
+    gradient: "linear-gradient(155deg,#c04060 0%,#e08098 50%,#f8c8d4 100%)", accent: "#7a1030", textCol: "#2C1810",
+    notes: { top: ["Peach", "Bergamot", "Pink Pepper"], mid: ["Peony", "Rose", "Apricot Flower"], base: ["White Musk", "Patchouli"] },
+    dupe: { brand: "Zara", name: "Fleur D'Or", price: "$16.00", match: 87 } },
+
+  { id: 25, designer: "Carolina Herrera", name: "Good Girl", badge: "Mainstream Luxury", mood: "Oriental Floral", height: 458, retail: 130,
+    gradient: "linear-gradient(155deg,#080818 0%,#18184a 40%,#b89010 100%)", accent: "#d4af37", textCol: "#FAF3E8",
+    notes: { top: ["Coffee", "Almond", "Bergamot"], mid: ["Tuberose", "Jasmine", "Cocoa"], base: ["Sandalwood", "Patchouli", "Benzoin"] },
+    dupe: { brand: "Lattafa", name: "Yara Moi", price: "$18.00", match: 89 } },
+
+  { id: 26, designer: "Lancôme", name: "La Vie Est Belle", badge: "Mainstream Luxury", mood: "Floral Gourmand", height: 422, retail: 120,
+    gradient: "linear-gradient(155deg,#7a1a5a 0%,#b84a88 50%,#e898c0 100%)", accent: "#ffc8e8", textCol: "#FAF3E8",
+    notes: { top: ["Blackcurrant", "Pear"], mid: ["Iris", "Jasmine", "Orange Blossom"], base: ["Praline", "Vanilla", "Patchouli"] },
+    dupe: { brand: "Zara", name: "Joy", price: "$17.00", match: 87 } },
+
+  { id: 27, designer: "Parfums de Marly", name: "Layton", badge: "Ultra-Niche", mood: "Oriental Woody", height: 492, retail: 325,
+    gradient: "linear-gradient(155deg,#0f0820 0%,#2a1248 40%,#6a3a18 75%,#c48030 100%)", accent: "#e8c870", textCol: "#FAF3E8",
+    notes: { top: ["Apple", "Bergamot", "Cardamom"], mid: ["Vanilla", "Jasmine", "Violet"], base: ["Sandalwood", "Pepper", "Guaiac Wood"] },
+    dupe: { brand: "Armaf", name: "Tag Him", price: "$28.00", match: 89 } },
+
+  { id: 28, designer: "Hermès", name: "Terre d'Hermès", badge: "Prestige", mood: "Woody Earthy", height: 432, retail: 150,
+    gradient: "linear-gradient(155deg,#2a1005 0%,#7a3a10 50%,#c87030 100%)", accent: "#ffa850", textCol: "#FAF3E8",
+    notes: { top: ["Orange", "Grapefruit", "Flint"], mid: ["Pepper", "Geranium", "Pelargonium"], base: ["Vetiver", "Benzoin", "Cedar"] },
+    dupe: { brand: "Rasasi", name: "Al Wisam Day", price: "$22.00", match: 85 } },
+
+  { id: 29, designer: "Tom Ford", name: "Oud Wood", badge: "Niche Luxury", mood: "Woody Oriental", height: 448, retail: 195,
+    gradient: "linear-gradient(155deg,#150505 0%,#3a1210 40%,#8a3a10 100%)", accent: "#c4783a", textCol: "#FAF3E8",
+    notes: { top: ["Oud Wood", "Rosewood", "Cardamom"], mid: ["Sandalwood", "Vetiver", "Amber"], base: ["Tonka Bean", "Vanilla", "Musk"] },
+    dupe: { brand: "Lattafa", name: "Oud Mood", price: "$25.00", match: 88 } },
+
+  { id: 30, designer: "Gucci", name: "Bloom", badge: "Mainstream Luxury", mood: "Floral", height: 395, retail: 120,
+    gradient: "linear-gradient(155deg,#1a3a0a 0%,#4a7a2a 50%,#c8e0a0 100%)", accent: "#2a4a10", textCol: "#1a3a0a",
+    notes: { top: ["Tuberose", "Rangoon Creeper"], mid: ["Jasmine", "Tuberose", "Rangoon Creeper"], base: ["Orris", "Sandalwood"] },
+    dupe: { brand: "Zara", name: "White Jasmine", price: "$16.00", match: 84 } },
+
+  { id: 31, designer: "Le Labo", name: "Santal 33", badge: "Ultra-Niche", mood: "Woody Leathery", height: 472, retail: 260,
+    gradient: "linear-gradient(155deg,#3a2005 0%,#7a4a15 50%,#c89845 100%)", accent: "#f0d060", textCol: "#FAF3E8",
+    notes: { top: ["Violet", "Cardamom", "Iris"], mid: ["Papyrus", "Ambrox", "Cedarwood"], base: ["Sandalwood", "Leather", "Musk"] },
+    dupe: { brand: "Dossier", name: "Woody Sandalwood", price: "$29.00", match: 87 } },
+
+  { id: 32, designer: "Dior", name: "J'adore", badge: "Prestige", mood: "Floral", height: 425, retail: 140,
+    gradient: "linear-gradient(155deg,#786005 0%,#b89020 50%,#f0d060 100%)", accent: "#5a4000", textCol: "#2C1810",
+    notes: { top: ["Melon", "Bergamot", "Magnolia"], mid: ["Rose", "Jasmine", "Violet"], base: ["Musk", "Blackberry", "Sandalwood"] },
+    dupe: { brand: "Zara", name: "Golden Years", price: "$18.00", match: 86 } },
+
+  { id: 33, designer: "Parfums de Marly", name: "Delina", badge: "Ultra-Niche", mood: "Floral Chypre", height: 465, retail: 270,
+    gradient: "linear-gradient(155deg,#901848 0%,#c04878 50%,#e898b8 100%)", accent: "#ffe0f0", textCol: "#FAF3E8",
+    notes: { top: ["Rhubarb", "Nutmeg", "Lychee"], mid: ["Turkish Rose", "Peony", "Musk"], base: ["Cashmeran", "Vetiver", "Vanilla"] },
+    dupe: { brand: "Zara", name: "Rose Gourmand", price: "$16.00", match: 88 } },
+
+  { id: 34, designer: "Davidoff", name: "Cool Water", badge: "Mainstream Luxury", mood: "Fresh Aquatic", height: 385, retail: 75,
+    gradient: "linear-gradient(155deg,#001828 0%,#003868 50%,#1a68a8 100%)", accent: "#80ccff", textCol: "#FAF3E8",
+    notes: { top: ["Dihydromyrcenol", "Mint", "Coriander"], mid: ["Sandalwood", "Neroli", "Geranium"], base: ["Tobacco", "Musk", "Amber"] },
+    dupe: { brand: "Zara", name: "Marine", price: "$14.00", match: 83 } },
+
+  { id: 35, designer: "Versace", name: "Bright Crystal", badge: "Mainstream Luxury", mood: "Fruity Floral", height: 400, retail: 90,
+    gradient: "linear-gradient(155deg,#1a4a6a 0%,#3a80aa 50%,#a8cce0 100%)", accent: "#ddf0ff", textCol: "#FAF3E8",
+    notes: { top: ["Pomegranate", "Yuzu", "Lotus"], mid: ["Peony", "Magnolia", "Rose"], base: ["Musk", "Amber", "Mahogany"] },
+    dupe: { brand: "Zara", name: "Crystal", price: "$15.00", match: 84 } },
+
+  { id: 36, designer: "Giorgio Armani", name: "Sì", badge: "Prestige", mood: "Floral Chypre", height: 435, retail: 125,
+    gradient: "linear-gradient(155deg,#3a0810 0%,#780a28 50%,#c04060 100%)", accent: "#ffb8c8", textCol: "#FAF3E8",
+    notes: { top: ["Blackcurrant", "Freesia", "Bergamot"], mid: ["Rose", "Neroli", "Freesia"], base: ["Ambroxan", "Patchouli", "Vanilla"] },
+    dupe: { brand: "Dossier", name: "Floral Blackcurrant", price: "$29.00", match: 87 } },
 ]
