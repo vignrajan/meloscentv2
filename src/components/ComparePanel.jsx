@@ -1,7 +1,8 @@
 import { PERFUMES } from '../data/perfumes'
 import { parsePx } from '../utils/storage'
+import { fmt } from '../utils/currency'
 
-export default function ComparePanel({ ids, onClear, perfumes = PERFUMES }) {
+export default function ComparePanel({ ids, onClear, perfumes = PERFUMES, currency = "USD" }) {
   const open = ids.length === 2
   if (ids.length === 0) return null
 
@@ -10,16 +11,18 @@ export default function ComparePanel({ ids, onClear, perfumes = PERFUMES }) {
   const allA = pA ? [...pA.notes.top, ...pA.notes.mid, ...pA.notes.base] : []
   const allB = pB ? [...pB.notes.top, ...pB.notes.mid, ...pB.notes.base] : []
   const shared = allA.filter(n => allB.includes(n))
-  const savA = pA ? (pA.retail - parsePx(pA.dupe.price)).toFixed(0) : "—"
-  const savB = pB ? (pB.retail - parsePx(pB.dupe.price)).toFixed(0) : "—"
-  const betterVal = pB && parseFloat(savB) > parseFloat(savA) ? "B" : "A"
+
+  const savA_usd = pA ? pA.retail - parsePx(pA.dupe.price) : null
+  const savB_usd = pB ? pB.retail - parsePx(pB.dupe.price) : null
+  const betterVal = pB && savB_usd > savA_usd ? "B" : "A"
+
   const rows = [
-    { label: "Mood", a: pA?.mood, b: pB?.mood },
-    { label: "Badge", a: pA?.badge, b: pB?.badge },
-    { label: "Retail", a: pA ? `$${pA.retail}` : "-", b: pB ? `$${pB.retail}` : "-" },
-    { label: "Dupe Price", a: pA?.dupe.price, b: pB?.dupe.price },
-    { label: "You Save", a: `$${savA}`, b: `$${savB}` },
-    { label: "Match", a: pA ? `${pA.dupe.match}%` : "-", b: pB ? `${pB.dupe.match}%` : "-" },
+    { label: "Mood",       a: pA?.mood,                                       b: pB?.mood },
+    { label: "Badge",      a: pA?.badge,                                      b: pB?.badge },
+    { label: "Retail",     a: pA ? fmt(pA.retail, currency) : "-",            b: pB ? fmt(pB.retail, currency) : "-" },
+    { label: "Dupe Price", a: pA ? fmt(parsePx(pA.dupe.price), currency) : "-", b: pB ? fmt(parsePx(pB.dupe.price), currency) : "-" },
+    { label: "You Save",   a: savA_usd != null ? fmt(savA_usd, currency) : "—", b: savB_usd != null ? fmt(savB_usd, currency) : "—" },
+    { label: "Match",      a: pA ? `${pA.dupe.match}%` : "-",                b: pB ? `${pB.dupe.match}%` : "-" },
   ]
 
   return (
@@ -65,7 +68,11 @@ export default function ComparePanel({ ids, onClear, perfumes = PERFUMES }) {
               <div key={row.label} className="cmp-row" style={{ background: i % 2 === 0 ? "white" : "rgba(193,127,58,.03)" }}>
                 <div style={{ padding: "10px 14px", fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: .5, textTransform: "uppercase", color: "rgba(44,24,16,.45)", fontWeight: 500 }}>{row.label}</div>
                 {[row.a, row.b].map((val, j) => (
-                  <div key={j} style={{ padding: "10px 14px", textAlign: "center", fontSize: 13, fontFamily: ["Retail", "Dupe Price", "You Save"].includes(row.label) ? "'Playfair Display',serif" : "'DM Sans',sans-serif", fontWeight: row.label === "You Save" ? 700 : 400, color: row.label === "You Save" ? "#C17F3A" : "#2C1810" }}>{val || "—"}</div>
+                  <div key={j} style={{ padding: "10px 14px", textAlign: "center", fontSize: 13, fontFamily: ["Retail", "Dupe Price", "You Save"].includes(row.label) ? "'Playfair Display',serif" : "'DM Sans',sans-serif", fontWeight: row.label === "You Save" ? 700 : 400, color: row.label === "You Save" ? "#C17F3A" : "#2C1810" }}>
+                    {["Retail", "Dupe Price", "You Save"].includes(row.label)
+                      ? <span key={currency} className="price-anim">{val || "—"}</span>
+                      : (val || "—")}
+                  </div>
                 ))}
               </div>
             ))}

@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { fmt } from '../utils/currency'
+import { parsePx } from '../utils/storage'
 
 function NotePill({ note, dark, onClick, active }) {
   const handle = onClick ? e => { e.stopPropagation(); onClick(note) } : undefined
@@ -37,7 +39,7 @@ function MatchRing({ score }) {
   )
 }
 
-export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compareIds, onCompare, wardrobeIds, onWardrobeToggle }) {
+export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compareIds, onCompare, wardrobeIds, onWardrobeToggle, currency = "USD" }) {
   const [flipped, setFlipped] = useState(false)
   const inCmp = compareIds.includes(p.id)
   const cmpFull = compareIds.length === 2 && !inCmp
@@ -46,6 +48,9 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   const handleClick = () => { if (!flipped && onFlip) onFlip(p.id); setFlipped(f => !f) }
   const handleCmp = e => { e.stopPropagation(); if (!cmpFull) onCompare(p.id) }
   const handleWd = e => { e.stopPropagation(); onWardrobeToggle(p.id) }
+
+  const dupePrice = fmt(parsePx(p.dupe.price), currency)
+  const retailPrice = fmt(p.retail, currency)
 
   return (
     <div className="mcard-wrap">
@@ -97,8 +102,12 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
                     <div style={{ fontSize: 20, fontFamily: "'Playfair Display',serif", fontWeight: 600, color: "#2C1810", lineHeight: 1.1 }}>{p.dupe.name}</div>
                   </div>
                   <div style={{ textAlign: "right" }}>
-                    <div style={{ fontSize: 24, fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#5a3010" }}>{p.dupe.price}</div>
-                    <div style={{ fontSize: 10, fontFamily: "'DM Sans',sans-serif", color: "#C17F3A", letterSpacing: .5 }}>vs. ${p.retail}</div>
+                    <div style={{ fontSize: 24, fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#5a3010" }}>
+                      <span key={currency} className="price-anim">{dupePrice}</span>
+                    </div>
+                    <div style={{ fontSize: 10, fontFamily: "'DM Sans',sans-serif", color: "#C17F3A", letterSpacing: .5 }}>
+                      vs. <span key={currency} className="price-anim">{retailPrice}</span>
+                    </div>
                   </div>
                 </div>
                 <button className={`wd-add-btn${inWd ? " saved" : ""}`} onClick={handleWd} aria-pressed={inWd}>
