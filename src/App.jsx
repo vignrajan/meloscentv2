@@ -39,11 +39,7 @@ export default function App() {
   useEffect(() => {
     document.title = page === "wardrobe"
       ? "My Wardrobe — Meloscent"
-      : "Meloscent · Fragrance Discovery Platform"
-    let fav = document.querySelector("link[rel~='icon']") || document.createElement("link")
-    fav.rel = "icon"; fav.type = "image/svg+xml"
-    fav.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232C1810'/><text y='74' x='50' text-anchor='middle' font-size='58' fill='%23C17F3A'>✦</text></svg>"
-    document.head.appendChild(fav)
+      : "Meloscent · Discover Affordable Fragrance Dupes"
   }, [page])
 
   useEffect(() => {
