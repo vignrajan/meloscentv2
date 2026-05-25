@@ -3,17 +3,47 @@ import { fmt } from '../utils/currency'
 import { parsePx } from '../utils/storage'
 import { getBuyUrl } from '../utils/affiliates'
 
-function useCardImage(seed, width = 400, height = 600) {
-  const [state, setState] = useState({ src: null, loaded: false, error: false })
+const IMAGE_CACHE = new Map()
+
+function useUnsplashImage(query, index, orientation = 'portrait') {
+  const [state, setState] = useState({ src: null, loaded: false, loading: false, error: false })
+  const apiKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY
+
   useEffect(() => {
-    if (!seed) return
-    const url = `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`
-    const img = new Image()
-    img.onload = () => setState({ src: url, loaded: true, error: false })
-    img.onerror = () => setState(s => ({ ...s, error: true }))
-    img.src = url
-    return () => { img.onload = null; img.onerror = null }
-  }, [seed, width, height])
+    if (!apiKey || !query) return
+    let alive = true
+    setState(s => ({ ...s, loading: true }))
+    const cacheKey = `${orientation}:${query}`
+
+    const preload = url => {
+      if (!url || !alive) return
+      const img = new Image()
+      img.onload = () => { if (alive) setState({ src: url, loaded: true, loading: false, error: false }) }
+      img.onerror = () => { if (alive) setState(s => ({ ...s, loading: false, error: true })) }
+      img.src = url
+    }
+
+    if (IMAGE_CACHE.has(cacheKey)) {
+      const urls = IMAGE_CACHE.get(cacheKey)
+      preload(urls[index % Math.max(urls.length, 1)])
+      return () => { alive = false }
+    }
+
+    fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&client_id=${apiKey}&per_page=8&orientation=${orientation}`)
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        const urls = (data.results || []).map(r => r.urls.small)
+        IMAGE_CACHE.set(cacheKey, urls)
+        if (alive) preload(urls[index % Math.max(urls.length, 1)])
+      })
+      .catch(() => {
+        IMAGE_CACHE.set(cacheKey, [])
+        if (alive) setState(s => ({ ...s, loading: false, error: true }))
+      })
+
+    return () => { alive = false }
+  }, [query, index, apiKey, orientation])
+
   return state
 }
 
@@ -60,8 +90,9 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   const cmpFull = compareIds.length === 2 && !inCmp
   const inWd = wardrobeIds.includes(p.id)
 
-  const frontImg = useCardImage(`${p.id}-${p.mood}`)
-  const backImg  = useCardImage(`back-${p.id}`)
+  const moodKey  = p.mood.split(' ')[0].toLowerCase()
+  const frontImg = useUnsplashImage(`${moodKey} luxury perfume bottle`, p.id)
+  const backImg  = useUnsplashImage('fragrance bottle minimalist clean', p.id)
 
   const handleClick = e => {
     if (e.target.closest('a, button')) return
@@ -86,7 +117,7 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
           {/* FRONT */}
           <div className="mcard-face" style={{ background: p.gradient }}>
             {/* Pulse placeholder while image loads */}
-            {!frontImg.loaded && !frontImg.error && (
+            {frontImg.loading && !frontImg.loaded && (
               <div className="mcard-img-pulse" style={{ background: p.gradient }} />
             )}
             {/* Bottle image – luminosity blend so it inherits the card's hue */}
