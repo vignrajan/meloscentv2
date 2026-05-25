@@ -1,6 +1,7 @@
 import { PERFUMES } from '../data/perfumes'
 import { parsePx } from '../utils/storage'
 import { fmt } from '../utils/currency'
+import { getBuyUrl } from '../utils/affiliates'
 
 export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfumes = PERFUMES, currency = "USD" }) {
   const items = perfumes.filter(p => wIds.includes(p.id))
@@ -91,8 +92,14 @@ export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfume
                         </div>
                       </div>
                     </div>
-                    <div style={{ marginTop: 12 }}>
+                    <div style={{ marginTop: 12, display: "flex", gap: 8 }}>
                       <button className="wd-rm-btn" onClick={() => onRemove(p.id)} aria-label={`Remove ${p.name} from wardrobe`}>Remove</button>
+                      <a href={getBuyUrl(p.dupe.brand, p.dupe.name, currency)}
+                         target="_blank" rel="noopener noreferrer"
+                         className="buy-btn buy-btn-outline"
+                         aria-label={`Buy ${p.dupe.name} by ${p.dupe.brand}`}>
+                        Buy →
+                      </a>
                     </div>
                   </div>
                 </article>
