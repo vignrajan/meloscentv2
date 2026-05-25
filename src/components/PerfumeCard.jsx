@@ -46,9 +46,13 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   const cmpFull = compareIds.length === 2 && !inCmp
   const inWd = wardrobeIds.includes(p.id)
 
-  const handleClick = () => { if (!flipped && onFlip) onFlip(p.id); setFlipped(f => !f) }
+  const handleClick = e => {
+    if (e.target.closest('a, button')) return
+    if (!flipped && onFlip) onFlip(p.id)
+    setFlipped(f => !f)
+  }
   const handleCmp = e => { e.stopPropagation(); if (!cmpFull) onCompare(p.id) }
-  const handleWd = e => { e.stopPropagation(); onWardrobeToggle(p.id) }
+  const handleWd  = e => { e.stopPropagation(); onWardrobeToggle(p.id) }
 
   const dupePrice = fmt(parsePx(p.dupe.price), currency)
   const retailPrice = fmt(p.retail, currency)
@@ -57,7 +61,7 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
     <div className="mcard-wrap">
       <div className="mcard-scene" style={{ height: p.height }} onClick={handleClick}
         role="button" tabIndex={0} aria-label={`${p.designer} ${p.name} — ${flipped ? "showing dupe" : "click to reveal dupe"}`}
-        onKeyDown={e => e.key === "Enter" && handleClick()}>
+        onKeyDown={e => e.key === "Enter" && !e.target.closest('a, button') && handleClick(e)}>
         <div className={`mcard-inner mcard-shadow${flipped ? " flipped" : ""}`} style={{ height: p.height, borderRadius: 20, boxShadow: "0 10px 40px rgba(44,24,16,.18)" }}>
 
           {/* FRONT */}
