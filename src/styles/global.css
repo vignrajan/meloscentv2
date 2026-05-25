@@ -20,6 +20,22 @@ body { background: #FAF3E8; }
 .flip-hint { opacity: 0; transition: opacity .3s; }
 .mcard-scene:hover .flip-hint { opacity: 1; }
 
+/* Card image layers */
+.mcard-img-bg { position: absolute; inset: 0; background-size: cover; background-position: center 15%; mix-blend-mode: luminosity; opacity: 0; transition: opacity .8s ease, transform 1.5s ease-out; }
+.mcard-img-bg.loaded { opacity: 1; }
+.mcard-scene:not(.is-flipped):hover .mcard-img-front { transform: scale(1.05); transition: opacity .8s ease, transform 6s ease-out; }
+.mcard-img-back { mix-blend-mode: screen; }
+.mcard-img-back.loaded { opacity: .35; }
+.mcard-img-pulse { position: absolute; inset: 0; animation: imgPulse 2.2s ease-in-out infinite; }
+@keyframes imgPulse { 0%,100% { opacity: .45; } 50% { opacity: .9; } }
+.mcard-img-overlay { position: absolute; inset: 0; pointer-events: none; }
+.mcard-grain { position: absolute; inset: 0; pointer-events: none; }
+.mcard-grain::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; opacity: .05; }
+
+/* SOTD banner image */
+.sotd-img-bg { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; background-size: cover; background-position: center; mix-blend-mode: luminosity; opacity: 0; transition: opacity .8s ease; pointer-events: none; -webkit-mask-image: linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 30%,black 100%); mask-image: linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 30%,black 100%); }
+.sotd-img-bg.loaded { opacity: .72; }
+
 /* Search & Filters */
 .melo-search { width: 100%; padding: 16px 52px; border: 1.5px solid rgba(193,127,58,.25); border-radius: 50px; background: white; font-family: 'DM Sans',sans-serif; font-size: 15px; color: #2C1810; box-shadow: 0 8px 30px rgba(44,24,16,.08); outline: none; transition: border-color .2s,box-shadow .2s; }
 .melo-search:focus { border-color: #C17F3A; box-shadow: 0 8px 30px rgba(193,127,58,.18); }
