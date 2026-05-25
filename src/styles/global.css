@@ -14,6 +14,8 @@ body { background: #FAF3E8; }
 .mcard-inner.flipped { transform: rotateY(180deg); }
 .mcard-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; overflow: hidden; }
 .mcard-back { transform: rotateY(180deg); }
+.mcard-inner:not(.flipped) .mcard-back { pointer-events: none; }
+.mcard-inner.flipped .mcard-face:not(.mcard-back) { pointer-events: none; }
 .mcard-scene:hover .mcard-shadow { box-shadow: 0 28px 64px rgba(44,24,16,.28) !important; }
 .flip-hint { opacity: 0; transition: opacity .3s; }
 .mcard-scene:hover .flip-hint { opacity: 1; }
