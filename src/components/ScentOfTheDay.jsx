@@ -4,17 +4,17 @@ import { fmt } from '../utils/currency'
 import { parsePx } from '../utils/storage'
 import { getBuyUrl } from '../utils/affiliates'
 
-function useBannerImage(query) {
+function useBannerImage(seed) {
   const [state, setState] = useState({ src: null, loaded: false })
   useEffect(() => {
-    if (!query) return
-    const url = `https://source.unsplash.com/featured/900x500/?${encodeURIComponent(query)}`
+    if (!seed) return
+    const url = `https://picsum.photos/seed/${encodeURIComponent(seed)}/900/500`
     const img = new Image()
-    img.onload = () => setState({ src: img.currentSrc || url, loaded: true })
+    img.onload = () => setState({ src: url, loaded: true })
     img.onerror = () => {}
     img.src = url
     return () => { img.onload = null; img.onerror = null }
-  }, [query])
+  }, [seed])
   return state
 }
 
@@ -30,8 +30,7 @@ export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES, currenc
   const mBg = light ? "rgba(0,0,0,.08)" : "rgba(0,0,0,.18)"
   const mTxt = light ? "rgba(44,24,16,.65)" : "rgba(255,255,255,.85)"
 
-  const imgQuery  = `perfume,bottle,luxury,editorial,${p.mood.toLowerCase().replace(/\s+/g, ',')}`
-  const bannerImg = useBannerImage(imgQuery)
+  const bannerImg = useBannerImage(`sotd-${p.id}`)
 
   return (
     <div className="sotd-banner" style={{ background: p.gradient }} role="banner" aria-label="Scent of the Day">

@@ -3,22 +3,18 @@ import { fmt } from '../utils/currency'
 import { parsePx } from '../utils/storage'
 import { getBuyUrl } from '../utils/affiliates'
 
-function useUnsplashImage(query) {
+function useCardImage(seed, width = 400, height = 600) {
   const [state, setState] = useState({ src: null, loaded: false, error: false })
   useEffect(() => {
-    if (!query) return
-    const url = `https://source.unsplash.com/featured/400x600/?${encodeURIComponent(query)}`
+    if (!seed) return
+    const url = `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`
     const img = new Image()
-    img.onload = () => setState({ src: img.currentSrc || url, loaded: true, error: false })
+    img.onload = () => setState({ src: url, loaded: true, error: false })
     img.onerror = () => setState(s => ({ ...s, error: true }))
     img.src = url
     return () => { img.onload = null; img.onerror = null }
-  }, [query])
+  }, [seed, width, height])
   return state
-}
-
-function moodKeywords(mood) {
-  return mood.toLowerCase().replace(/\s+/g, ',')
 }
 
 function NotePill({ note, dark, onClick, active }) {
@@ -64,10 +60,8 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   const cmpFull = compareIds.length === 2 && !inCmp
   const inWd = wardrobeIds.includes(p.id)
 
-  const frontQuery = `perfume,bottle,luxury,${moodKeywords(p.mood)}`
-  const backQuery  = `perfume,fragrance,clean,minimalist,light`
-  const frontImg   = useUnsplashImage(frontQuery)
-  const backImg    = useUnsplashImage(backQuery)
+  const frontImg = useCardImage(`${p.id}-${p.mood}`)
+  const backImg  = useCardImage(`back-${p.id}`)
 
   const handleClick = e => {
     if (e.target.closest('a, button')) return
