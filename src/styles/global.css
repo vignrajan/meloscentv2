@@ -117,6 +117,12 @@ body { background: #FAF3E8; }
 .melo-toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 2000; background: #2C1810; color: #d4af37; padding: 11px 26px; border-radius: 50px; font-family: 'DM Sans',sans-serif; font-size: 13px; font-weight: 500; box-shadow: 0 8px 32px rgba(44,24,16,.35); animation: toastIn .3s ease; letter-spacing: .5px; white-space: nowrap; pointer-events: none; }
 @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 
+/* Buy button */
+.buy-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 14px; border-radius: 50px; background: linear-gradient(135deg,#C17F3A,#d4af37); color: white; font-family: 'DM Sans',sans-serif; font-size: 11px; font-weight: 500; text-decoration: none; letter-spacing: .4px; transition: transform .2s, box-shadow .2s; white-space: nowrap; border: none; cursor: pointer; }
+.buy-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(193,127,58,.5); color: white; }
+.buy-btn-outline { background: transparent; border: 1px solid rgba(193,127,58,.4); color: #8b5a1a; }
+.buy-btn-outline:hover { background: rgba(193,127,58,.08); border-color: #C17F3A; color: #C17F3A; box-shadow: none; transform: none; }
+
 /* Currency Toggle */
 .currency-toggle { display: flex; align-items: center; background: rgba(193,127,58,.08); border: 0.5px solid rgba(193,127,58,.2); border-radius: 50px; padding: 3px; gap: 1px; }
 .currency-btn { padding: 5px 10px; border-radius: 50px; border: none; cursor: pointer; font-family: 'DM Sans',sans-serif; font-size: 11px; font-weight: 400; letter-spacing: 0.5px; background: transparent; color: rgba(44,24,16,.45); transition: background .22s, color .22s; white-space: nowrap; line-height: 1; }

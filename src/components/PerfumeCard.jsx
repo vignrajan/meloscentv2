@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { fmt } from '../utils/currency'
 import { parsePx } from '../utils/storage'
+import { getBuyUrl } from '../utils/affiliates'
 
 function NotePill({ note, dark, onClick, active }) {
   const handle = onClick ? e => { e.stopPropagation(); onClick(note) } : undefined
@@ -110,9 +111,18 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
                     </div>
                   </div>
                 </div>
-                <button className={`wd-add-btn${inWd ? " saved" : ""}`} onClick={handleWd} aria-pressed={inWd}>
-                  {inWd ? "✓ Saved to Wardrobe" : "+ Save to Wardrobe"}
-                </button>
+                <div style={{ display: "flex", gap: 8, marginBottom: 2 }}>
+                  <button className={`wd-add-btn${inWd ? " saved" : ""}`} style={{ flex: 1 }} onClick={handleWd} aria-pressed={inWd}>
+                    {inWd ? "✓ Saved" : "+ Wardrobe"}
+                  </button>
+                  <a href={getBuyUrl(p.dupe.brand, p.dupe.name, currency)}
+                     target="_blank" rel="noopener noreferrer"
+                     className="buy-btn"
+                     onClick={e => e.stopPropagation()}
+                     aria-label={`Buy ${p.dupe.name} by ${p.dupe.brand}`}>
+                    Buy Now →
+                  </a>
+                </div>
               </div>
               <div style={{ borderTop: "0.5px solid rgba(193,127,58,.2)", paddingTop: 13 }}>
                 <ScentStrip notes={p.notes} dark={true} onNoteClick={onNoteClick} noteFilter={noteFilter} />
