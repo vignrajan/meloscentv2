@@ -114,4 +114,67 @@ export const PERFUMES = [
     gradient: "linear-gradient(155deg,#3a0810 0%,#780a28 50%,#c04060 100%)", accent: "#ffb8c8", textCol: "#FAF3E8",
     notes: { top: ["Blackcurrant", "Freesia", "Bergamot"], mid: ["Rose", "Neroli", "Freesia"], base: ["Ambroxan", "Patchouli", "Vanilla"] },
     dupe: { brand: "Dossier", name: "Floral Blackcurrant", price: "$29.00", match: 87 } },
+
+  // Men's expansion
+  { id: 37, designer: "Paco Rabanne", name: "Invictus", badge: "Mainstream Luxury", mood: "Fresh Aquatic", height: 410, retail: 105,
+    gradient: "linear-gradient(155deg,#1a1a2a 0%,#3a3a5a 50%,#8a9ab0 100%)", accent: "#c8d8f0", textCol: "#FAF3E8",
+    notes: { top: ["Grapefruit", "Marine Accord", "Mandarin"], mid: ["Jasmine", "Guaiac Wood", "Hedione"], base: ["Ambergris", "Oakmoss", "Patchouli"] },
+    dupe: { brand: "Zara", name: "Seoul Vibe", price: "$16.00", match: 84 } },
+
+  { id: 38, designer: "Jean Paul Gaultier", name: "Le Male", badge: "Mainstream Luxury", mood: "Oriental Spicy", height: 445, retail: 95,
+    gradient: "linear-gradient(155deg,#0a1428 0%,#1a2a50 50%,#3a5a8a 100%)", accent: "#c0d8f8", textCol: "#FAF3E8",
+    notes: { top: ["Mint", "Tarragon", "Cardamom"], mid: ["Cumin", "Lavender", "Cinnamon"], base: ["Vanilla", "Sandalwood", "Amber"] },
+    dupe: { brand: "Armaf", name: "Club Milestone", price: "$28.00", match: 88 } },
+
+  { id: 39, designer: "Dolce & Gabbana", name: "The One Men", badge: "Mainstream Luxury", mood: "Oriental Woody", height: 428, retail: 115,
+    gradient: "linear-gradient(155deg,#4a2800 0%,#8a5010 50%,#d4a030 100%)", accent: "#ffe0a0", textCol: "#FAF3E8",
+    notes: { top: ["Grapefruit", "Coriander", "Basil"], mid: ["Ginger", "Cardamom", "Tobacco"], base: ["Cedar", "Amber", "Musk"] },
+    dupe: { brand: "Dossier", name: "Woody Tobacco", price: "$29.00", match: 87 } },
+
+  { id: 40, designer: "YSL", name: "La Nuit de l'Homme", badge: "Prestige", mood: "Spicy Floral", height: 420, retail: 110,
+    gradient: "linear-gradient(155deg,#030310 0%,#0a0a28 50%,#1a1a50 100%)", accent: "#a0a8e0", textCol: "#FAF3E8",
+    notes: { top: ["Cardamom", "Bergamot", "Vetiver"], mid: ["Lavender", "Cedar", "Caraway"], base: ["Amberwood", "Coumarin", "Vetiver"] },
+    dupe: { brand: "Dossier", name: "Spicy Cardamom", price: "$29.00", match: 87 } },
+
+  { id: 41, designer: "Hugo Boss", name: "The Scent", badge: "Mainstream Luxury", mood: "Oriental Spicy", height: 395, retail: 90,
+    gradient: "linear-gradient(155deg,#1a0808 0%,#4a1808 50%,#8a3820 100%)", accent: "#e0a860", textCol: "#FAF3E8",
+    notes: { top: ["Ginger", "Maninka Fruit"], mid: ["Lavender", "Osmanthus"], base: ["Leather", "Musk", "Vetiver"] },
+    dupe: { brand: "Armaf", name: "Italiano Uomo", price: "$22.00", match: 84 } },
+
+  { id: 42, designer: "Montblanc", name: "Explorer", badge: "Mainstream Luxury", mood: "Woody Aromatic", height: 388, retail: 85,
+    gradient: "linear-gradient(155deg,#0a2010 0%,#184a28 50%,#3a7a50 100%)", accent: "#a0d0a8", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Vetiver", "Patchouli"], mid: ["Clary Sage", "Papyrus"], base: ["Cedarwood", "Ambroxan", "Musk"] },
+    dupe: { brand: "Zara", name: "Adventure Amazonia", price: "$14.00", match: 82 } },
+
+  // Women's additions
+  { id: 43, designer: "Thierry Mugler", name: "Alien", badge: "Mainstream Luxury", mood: "Floral Woody", height: 452, retail: 120,
+    gradient: "linear-gradient(155deg,#4a3000 0%,#9a7010 50%,#e0c030 100%)", accent: "#ffe880", textCol: "#2C1810",
+    notes: { top: ["Casablanca Lily"], mid: ["Jasmine Sambac", "Cashmeran"], base: ["White Amber", "Woods"] },
+    dupe: { brand: "Dossier", name: "Floral Casablanca", price: "$29.00", match: 86 } },
+
+  { id: 44, designer: "Givenchy", name: "L'Interdit", badge: "Prestige", mood: "Floral Woody", height: 418, retail: 130,
+    gradient: "linear-gradient(155deg,#1a0818 0%,#3a1040 50%,#7a2a6a 100%)", accent: "#e8c0f0", textCol: "#FAF3E8",
+    notes: { top: ["Pear", "Bergamot", "Almond"], mid: ["Tuberose", "Orange Blossom", "Jasmine"], base: ["Patchouli", "Sandalwood", "Vetiver"] },
+    dupe: { brand: "Zara", name: "Blackberry & Peony", price: "$16.00", match: 85 } },
+
+  { id: 45, designer: "Valentino", name: "Donna Born in Roma", badge: "Prestige", mood: "Floral Chypre", height: 435, retail: 145,
+    gradient: "linear-gradient(155deg,#3a1a08 0%,#8a4820 50%,#d8a870 100%)", accent: "#ffe0c0", textCol: "#FAF3E8",
+    notes: { top: ["Blackcurrant", "Bergamot", "Pear"], mid: ["Rose", "Jasmine", "Iris"], base: ["Vanilla", "Musk", "Cedarwood"] },
+    dupe: { brand: "Dossier", name: "Floral Vanilla", price: "$29.00", match: 87 } },
+
+  { id: 46, designer: "Dolce & Gabbana", name: "The One Women", badge: "Mainstream Luxury", mood: "Floral Oriental", height: 415, retail: 115,
+    gradient: "linear-gradient(155deg,#6a3a10 0%,#c07830 50%,#e8c080 100%)", accent: "#fff0d0", textCol: "#2C1810",
+    notes: { top: ["Mandarin", "Peach", "Lychee"], mid: ["Lily", "Marigold", "Jasmine"], base: ["Musk", "Amber", "Vanilla"] },
+    dupe: { brand: "Zara", name: "Warm Amber", price: "$15.00", match: 84 } },
+
+  // Niche additions
+  { id: 47, designer: "Initio", name: "Oud for Greatness", badge: "Ultra-Niche", mood: "Woody Oriental", height: 488, retail: 280,
+    gradient: "linear-gradient(155deg,#050510 0%,#150520 40%,#3a0a10 100%)", accent: "#c89840", textCol: "#FAF3E8",
+    notes: { top: ["Oud", "Saffron", "Nutmeg"], mid: ["Patchouli", "Amyris"], base: ["Musk", "Ambergris", "Civet"] },
+    dupe: { brand: "Lattafa", name: "Oud for Glory", price: "$28.00", match: 87 } },
+
+  { id: 48, designer: "Byredo", name: "Gypsy Water", badge: "Ultra-Niche", mood: "Woody Aromatic", height: 462, retail: 220,
+    gradient: "linear-gradient(155deg,#0a1a08 0%,#1a3818 50%,#4a7a40 100%)", accent: "#b0d8a0", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Lemon", "Pepper"], mid: ["Incense", "Orris", "Pine Needles"], base: ["Sandalwood", "Vanilla", "Amber"] },
+    dupe: { brand: "Dossier", name: "Woody Pine", price: "$29.00", match: 85 } },
 ]

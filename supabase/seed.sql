@@ -117,7 +117,46 @@ INSERT INTO perfumes (id, designer, name, badge, mood, retail_price, gradient, a
   ARRAY['Pomegranate','Yuzu','Lotus'], ARRAY['Peony','Magnolia','Rose'], ARRAY['Musk','Amber','Mahogany']),
 
 (36, 'Giorgio Armani',   'Sì',                    'Prestige',           'Floral Chypre',  125, 'linear-gradient(155deg,#3a0810 0%,#780a28 50%,#c04060 100%)', '#ffb8c8', '#FAF3E8', 435,
-  ARRAY['Blackcurrant','Freesia','Bergamot'], ARRAY['Rose','Neroli','Freesia'], ARRAY['Ambroxan','Patchouli','Vanilla'])
+  ARRAY['Blackcurrant','Freesia','Bergamot'], ARRAY['Rose','Neroli','Freesia'], ARRAY['Ambroxan','Patchouli','Vanilla']),
+
+-- Men's expansion (IDs 37–42)
+(37, 'Paco Rabanne',     'Invictus',              'Mainstream Luxury',  'Fresh Aquatic',  105, 'linear-gradient(155deg,#1a1a2a 0%,#3a3a5a 50%,#8a9ab0 100%)', '#c8d8f0', '#FAF3E8', 410,
+  ARRAY['Grapefruit','Marine Accord','Mandarin'], ARRAY['Jasmine','Guaiac Wood','Hedione'], ARRAY['Ambergris','Oakmoss','Patchouli']),
+
+(38, 'Jean Paul Gaultier','Le Male',              'Mainstream Luxury',  'Oriental Spicy',  95, 'linear-gradient(155deg,#0a1428 0%,#1a2a50 50%,#3a5a8a 100%)', '#c0d8f8', '#FAF3E8', 445,
+  ARRAY['Mint','Tarragon','Cardamom'], ARRAY['Cumin','Lavender','Cinnamon'], ARRAY['Vanilla','Sandalwood','Amber']),
+
+(39, 'Dolce & Gabbana',  'The One Men',           'Mainstream Luxury',  'Oriental Woody', 115, 'linear-gradient(155deg,#4a2800 0%,#8a5010 50%,#d4a030 100%)', '#ffe0a0', '#FAF3E8', 428,
+  ARRAY['Grapefruit','Coriander','Basil'], ARRAY['Ginger','Cardamom','Tobacco'], ARRAY['Cedar','Amber','Musk']),
+
+(40, 'YSL',              'La Nuit de l''Homme',  'Prestige',           'Spicy Floral',   110, 'linear-gradient(155deg,#030310 0%,#0a0a28 50%,#1a1a50 100%)', '#a0a8e0', '#FAF3E8', 420,
+  ARRAY['Cardamom','Bergamot','Vetiver'], ARRAY['Lavender','Cedar','Caraway'], ARRAY['Amberwood','Coumarin','Vetiver']),
+
+(41, 'Hugo Boss',        'The Scent',             'Mainstream Luxury',  'Oriental Spicy',  90, 'linear-gradient(155deg,#1a0808 0%,#4a1808 50%,#8a3820 100%)', '#e0a860', '#FAF3E8', 395,
+  ARRAY['Ginger','Maninka Fruit'], ARRAY['Lavender','Osmanthus'], ARRAY['Leather','Musk','Vetiver']),
+
+(42, 'Montblanc',        'Explorer',              'Mainstream Luxury',  'Woody Aromatic',  85, 'linear-gradient(155deg,#0a2010 0%,#184a28 50%,#3a7a50 100%)', '#a0d0a8', '#FAF3E8', 388,
+  ARRAY['Bergamot','Vetiver','Patchouli'], ARRAY['Clary Sage','Papyrus'], ARRAY['Cedarwood','Ambroxan','Musk']),
+
+-- Women's additions (IDs 43–46)
+(43, 'Thierry Mugler',   'Alien',                 'Mainstream Luxury',  'Floral Woody',   120, 'linear-gradient(155deg,#4a3000 0%,#9a7010 50%,#e0c030 100%)', '#ffe880', '#2C1810', 452,
+  ARRAY['Casablanca Lily'], ARRAY['Jasmine Sambac','Cashmeran'], ARRAY['White Amber','Woods']),
+
+(44, 'Givenchy',         'L''Interdit',           'Prestige',           'Floral Woody',   130, 'linear-gradient(155deg,#1a0818 0%,#3a1040 50%,#7a2a6a 100%)', '#e8c0f0', '#FAF3E8', 418,
+  ARRAY['Pear','Bergamot','Almond'], ARRAY['Tuberose','Orange Blossom','Jasmine'], ARRAY['Patchouli','Sandalwood','Vetiver']),
+
+(45, 'Valentino',        'Donna Born in Roma',    'Prestige',           'Floral Chypre',  145, 'linear-gradient(155deg,#3a1a08 0%,#8a4820 50%,#d8a870 100%)', '#ffe0c0', '#FAF3E8', 435,
+  ARRAY['Blackcurrant','Bergamot','Pear'], ARRAY['Rose','Jasmine','Iris'], ARRAY['Vanilla','Musk','Cedarwood']),
+
+(46, 'Dolce & Gabbana',  'The One Women',         'Mainstream Luxury',  'Floral Oriental',115, 'linear-gradient(155deg,#6a3a10 0%,#c07830 50%,#e8c080 100%)', '#fff0d0', '#2C1810', 415,
+  ARRAY['Mandarin','Peach','Lychee'], ARRAY['Lily','Marigold','Jasmine'], ARRAY['Musk','Amber','Vanilla']),
+
+-- Niche additions (IDs 47–48)
+(47, 'Initio',           'Oud for Greatness',     'Ultra-Niche',        'Woody Oriental', 280, 'linear-gradient(155deg,#050510 0%,#150520 40%,#3a0a10 100%)', '#c89840', '#FAF3E8', 488,
+  ARRAY['Oud','Saffron','Nutmeg'], ARRAY['Patchouli','Amyris'], ARRAY['Musk','Ambergris','Civet']),
+
+(48, 'Byredo',           'Gypsy Water',           'Ultra-Niche',        'Woody Aromatic', 220, 'linear-gradient(155deg,#0a1a08 0%,#1a3818 50%,#4a7a40 100%)', '#b0d8a0', '#FAF3E8', 462,
+  ARRAY['Bergamot','Lemon','Pepper'], ARRAY['Incense','Orris','Pine Needles'], ARRAY['Sandalwood','Vanilla','Amber'])
 
 ON CONFLICT (id) DO NOTHING;
 
@@ -163,7 +202,19 @@ INSERT INTO dupes (perfume_id, brand, name, price_usd, match_score) VALUES
 (33, 'Zara',    'Rose Gourmand',              '$16.00', 88),
 (34, 'Zara',    'Marine',                     '$14.00', 83),
 (35, 'Zara',    'Crystal',                    '$15.00', 84),
-(36, 'Dossier', 'Floral Blackcurrant',        '$29.00', 87)
+(36, 'Dossier', 'Floral Blackcurrant',        '$29.00', 87),
+(37, 'Zara',    'Seoul Vibe',                 '$16.00', 84),
+(38, 'Armaf',   'Club Milestone',             '$28.00', 88),
+(39, 'Dossier', 'Woody Tobacco',              '$29.00', 87),
+(40, 'Dossier', 'Spicy Cardamom',             '$29.00', 87),
+(41, 'Armaf',   'Italiano Uomo',              '$22.00', 84),
+(42, 'Zara',    'Adventure Amazonia',         '$14.00', 82),
+(43, 'Dossier', 'Floral Casablanca',          '$29.00', 86),
+(44, 'Zara',    'Blackberry & Peony',         '$16.00', 85),
+(45, 'Dossier', 'Floral Vanilla',             '$29.00', 87),
+(46, 'Zara',    'Warm Amber',                 '$15.00', 84),
+(47, 'Lattafa', 'Oud for Glory',              '$28.00', 87),
+(48, 'Dossier', 'Woody Pine',                 '$29.00', 85)
 
 ON CONFLICT DO NOTHING;
 
