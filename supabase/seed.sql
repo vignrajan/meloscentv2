@@ -155,8 +155,44 @@ INSERT INTO perfumes (id, designer, name, badge, mood, retail_price, gradient, a
 (47, 'Initio',           'Oud for Greatness',     'Ultra-Niche',        'Woody Oriental', 280, 'linear-gradient(155deg,#050510 0%,#150520 40%,#3a0a10 100%)', '#c89840', '#FAF3E8', 488,
   ARRAY['Oud','Saffron','Nutmeg'], ARRAY['Patchouli','Amyris'], ARRAY['Musk','Ambergris','Civet']),
 
-(48, 'Byredo',           'Gypsy Water',           'Ultra-Niche',        'Woody Aromatic', 220, 'linear-gradient(155deg,#0a1a08 0%,#1a3818 50%,#4a7a40 100%)', '#b0d8a0', '#FAF3E8', 462,
-  ARRAY['Bergamot','Lemon','Pepper'], ARRAY['Incense','Orris','Pine Needles'], ARRAY['Sandalwood','Vanilla','Amber'])
+(48, 'Byredo',           'Gypsy Water',           'Ultra-Niche',        'Woody Aromatic',   220, 'linear-gradient(155deg,#0a1a08 0%,#1a3818 50%,#4a7a40 100%)', '#b0d8a0', '#FAF3E8', 462,
+  ARRAY['Bergamot','Lemon','Pepper'], ARRAY['Incense','Orris','Pine Needles'], ARRAY['Sandalwood','Vanilla','Amber']),
+
+(49, 'Thierry Mugler',  'Angel',                 'Mainstream Luxury',  'Gourmand Oriental', 115, 'linear-gradient(155deg,#020818 0%,#0a1840 50%,#1a3880 100%)', '#80b0ff', '#FAF3E8', 455,
+  ARRAY['Bergamot','Melon','Cotton Candy'], ARRAY['Honey','Jasmine','Peach'], ARRAY['Vanilla','Patchouli','Chocolate']),
+
+(50, 'Narciso Rodriguez','For Her',              'Prestige',           'Musky Floral',      120, 'linear-gradient(155deg,#3a1828 0%,#7a3858 50%,#c07888 100%)', '#ffd0e0', '#FAF3E8', 405,
+  ARRAY['Rose','Peach','Osmanthus'], ARRAY['Muguet','Jasmine','Magnolia'], ARRAY['Musk','Vetiver','Amber']),
+
+(51, 'Acqua di Parma',  'Colonia',               'Niche Luxury',       'Fresh Citrus',      155, 'linear-gradient(155deg,#5a4800 0%,#c89800 50%,#f0d840 100%)', '#2C1810', '#2C1810', 425,
+  ARRAY['Calabrian Bergamot','Lemon','Grapefruit'], ARRAY['Lavender','Rose','Neroli'], ARRAY['Sandalwood','Vetiver','Oakmoss']),
+
+(52, 'Amouage',         'Interlude Man',          'Ultra-Niche',        'Oriental Aromatic', 350, 'linear-gradient(155deg,#050808 0%,#151818 50%,#303820 100%)', '#c8a840', '#FAF3E8', 495,
+  ARRAY['Oregano','Bergamot','Amber Accord'], ARRAY['Incense','Labdanum','Agarwood'], ARRAY['Sandalwood','Benzoin','Leather']),
+
+(53, 'Frederic Malle',  'Portrait of a Lady',    'Ultra-Niche',        'Floral Oriental',   365, 'linear-gradient(155deg,#280a10 0%,#680820 50%,#a82838 100%)', '#ffa8b8', '#FAF3E8', 480,
+  ARRAY['Blackcurrant','Raspberry','Cinnamon'], ARRAY['Turkish Rose','Patchouli','Sandalwood'], ARRAY['Musk','Benzoin','Frankincense']),
+
+(54, 'Xerjoff',         'Naxos',                 'Ultra-Niche',        'Gourmand Woody',    390, 'linear-gradient(155deg,#3a1800 0%,#8a4800 50%,#d89030 100%)', '#ffe8b0', '#2C1810', 485,
+  ARRAY['Bergamot','Lemon','Lavender'], ARRAY['Honey','Tobacco','Immortelle'], ARRAY['Tonka Bean','Vanilla','Sandalwood']),
+
+(55, 'Prada',           'Candy',                 'Prestige',           'Gourmand',          135, 'linear-gradient(155deg,#400820 0%,#902858 50%,#e07898 100%)', '#ffe8f0', '#FAF3E8', 395,
+  ARRAY['Caramel','Musk'], ARRAY['Benzyl Salicylate','White Musk'], ARRAY['Vanilla','Caramel','Benzoin']),
+
+(56, 'By Kilian',       'Black Phantom',          'Ultra-Niche',        'Gourmand Dark',     280, 'linear-gradient(155deg,#020202 0%,#100808 50%,#281410 100%)', '#c07840', '#FAF3E8', 475,
+  ARRAY['Rum Accord','Black Pepper'], ARRAY['Coffee','Almond','Dark Rum'], ARRAY['Sugar Cane','Sandalwood','Vetiver']),
+
+(57, 'YSL',             'Mon Paris',              'Mainstream Luxury',  'Floral Fruity',     105, 'linear-gradient(155deg,#380010 0%,#900828 50%,#e03058 100%)', '#ffb0c8', '#FAF3E8', 408,
+  ARRAY['Strawberry','Raspberry','White Datura'], ARRAY['Peony','Rose','Jasmine'], ARRAY['Patchouli','White Musk','Ambroxan']),
+
+(58, 'Dolce & Gabbana', 'Light Blue',             'Mainstream Luxury',  'Fresh Citrus',       95, 'linear-gradient(155deg,#001830 0%,#004870 50%,#00a0c0 100%)', '#b0f0ff', '#FAF3E8', 390,
+  ARRAY['Sicilian Lemon','Apple','Bluebell'], ARRAY['Bamboo','Jasmine','White Rose'], ARRAY['Cedarwood','Amber','Musk']),
+
+(59, 'Maison Margiela', 'Replica Jazz Club',      'Artisan',            'Warm Woody',        175, 'linear-gradient(155deg,#200808 0%,#501820 50%,#904838 100%)', '#f0c090', '#FAF3E8', 445,
+  ARRAY['Neroli','Vetiver','Pink Pepper'], ARRAY['Tobacco Leaf','Rum Accord','Clary Sage'], ARRAY['Vanilla','Musk','Styrax']),
+
+(60, 'Diptyque',        'Philosykos',             'Niche Luxury',       'Woody Green',       190, 'linear-gradient(155deg,#080f00 0%,#1a2808 50%,#4a6820 100%)', '#c8e880', '#FAF3E8', 460,
+  ARRAY['Fig Leaf','Fig Tree Bark'], ARRAY['Fig Blossom','White Cedar'], ARRAY['Fig Wood','Creamy Woods','Benzoin'])
 
 ON CONFLICT (id) DO NOTHING;
 
@@ -214,7 +250,19 @@ INSERT INTO dupes (perfume_id, brand, name, price_usd, match_score) VALUES
 (45, 'Dossier', 'Floral Vanilla',             '$29.00', 87),
 (46, 'Zara',    'Warm Amber',                 '$15.00', 84),
 (47, 'Lattafa', 'Oud for Glory',              '$28.00', 87),
-(48, 'Dossier', 'Woody Pine',                 '$29.00', 85)
+(48, 'Dossier', 'Woody Pine',                 '$29.00', 85),
+(49, 'Dossier', 'Gourmand Patchouli',         '$29.00', 88),
+(50, 'Zara',    'White Tuberose',             '$18.00', 87),
+(51, 'Zara',    'Mediterraneo',               '$15.00', 84),
+(52, 'Lattafa', 'Khamrah',                    '$25.00', 86),
+(53, 'Dossier', 'Floral Rose',                '$29.00', 88),
+(54, 'Dossier', 'Gourmand Tobacco',           '$29.00', 89),
+(55, 'Zara',    'Sweet Vanilla',              '$15.00', 86),
+(56, 'Dossier', 'Gourmand Rum',               '$29.00', 88),
+(57, 'Zara',    'Femme',                      '$18.00', 85),
+(58, 'Zara',    'Fresh Water',                '$15.00', 87),
+(59, 'Lattafa', 'Raghba',                     '$22.00', 86),
+(60, 'Dossier', 'Woody Fig',                  '$29.00', 85)
 
 ON CONFLICT DO NOTHING;
 
