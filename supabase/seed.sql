@@ -192,7 +192,53 @@ INSERT INTO perfumes (id, designer, name, badge, mood, retail_price, gradient, a
   ARRAY['Neroli','Vetiver','Pink Pepper'], ARRAY['Tobacco Leaf','Rum Accord','Clary Sage'], ARRAY['Vanilla','Musk','Styrax']),
 
 (60, 'Diptyque',        'Philosykos',             'Niche Luxury',       'Woody Green',       190, 'linear-gradient(155deg,#080f00 0%,#1a2808 50%,#4a6820 100%)', '#c8e880', '#FAF3E8', 460,
-  ARRAY['Fig Leaf','Fig Tree Bark'], ARRAY['Fig Blossom','White Cedar'], ARRAY['Fig Wood','Creamy Woods','Benzoin'])
+  ARRAY['Fig Leaf','Fig Tree Bark'], ARRAY['Fig Blossom','White Cedar'], ARRAY['Fig Wood','Creamy Woods','Benzoin']),
+
+-- Premium additions (IDs 61–75)
+(61, 'MFK',             'Oud Satin Mood',         'Ultra-Niche',        'Velvety Oriental',  390, 'linear-gradient(155deg,#080010 0%,#200838 50%,#580858 100%)', '#d8a0ff', '#FAF3E8', 490,
+  ARRAY['Rose','Saffron','Jasmine'], ARRAY['Oud','Benzoin','Turkish Rose'], ARRAY['Vanilla','Amber','Musk']),
+
+(62, 'Creed',           'Royal Oud',              'Prestige',           'Woody Royal',       460, 'linear-gradient(155deg,#050f00 0%,#101a05 50%,#2a3a10 100%)', '#c8d080', '#FAF3E8', 468,
+  ARRAY['Pink Pepper','Bergamot','Lemon'], ARRAY['Oud','Cypress','Juniper'], ARRAY['Patchouli','Vetiver','Amber']),
+
+(63, 'Jo Malone',       'Lime Basil & Mandarin',  'British Niche',      'Fresh Citrus Green',155, 'linear-gradient(155deg,#1a3a10 0%,#3a7020 50%,#80c030 100%)', '#e0ffb0', '#1a3010', 390,
+  ARRAY['Lime','Mandarin','Bergamot'], ARRAY['Basil','White Thyme','Violet'], ARRAY['Amber','White Musk','Patchouli']),
+
+(64, 'Chanel',          'Allure Homme Sport',     'Heritage',           'Fresh Sporty',      125, 'linear-gradient(155deg,#080c18 0%,#101828 50%,#203050 100%)', '#b0ccf0', '#FAF3E8', 408,
+  ARRAY['Aldehydes','Bergamot','Mandarin Orange'], ARRAY['Iris','Cedar','White Pepper'], ARRAY['Vetiver','White Musk','Tonka Bean']),
+
+(65, 'Maison Margiela', 'Replica Flower Market',  'Artisan',            'Dewy Floral',       175, 'linear-gradient(155deg,#1a0820 0%,#502050 50%,#a06090 100%)', '#ffd0e8', '#FAF3E8', 442,
+  ARRAY['Bergamot','Peony','Freesia'], ARRAY['Rose','Lilac','Muguet'], ARRAY['White Musk','Sandalwood','Amber']),
+
+(66, 'Paco Rabanne',    'Lady Million',           'Mainstream Luxury',  'Floral Chypre',     105, 'linear-gradient(155deg,#4a3000 0%,#a08010 50%,#e8c830 100%)', '#fff0a0', '#2C1810', 445,
+  ARRAY['Raspberry','Neroli','Peach'], ARRAY['Gardenia','Orange Blossom','Rose'], ARRAY['Patchouli','Amber','Honey']),
+
+(67, 'Chanel',          'Allure',                 'Heritage',           'Floral Oriental',   145, 'linear-gradient(155deg,#4a2808 0%,#9a6020 50%,#d4b060 100%)', '#ffe8b0', '#2C1810', 418,
+  ARRAY['Vanilla','Mandarin Orange','Peach'], ARRAY['Iris','Rose','Lily of the Valley'], ARRAY['Vanilla','Sandalwood','Amber']),
+
+(68, 'Giorgio Armani',  'Code',                   'Prestige',           'Oriental Woody',    110, 'linear-gradient(155deg,#050308 0%,#100808 50%,#281810 100%)', '#d8c0a0', '#FAF3E8', 415,
+  ARRAY['Bergamot','Lemon','Star Anise'], ARRAY['Olive Blossom','Rosewood','Sage'], ARRAY['Tonka Bean','Vanilla','Guaiac Wood']),
+
+(69, 'Issey Miyake',    'L''Eau d''Issey',        'Mainstream Luxury',  'Fresh Aquatic Floral', 95, 'linear-gradient(155deg,#1a3a5a 0%,#2860a0 50%,#60a8d8 100%)', '#d0f0ff', '#FAF3E8', 400,
+  ARRAY['Lotus','Freesia','Cyclamen'], ARRAY['White Lily','Carnation','Peony'], ARRAY['Cedar','Musk','Civet']),
+
+(70, 'Byredo',          'Bal d''Afrique',         'Ultra-Niche',        'Floral Woody Citrus',220, 'linear-gradient(155deg,#2a1a00 0%,#7a5010 50%,#c89040 100%)', '#ffe0a0', '#FAF3E8', 472,
+  ARRAY['Bergamot','Violet Leaf','African Marigold'], ARRAY['Neroli','Jasmine','African Geranium'], ARRAY['Vetiver','Musk','Cedarwood']),
+
+(71, 'YSL',             'Opium',                  'Heritage',           'Oriental Spicy',    130, 'linear-gradient(155deg,#0a0000 0%,#280500 50%,#680010 100%)', '#ffa050', '#FAF3E8', 480,
+  ARRAY['Coriander','Pepper','Mandarin'], ARRAY['Rose','Jasmine','Cinnamon'], ARRAY['Incense','Sandalwood','Vanilla']),
+
+(72, 'Serge Lutens',    'Ambre Sultan',           'Ultra-Niche',        'Warm Oriental',     155, 'linear-gradient(155deg,#2a1000 0%,#6a3000 50%,#c07818 100%)', '#ffc070', '#FAF3E8', 475,
+  ARRAY['Oregano','Bay Leaf','Coriander'], ARRAY['Amber','Plant Resins','Labdanum'], ARRAY['Benzoin','Beeswax','Musk']),
+
+(73, 'Tom Ford',        'Tobacco Vanille',        'Niche Luxury',       'Gourmand Woody',    195, 'linear-gradient(155deg,#1a0a00 0%,#3a1800 50%,#8a4010 100%)', '#e8c090', '#FAF3E8', 488,
+  ARRAY['Tobacco Leaf','Spices','Clove'], ARRAY['Tobacco Blossom','Jasmine','Ginger'], ARRAY['Vanilla','Tonka Bean','Cocoa']),
+
+(74, 'Guerlain',        'Shalimar',               'Heritage',           'Oriental Vanilla',  145, 'linear-gradient(155deg,#3a1808 0%,#8a4818 50%,#d0901a 100%)', '#ffe8b0', '#FAF3E8', 478,
+  ARRAY['Lemon','Bergamot','Aldehydes'], ARRAY['Iris','Jasmine','Rose'], ARRAY['Civet','Vanilla','Opoponax']),
+
+(75, 'Dior',            'Homme',                  'Prestige',           'Powdery Iris',      125, 'linear-gradient(155deg,#0a0818 0%,#181828 50%,#302840 100%)', '#c8c0e0', '#FAF3E8', 420,
+  ARRAY['Lemon','Bergamot','Aldehydes'], ARRAY['Iris','Violet','Ambroxan'], ARRAY['Vetiver','Patchouli','Cedarwood'])
 
 ON CONFLICT (id) DO NOTHING;
 
@@ -262,9 +308,41 @@ INSERT INTO dupes (perfume_id, brand, name, price_usd, match_score) VALUES
 (57, 'Zara',    'Femme',                      '$18.00', 85),
 (58, 'Zara',    'Fresh Water',                '$15.00', 87),
 (59, 'Lattafa', 'Raghba',                     '$22.00', 86),
-(60, 'Dossier', 'Woody Fig',                  '$29.00', 85)
+(60, 'Dossier', 'Woody Fig',                  '$29.00', 85),
+
+-- Premium additions (IDs 61–75)
+(61, 'Lattafa',          'Velvet Oud',             '$18.00', 88),
+(62, 'Armaf',            'Tres Nuit',              '$30.00', 87),
+(63, 'Zara',             'Frosted Lime',           '$15.00', 87),
+(64, 'Armaf',            'Nightclub Sports',       '$22.00', 88),
+(65, 'Dossier',          'Floral Roses & Jasmine', '$30.00', 86),
+(66, 'Armaf',            'Tres Belle',             '$25.00', 88),
+(67, 'Dossier',          'Floral Vanilla Rose',    '$29.00', 87),
+(68, 'Armaf',            'Italiano Black',         '$22.00', 87),
+(69, 'Dossier',          'Aquatic Freesia',        '$29.00', 85),
+(70, 'Dossier',          'Floral Neroli & Musk',   '$30.00', 87),
+(71, 'Al Haramain',      'Opium Night',            '$25.00', 87),
+(72, 'Lattafa',          'Ambar Al Hind',          '$18.00', 88),
+(73, 'Maison Alhambra',  'Tobacco Wood',           '$25.00', 91),
+(74, 'Paris Corner',     'Shalimar Clone',         '$20.00', 87),
+(75, 'Maison Alhambra',  'Homme de Maison',        '$25.00', 88)
 
 ON CONFLICT DO NOTHING;
+
+
+-- ── Dupe corrections ─────────────────────────────────────────
+-- Research-validated replacements for inaccurate or suboptimal dupes
+
+UPDATE dupes SET brand='Dossier',        name='Aquatic Coconut & Tiare', price_usd='$30.00', match_score=88 WHERE perfume_id=3;
+UPDATE dupes SET brand='Lattafa',         name='Asad',                   price_usd='$22.00', match_score=90 WHERE perfume_id=6;
+UPDATE dupes SET brand='Lattafa',         name='Mayar',                  price_usd='$20.00', match_score=89 WHERE perfume_id=10;
+UPDATE dupes SET brand='Armaf',           name='Club de Nuit Blue',      price_usd='$25.00', match_score=91 WHERE perfume_id=14;
+UPDATE dupes SET brand='Al Haramain',     name='Aqua',                   price_usd='$22.00', match_score=90 WHERE perfume_id=17;
+UPDATE dupes SET brand='Lattafa',         name='La Vita',                price_usd='$18.00', match_score=89 WHERE perfume_id=26;
+UPDATE dupes SET brand='Maison Alhambra', name='Santal Wood',            price_usd='$25.00', match_score=91 WHERE perfume_id=31;
+UPDATE dupes SET brand='Al Haramain',     name='Anber Hayati',           price_usd='$25.00', match_score=87 WHERE perfume_id=49;
+UPDATE dupes SET brand='Maison Alhambra', name='Interlude',              price_usd='$25.00', match_score=92 WHERE perfume_id=52;
+UPDATE dupes SET brand='Lattafa',         name='Portrait',               price_usd='$22.00', match_score=88 WHERE perfume_id=53;
 
 
 -- ── Blog Posts ───────────────────────────────────────────────
