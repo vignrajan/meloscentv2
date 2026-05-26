@@ -1,21 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { fmt } from '../utils/currency'
 import { parsePx } from '../utils/storage'
 import { getBuyUrl } from '../utils/affiliates'
-
-function useCardImage(seed, width = 400, height = 600) {
-  const [state, setState] = useState({ src: null, loaded: false, error: false })
-  useEffect(() => {
-    if (!seed) return
-    const url = `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`
-    const img = new Image()
-    img.onload = () => setState({ src: url, loaded: true, error: false })
-    img.onerror = () => setState(s => ({ ...s, error: true }))
-    img.src = url
-    return () => { img.onload = null; img.onerror = null }
-  }, [seed, width, height])
-  return state
-}
 
 function NotePill({ note, dark, onClick, active }) {
   const handle = onClick ? e => { e.stopPropagation(); onClick(note) } : undefined
@@ -60,9 +46,6 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   const cmpFull = compareIds.length === 2 && !inCmp
   const inWd = wardrobeIds.includes(p.id)
 
-  const frontImg = useCardImage(`${p.id}-${p.mood}`)
-  const backImg  = useCardImage(`back-${p.id}`)
-
   const handleClick = e => {
     if (e.target.closest('a, button')) return
     if (!flipped && onFlip) onFlip(p.id)
@@ -71,34 +54,18 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   const handleCmp = e => { e.stopPropagation(); if (!cmpFull) onCompare(p.id) }
   const handleWd  = e => { e.stopPropagation(); onWardrobeToggle(p.id) }
 
-  const dupePrice   = fmt(parsePx(p.dupe.price), currency)
+  const dupePrice  = fmt(parsePx(p.dupe.price), currency)
   const retailPrice = fmt(p.retail, currency)
-
-  const frontOverlay = 'linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.48) 38%,rgba(0,0,0,.08) 72%,transparent 100%),radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(0,0,0,.22) 100%)'
 
   return (
     <div className="mcard-wrap">
-      <div className={`mcard-scene${flipped ? " is-flipped" : ""}`} style={{ height: p.height }} onClick={handleClick}
+      <div className="mcard-scene" style={{ height: p.height }} onClick={handleClick}
         role="button" tabIndex={0} aria-label={`${p.designer} ${p.name} — ${flipped ? "showing dupe" : "click to reveal dupe"}`}
         onKeyDown={e => e.key === "Enter" && !e.target.closest('a, button') && handleClick(e)}>
         <div className={`mcard-inner mcard-shadow${flipped ? " flipped" : ""}`} style={{ height: p.height, borderRadius: 20, boxShadow: "0 10px 40px rgba(44,24,16,.18)" }}>
 
           {/* FRONT */}
           <div className="mcard-face" style={{ background: p.gradient }}>
-            {/* Pulse placeholder while image loads */}
-            {!frontImg.loaded && !frontImg.error && (
-              <div className="mcard-img-pulse" style={{ background: p.gradient }} />
-            )}
-            {/* Bottle image – luminosity blend so it inherits the card's hue */}
-            <div
-              className={`mcard-img-bg mcard-img-front${frontImg.loaded ? ' loaded' : ''}`}
-              style={frontImg.src ? { backgroundImage: `url(${frontImg.src})` } : {}}
-            />
-            {/* Bottom-fade gradient + edge vignette */}
-            <div className="mcard-img-overlay" style={{ background: frontOverlay }} />
-            {/* Editorial grain texture */}
-            <div className="mcard-grain" />
-
             <div style={{ position: "absolute", right: -28, top: -28, width: 110, height: 110, borderRadius: "50%", background: "rgba(255,255,255,.06)", pointerEvents: "none" }} />
             <button className="cmp-btn" onClick={handleCmp}
               aria-label={inCmp ? "Remove from compare" : "Add to compare"}
@@ -126,14 +93,6 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
 
           {/* BACK */}
           <div className="mcard-face mcard-back" style={{ background: "linear-gradient(160deg,#FAF3E8 0%,#F0E4D0 60%,#E8D4BC 100%)" }}>
-            {/* Dupe image – screen blend for a washed, lighter, affordable feel */}
-            <div
-              className={`mcard-img-bg mcard-img-back${backImg.loaded ? ' loaded' : ''}`}
-              style={backImg.src ? { backgroundImage: `url(${backImg.src})`, backgroundPosition: 'center top' } : {}}
-            />
-            {/* Grain on back */}
-            <div className="mcard-grain" />
-
             <div style={{ position: "absolute", right: -18, top: -18, width: 96, height: 96, borderRadius: "50%", background: "rgba(193,127,58,.07)", pointerEvents: "none" }} />
             <div style={{ position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: 24, zIndex: 1 }}>
               <div>
