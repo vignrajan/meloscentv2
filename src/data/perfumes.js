@@ -10,7 +10,7 @@ export const PERFUMES = [
   { id: 3, designer: "Maison Margiela", name: "Replica Beach Walk", badge: "Artisan", mood: "Fresh Aquatic", height: 480, retail: 175,
     gradient: "linear-gradient(155deg,#1a5f7a 0%,#2d9bb0 50%,#8fccd8 100%)", accent: "#b8e8f0", textCol: "#FAF3E8",
     notes: { top: ["Lemon", "Bergamot", "Pink Pepper"], mid: ["Ylang-Ylang", "Heliotrope"], base: ["Musk", "Vanilla", "Woody Notes"] },
-    dupe: { brand: "Pacifica", name: "Tahitian Gardenia", price: "$28.00", match: 87 } },
+    dupe: { brand: "Dossier", name: "Aquatic Coconut & Tiare", price: "$30.00", match: 88 } },
   { id: 4, designer: "Chanel", name: "No. 5", badge: "Heritage", mood: "Floral Aldehyde", height: 420, retail: 155,
     gradient: "linear-gradient(155deg,#9a7b4f 0%,#c9a96e 50%,#f0dec8 100%)", accent: "#4a2800", textCol: "#2C1810",
     notes: { top: ["Aldehyde", "Neroli", "Ylang-Ylang"], mid: ["Iris", "Rose", "Jasmine"], base: ["Vetiver", "Sandalwood", "Civet"] },
@@ -22,7 +22,7 @@ export const PERFUMES = [
   { id: 6, designer: "Dior", name: "Sauvage", badge: "Prestige", mood: "Fresh Spicy", height: 402, retail: 120,
     gradient: "linear-gradient(155deg,#0d1b2a 0%,#1b3a5c 50%,#3a7ab0 100%)", accent: "#90caef", textCol: "#FAF3E8",
     notes: { top: ["Bergamot", "Pepper"], mid: ["Lavender", "Pink Pepper", "Vetiver"], base: ["Ambroxan", "Cedar", "Labdanum"] },
-    dupe: { brand: "Armaf", name: "Club de Nuit Intense Man", price: "$32.00", match: 90 } },
+    dupe: { brand: "Lattafa", name: "Asad", price: "$22.00", match: 90 } },
   { id: 7, designer: "Jo Malone", name: "Peony & Blush Suede", badge: "British Niche", mood: "Floral", height: 440, retail: 160,
     gradient: "linear-gradient(155deg,#7a2a4a 0%,#b86080 50%,#e8a8b8 100%)", accent: "#ffd8e4", textCol: "#FAF3E8",
     notes: { top: ["Red Apple", "Peony"], mid: ["Jasmine", "Rose"], base: ["Suede", "White Musk", "Blush"] },
@@ -38,7 +38,7 @@ export const PERFUMES = [
   { id: 10, designer: "Viktor & Rolf", name: "Flowerbomb", badge: "Mainstream Luxury", mood: "Floral", height: 462, retail: 120,
     gradient: "linear-gradient(155deg,#5a1a4a 0%,#a050a0 50%,#d898d0 100%)", accent: "#ffd8f8", textCol: "#FAF3E8",
     notes: { top: ["Bergamot", "Green Tea", "Osmanthus"], mid: ["Freesia", "Jasmine", "Rose", "Orchid"], base: ["Patchouli", "Musk", "Vanilla"] },
-    dupe: { brand: "Zara", name: "Femme", price: "$17.00", match: 88 } },
+    dupe: { brand: "Lattafa", name: "Mayar", price: "$20.00", match: 89 } },
   { id: 11, designer: "Guerlain", name: "Mon Guerlain", badge: "Heritage", mood: "Floral Gourmand", height: 382, retail: 115,
     gradient: "linear-gradient(155deg,#4a2a6a 0%,#8a5aa8 50%,#c8a0d8 100%)", accent: "#f0d8ff", textCol: "#FAF3E8",
     notes: { top: ["Bergamot", "Lavender"], mid: ["Jasmine Sambac", "Lavender"], base: ["Sandalwood", "Vanilla", "Tonka Bean"] },
@@ -63,7 +63,7 @@ export const PERFUMES = [
   { id: 26, designer: "Lancôme", name: "La Vie Est Belle", badge: "Mainstream Luxury", mood: "Floral Gourmand", height: 422, retail: 120,
     gradient: "linear-gradient(155deg,#7a1a5a 0%,#b84a88 50%,#e898c0 100%)", accent: "#ffc8e8", textCol: "#FAF3E8",
     notes: { top: ["Blackcurrant", "Pear"], mid: ["Iris", "Jasmine", "Orange Blossom"], base: ["Praline", "Vanilla", "Patchouli"] },
-    dupe: { brand: "Zara", name: "Joy", price: "$17.00", match: 87 } },
+    dupe: { brand: "Lattafa", name: "La Vita", price: "$18.00", match: 89 } },
 
   { id: 27, designer: "Parfums de Marly", name: "Layton", badge: "Ultra-Niche", mood: "Oriental Woody", height: 492, retail: 325,
     gradient: "linear-gradient(155deg,#0f0820 0%,#2a1248 40%,#6a3a18 75%,#c48030 100%)", accent: "#e8c870", textCol: "#FAF3E8",
@@ -88,7 +88,7 @@ export const PERFUMES = [
   { id: 31, designer: "Le Labo", name: "Santal 33", badge: "Ultra-Niche", mood: "Woody Leathery", height: 472, retail: 260,
     gradient: "linear-gradient(155deg,#3a2005 0%,#7a4a15 50%,#c89845 100%)", accent: "#f0d060", textCol: "#FAF3E8",
     notes: { top: ["Violet", "Cardamom", "Iris"], mid: ["Papyrus", "Ambrox", "Cedarwood"], base: ["Sandalwood", "Leather", "Musk"] },
-    dupe: { brand: "Dossier", name: "Woody Sandalwood", price: "$29.00", match: 87 } },
+    dupe: { brand: "Maison Alhambra", name: "Santal Wood", price: "$25.00", match: 91 } },
 
   { id: 32, designer: "Dior", name: "J'adore", badge: "Prestige", mood: "Floral", height: 425, retail: 140,
     gradient: "linear-gradient(155deg,#786005 0%,#b89020 50%,#f0d060 100%)", accent: "#5a4000", textCol: "#2C1810",
@@ -181,7 +181,7 @@ export const PERFUMES = [
   { id: 49, designer: "Thierry Mugler", name: "Angel", badge: "Mainstream Luxury", mood: "Gourmand Oriental", height: 455, retail: 115,
     gradient: "linear-gradient(155deg,#020818 0%,#0a1840 50%,#1a3880 100%)", accent: "#80b0ff", textCol: "#FAF3E8",
     notes: { top: ["Bergamot", "Melon", "Cotton Candy"], mid: ["Honey", "Jasmine", "Peach"], base: ["Vanilla", "Patchouli", "Chocolate"] },
-    dupe: { brand: "Dossier", name: "Gourmand Patchouli", price: "$29.00", match: 88 } },
+    dupe: { brand: "Al Haramain", name: "Anber Hayati", price: "$25.00", match: 87 } },
 
   { id: 50, designer: "Narciso Rodriguez", name: "For Her", badge: "Prestige", mood: "Musky Floral", height: 405, retail: 120,
     gradient: "linear-gradient(155deg,#3a1828 0%,#7a3858 50%,#c07888 100%)", accent: "#ffd0e0", textCol: "#FAF3E8",
@@ -196,12 +196,12 @@ export const PERFUMES = [
   { id: 52, designer: "Amouage", name: "Interlude Man", badge: "Ultra-Niche", mood: "Oriental Aromatic", height: 495, retail: 350,
     gradient: "linear-gradient(155deg,#050808 0%,#151818 50%,#303820 100%)", accent: "#c8a840", textCol: "#FAF3E8",
     notes: { top: ["Oregano", "Bergamot", "Amber Accord"], mid: ["Incense", "Labdanum", "Agarwood"], base: ["Sandalwood", "Benzoin", "Leather"] },
-    dupe: { brand: "Lattafa", name: "Khamrah", price: "$25.00", match: 86 } },
+    dupe: { brand: "Maison Alhambra", name: "Interlude", price: "$25.00", match: 92 } },
 
   { id: 53, designer: "Frédéric Malle", name: "Portrait of a Lady", badge: "Ultra-Niche", mood: "Floral Oriental", height: 480, retail: 365,
     gradient: "linear-gradient(155deg,#280a10 0%,#680820 50%,#a82838 100%)", accent: "#ffa8b8", textCol: "#FAF3E8",
     notes: { top: ["Blackcurrant", "Raspberry", "Cinnamon"], mid: ["Turkish Rose", "Patchouli", "Sandalwood"], base: ["Musk", "Benzoin", "Frankincense"] },
-    dupe: { brand: "Dossier", name: "Floral Rose", price: "$29.00", match: 88 } },
+    dupe: { brand: "Lattafa", name: "Portrait", price: "$22.00", match: 88 } },
 
   { id: 54, designer: "Xerjoff", name: "Naxos", badge: "Ultra-Niche", mood: "Gourmand Woody", height: 485, retail: 390,
     gradient: "linear-gradient(155deg,#3a1800 0%,#8a4800 50%,#d89030 100%)", accent: "#ffe8b0", textCol: "#2C1810",
@@ -237,4 +237,80 @@ export const PERFUMES = [
     gradient: "linear-gradient(155deg,#080f00 0%,#1a2808 50%,#4a6820 100%)", accent: "#c8e880", textCol: "#FAF3E8",
     notes: { top: ["Fig Leaf", "Fig Tree Bark"], mid: ["Fig Blossom", "White Cedar"], base: ["Fig Wood", "Creamy Woods", "Benzoin"] },
     dupe: { brand: "Dossier", name: "Woody Fig", price: "$29.00", match: 85 } },
+
+  // Premium additions (IDs 61–75)
+  { id: 61, designer: "MFK", name: "Oud Satin Mood", badge: "Ultra-Niche", mood: "Velvety Oriental", height: 490, retail: 390,
+    gradient: "linear-gradient(155deg,#080010 0%,#200838 50%,#580858 100%)", accent: "#d8a0ff", textCol: "#FAF3E8",
+    notes: { top: ["Rose", "Saffron", "Jasmine"], mid: ["Oud", "Benzoin", "Turkish Rose"], base: ["Vanilla", "Amber", "Musk"] },
+    dupe: { brand: "Lattafa", name: "Velvet Oud", price: "$18.00", match: 88 } },
+
+  { id: 62, designer: "Creed", name: "Royal Oud", badge: "Prestige", mood: "Woody Royal", height: 468, retail: 460,
+    gradient: "linear-gradient(155deg,#050f00 0%,#101a05 50%,#2a3a10 100%)", accent: "#c8d080", textCol: "#FAF3E8",
+    notes: { top: ["Pink Pepper", "Bergamot", "Lemon"], mid: ["Oud", "Cypress", "Juniper"], base: ["Patchouli", "Vetiver", "Amber"] },
+    dupe: { brand: "Armaf", name: "Tres Nuit", price: "$30.00", match: 87 } },
+
+  { id: 63, designer: "Jo Malone", name: "Lime Basil & Mandarin", badge: "British Niche", mood: "Fresh Citrus Green", height: 390, retail: 155,
+    gradient: "linear-gradient(155deg,#1a3a10 0%,#3a7020 50%,#80c030 100%)", accent: "#e0ffb0", textCol: "#1a3010",
+    notes: { top: ["Lime", "Mandarin", "Bergamot"], mid: ["Basil", "White Thyme", "Violet"], base: ["Amber", "White Musk", "Patchouli"] },
+    dupe: { brand: "Zara", name: "Frosted Lime", price: "$15.00", match: 87 } },
+
+  { id: 64, designer: "Chanel", name: "Allure Homme Sport", badge: "Heritage", mood: "Fresh Sporty", height: 408, retail: 125,
+    gradient: "linear-gradient(155deg,#080c18 0%,#101828 50%,#203050 100%)", accent: "#b0ccf0", textCol: "#FAF3E8",
+    notes: { top: ["Aldehydes", "Bergamot", "Mandarin Orange"], mid: ["Iris", "Cedar", "White Pepper"], base: ["Vetiver", "White Musk", "Tonka Bean"] },
+    dupe: { brand: "Armaf", name: "Nightclub Sports", price: "$22.00", match: 88 } },
+
+  { id: 65, designer: "Maison Margiela", name: "Replica Flower Market", badge: "Artisan", mood: "Dewy Floral", height: 442, retail: 175,
+    gradient: "linear-gradient(155deg,#1a0820 0%,#502050 50%,#a06090 100%)", accent: "#ffd0e8", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Peony", "Freesia"], mid: ["Rose", "Lilac", "Muguet"], base: ["White Musk", "Sandalwood", "Amber"] },
+    dupe: { brand: "Dossier", name: "Floral Roses & Jasmine", price: "$30.00", match: 86 } },
+
+  { id: 66, designer: "Paco Rabanne", name: "Lady Million", badge: "Mainstream Luxury", mood: "Floral Chypre", height: 445, retail: 105,
+    gradient: "linear-gradient(155deg,#4a3000 0%,#a08010 50%,#e8c830 100%)", accent: "#fff0a0", textCol: "#2C1810",
+    notes: { top: ["Raspberry", "Neroli", "Peach"], mid: ["Gardenia", "Orange Blossom", "Rose"], base: ["Patchouli", "Amber", "Honey"] },
+    dupe: { brand: "Armaf", name: "Tres Belle", price: "$25.00", match: 88 } },
+
+  { id: 67, designer: "Chanel", name: "Allure", badge: "Heritage", mood: "Floral Oriental", height: 418, retail: 145,
+    gradient: "linear-gradient(155deg,#4a2808 0%,#9a6020 50%,#d4b060 100%)", accent: "#ffe8b0", textCol: "#2C1810",
+    notes: { top: ["Vanilla", "Mandarin Orange", "Peach"], mid: ["Iris", "Rose", "Lily of the Valley"], base: ["Vanilla", "Sandalwood", "Amber"] },
+    dupe: { brand: "Dossier", name: "Floral Vanilla Rose", price: "$29.00", match: 87 } },
+
+  { id: 68, designer: "Giorgio Armani", name: "Code", badge: "Prestige", mood: "Oriental Woody", height: 415, retail: 110,
+    gradient: "linear-gradient(155deg,#050308 0%,#100808 50%,#281810 100%)", accent: "#d8c0a0", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Lemon", "Star Anise"], mid: ["Olive Blossom", "Rosewood", "Sage"], base: ["Tonka Bean", "Vanilla", "Guaiac Wood"] },
+    dupe: { brand: "Armaf", name: "Italiano Black", price: "$22.00", match: 87 } },
+
+  { id: 69, designer: "Issey Miyake", name: "L'Eau d'Issey", badge: "Mainstream Luxury", mood: "Fresh Aquatic Floral", height: 400, retail: 95,
+    gradient: "linear-gradient(155deg,#1a3a5a 0%,#2860a0 50%,#60a8d8 100%)", accent: "#d0f0ff", textCol: "#FAF3E8",
+    notes: { top: ["Lotus", "Freesia", "Cyclamen"], mid: ["White Lily", "Carnation", "Peony"], base: ["Cedar", "Musk", "Civet"] },
+    dupe: { brand: "Dossier", name: "Aquatic Freesia", price: "$29.00", match: 85 } },
+
+  { id: 70, designer: "Byredo", name: "Bal d'Afrique", badge: "Ultra-Niche", mood: "Floral Woody Citrus", height: 472, retail: 220,
+    gradient: "linear-gradient(155deg,#2a1a00 0%,#7a5010 50%,#c89040 100%)", accent: "#ffe0a0", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Violet Leaf", "African Marigold"], mid: ["Neroli", "Jasmine", "African Geranium"], base: ["Vetiver", "Musk", "Cedarwood"] },
+    dupe: { brand: "Dossier", name: "Floral Neroli & Musk", price: "$30.00", match: 87 } },
+
+  { id: 71, designer: "YSL", name: "Opium", badge: "Heritage", mood: "Oriental Spicy", height: 480, retail: 130,
+    gradient: "linear-gradient(155deg,#0a0000 0%,#280500 50%,#680010 100%)", accent: "#ffa050", textCol: "#FAF3E8",
+    notes: { top: ["Coriander", "Pepper", "Mandarin"], mid: ["Rose", "Jasmine", "Cinnamon"], base: ["Incense", "Sandalwood", "Vanilla"] },
+    dupe: { brand: "Al Haramain", name: "Opium Night", price: "$25.00", match: 87 } },
+
+  { id: 72, designer: "Serge Lutens", name: "Ambre Sultan", badge: "Ultra-Niche", mood: "Warm Oriental", height: 475, retail: 155,
+    gradient: "linear-gradient(155deg,#2a1000 0%,#6a3000 50%,#c07818 100%)", accent: "#ffc070", textCol: "#FAF3E8",
+    notes: { top: ["Oregano", "Bay Leaf", "Coriander"], mid: ["Amber", "Plant Resins", "Labdanum"], base: ["Benzoin", "Beeswax", "Musk"] },
+    dupe: { brand: "Lattafa", name: "Ambar Al Hind", price: "$18.00", match: 88 } },
+
+  { id: 73, designer: "Tom Ford", name: "Tobacco Vanille", badge: "Niche Luxury", mood: "Gourmand Woody", height: 488, retail: 195,
+    gradient: "linear-gradient(155deg,#1a0a00 0%,#3a1800 50%,#8a4010 100%)", accent: "#e8c090", textCol: "#FAF3E8",
+    notes: { top: ["Tobacco Leaf", "Spices", "Clove"], mid: ["Tobacco Blossom", "Jasmine", "Ginger"], base: ["Vanilla", "Tonka Bean", "Cocoa"] },
+    dupe: { brand: "Maison Alhambra", name: "Tobacco Wood", price: "$25.00", match: 91 } },
+
+  { id: 74, designer: "Guerlain", name: "Shalimar", badge: "Heritage", mood: "Oriental Vanilla", height: 478, retail: 145,
+    gradient: "linear-gradient(155deg,#3a1808 0%,#8a4818 50%,#d0901a 100%)", accent: "#ffe8b0", textCol: "#FAF3E8",
+    notes: { top: ["Lemon", "Bergamot", "Aldehydes"], mid: ["Iris", "Jasmine", "Rose"], base: ["Civet", "Vanilla", "Opoponax"] },
+    dupe: { brand: "Paris Corner", name: "Shalimar Clone", price: "$20.00", match: 87 } },
+
+  { id: 75, designer: "Dior", name: "Homme", badge: "Prestige", mood: "Powdery Iris", height: 420, retail: 125,
+    gradient: "linear-gradient(155deg,#0a0818 0%,#181828 50%,#302840 100%)", accent: "#c8c0e0", textCol: "#FAF3E8",
+    notes: { top: ["Lemon", "Bergamot", "Aldehydes"], mid: ["Iris", "Violet", "Ambroxan"], base: ["Vetiver", "Patchouli", "Cedarwood"] },
+    dupe: { brand: "Maison Alhambra", name: "Homme de Maison", price: "$25.00", match: 88 } },
 ]
