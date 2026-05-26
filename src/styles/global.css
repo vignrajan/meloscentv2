@@ -143,3 +143,50 @@ body { background: #FAF3E8; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* ── Mobile Polish ──────────────────────────────────────────── */
+
+/* Touch devices: always show flip & compare hints (no hover) */
+@media (hover: none) {
+  .flip-hint { opacity: 1 !important; }
+  .cmp-hint  { opacity: 1 !important; }
+}
+
+/* Touch tap feedback on cards */
+.mcard-scene:active { transform: scale(0.982); transition: transform .12s; }
+
+@media (max-width: 620px) {
+  /* Reduce hero section vertical breathing room */
+  .melo-hero-section { padding-top: 36px !important; padding-bottom: 18px !important; }
+
+  /* Tighter masonry gap and card spacing */
+  .melo-masonry { column-gap: 14px; }
+  .mcard-wrap  { margin-bottom: 14px; }
+
+  /* Bigger buy-button tap target */
+  .buy-btn { padding: 8px 20px; font-size: 12px; }
+
+  /* Sort bar: hide decorative gradient lines on narrow screens */
+  .sort-bar-line { display: none !important; }
+  /* Keep sort row from overflowing */
+  .sort-bar { flex-wrap: wrap !important; gap: 8px !important; justify-content: space-between !important; }
+
+  /* Filter pills: tighter gap, smaller text acceptable */
+  .melo-filter-pills { gap: 6px !important; }
+
+  /* Reduce SOTD banner padding and gap */
+  .sotd-inner { padding: 24px 18px !important; gap: 20px !important; }
+
+  /* Section horizontal padding */
+  .melo-cards-section { padding-left: 14px !important; padding-right: 14px !important; }
+  .melo-blog-section  { padding-left: 14px !important; padding-right: 14px !important; }
+
+  /* Reduce blog section top margin */
+  .melo-blog-outer { margin-top: 48px !important; }
+
+  /* Footer: stack vertically */
+  .melo-footer { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; padding: 22px 18px !important; }
+
+  /* Toast: clear mobile browser nav bar */
+  .melo-toast { bottom: 20px; font-size: 12px; padding: 10px 20px; }
+}

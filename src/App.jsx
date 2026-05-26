@@ -40,10 +40,19 @@ export default function App() {
   })
 
   useEffect(() => {
-    document.title = page === "wardrobe"
-      ? "My Wardrobe — Meloscent"
-      : "Meloscent · Discover Affordable Fragrance Dupes"
-  }, [page])
+    const base = "Meloscent · Discover Affordable Fragrance Dupes"
+    const desc = document.querySelector('meta[name="description"]')
+    if (selectedBlog) {
+      document.title = `${selectedBlog.title} — Meloscent`
+      if (desc) desc.content = selectedBlog.excerpt
+    } else if (page === "wardrobe") {
+      document.title = "My Wardrobe — Meloscent"
+      if (desc) desc.content = "Your personal fragrance wardrobe. Track your saved dupes and build your perfect scent collection."
+    } else {
+      document.title = base
+      if (desc) desc.content = "Find affordable dupes for luxury fragrances like Chanel, YSL, Dior and more. Take our free scent quiz, compare perfumes side by side, and build your personal wardrobe."
+    }
+  }, [page, selectedBlog])
 
   useEffect(() => {
     document.body.style.overflow = (showQuiz || showProfile) ? "hidden" : ""
@@ -158,7 +167,7 @@ export default function App() {
       <NavBar {...sharedNavProps} />
       <ScentOfTheDay onOpenQuiz={() => setShowQuiz(true)} perfumes={perfumes} currency={currency} />
 
-      <section style={{ textAlign: "center", padding: "56px 28px 32px", maxWidth: 1400, margin: "0 auto" }}>
+      <section className="melo-hero-section" style={{ textAlign: "center", padding: "56px 28px 32px", maxWidth: 1400, margin: "0 auto" }}>
         <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", fontWeight: 400, letterSpacing: 4, textTransform: "uppercase", color: "#C17F3A", marginBottom: 14 }}>✦ Fragrance Discovery Platform ✦</div>
         <h1 className="melo-hero-h1">Wear the Story.<br /><em style={{ fontWeight: 400, color: "#C17F3A", fontStyle: "italic" }}>Not the Price Tag.</em></h1>
         <p style={{ fontSize: 16, fontFamily: "'DM Sans',sans-serif", fontWeight: 300, color: "rgba(44,24,16,.55)", maxWidth: 500, margin: "0 auto 36px", lineHeight: 1.75 }}>Discover affordable dupes for the world's most coveted fragrances. Flip each card to reveal your perfect match.</p>
@@ -177,7 +186,7 @@ export default function App() {
             <button onClick={clearAll} aria-label="Clear all filters" style={{ position: "absolute", right: 18, top: "50%", transform: "translateY(-50%)", background: "none", border: "none", cursor: "pointer", fontSize: 20, color: "rgba(44,24,16,.35)", lineHeight: 1, padding: "4px 8px" }}>×</button>
           )}
         </div>
-        <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }} role="group" aria-label="Filter by mood">
+        <div className="melo-filter-pills" style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }} role="group" aria-label="Filter by mood">
           {MOOD_FILTERS.map(t => (
             <button key={t} className={`filter-pill${activeFilter === t ? " active" : ""}`} onClick={() => handleFilter(t)} aria-pressed={activeFilter === t}>{t}</button>
           ))}
@@ -196,10 +205,10 @@ export default function App() {
       )}
 
       <div style={{ maxWidth: 1400, margin: "0 auto 26px", padding: "0 28px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,transparent,rgba(193,127,58,.35))" }} aria-hidden="true" />
+        <div className="sort-bar" style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div className="sort-bar-line" style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,transparent,rgba(193,127,58,.35))" }} aria-hidden="true" />
           <span style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 2, color: "#C17F3A", textTransform: "uppercase", whiteSpace: "nowrap" }} aria-live="polite">{sorted.length} Fragrance{sorted.length !== 1 ? "s" : ""}</span>
-          <div style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,rgba(193,127,58,.35),transparent)" }} aria-hidden="true" />
+          <div className="sort-bar-line" style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,rgba(193,127,58,.35),transparent)" }} aria-hidden="true" />
           <select
             value={sort} onChange={e => setSort(e.target.value)}
             aria-label="Sort fragrances"
@@ -220,7 +229,7 @@ export default function App() {
         </div>
       )}
 
-      <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px" }} aria-label="Fragrance collection">
+      <section className="melo-cards-section" style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px" }} aria-label="Fragrance collection">
         {sorted.length === 0 ? (
           <div style={{ textAlign: "center", padding: "80px 20px" }}>
             <div style={{ fontSize: 48, marginBottom: 16, opacity: .28 }} aria-hidden="true">◎</div>
@@ -241,7 +250,7 @@ export default function App() {
         )}
       </section>
 
-      <section id="melo-blog" style={{ maxWidth: 1400, margin: "72px auto 0", padding: "0 24px 88px" }} aria-label="Blog">
+      <section id="melo-blog" className="melo-blog-outer melo-blog-section" style={{ maxWidth: 1400, margin: "72px auto 0", padding: "0 24px 88px" }} aria-label="Blog">
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 4, textTransform: "uppercase", color: "#C17F3A", marginBottom: 14 }}>✦ The Journal ✦</div>
           <h2 style={{ fontSize: "2.3rem", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#2C1810", marginBottom: 14, letterSpacing: "-.2px" }}>Fragrance Stories</h2>
@@ -250,7 +259,7 @@ export default function App() {
         <div className="melo-blog-grid">{blogs.map(b => <BlogCard key={b.id} b={b} onClick={() => openBlog(b)} />)}</div>
       </section>
 
-      <footer style={{ borderTop: "0.5px solid rgba(193,127,58,.2)", padding: "28px 32px", maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
+      <footer className="melo-footer" style={{ borderTop: "0.5px solid rgba(193,127,58,.2)", padding: "28px 32px", maxWidth: 1400, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 14, color: "#C17F3A" }} aria-hidden="true">✦</span>
           <span style={{ fontFamily: "'Playfair Display',serif", fontSize: 19, color: "#C17F3A", fontWeight: 600 }}>Meloscent</span>
