@@ -1,47 +1,7 @@
-import { useState, useEffect } from 'react'
 import { PERFUMES } from '../data/perfumes'
 import { fmt } from '../utils/currency'
 import { parsePx } from '../utils/storage'
 import { getBuyUrl } from '../utils/affiliates'
-
-const BANNER_CACHE = new Map()
-
-function useBannerImage(query, index) {
-  const [state, setState] = useState({ src: null, loaded: false })
-  const apiKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY
-
-  useEffect(() => {
-    if (!apiKey || !query) return
-    let alive = true
-
-    const preload = url => {
-      if (!url || !alive) return
-      const img = new Image()
-      img.onload = () => { if (alive) setState({ src: url, loaded: true }) }
-      img.onerror = () => {}
-      img.src = url
-    }
-
-    if (BANNER_CACHE.has(query)) {
-      const urls = BANNER_CACHE.get(query)
-      preload(urls[index % Math.max(urls.length, 1)])
-      return () => { alive = false }
-    }
-
-    fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&client_id=${apiKey}&per_page=5&orientation=landscape`)
-      .then(r => r.ok ? r.json() : Promise.reject())
-      .then(data => {
-        const urls = (data.results || []).map(r => r.urls.regular)
-        BANNER_CACHE.set(query, urls)
-        if (alive) preload(urls[index % Math.max(urls.length, 1)])
-      })
-      .catch(() => { BANNER_CACHE.set(query, []) })
-
-    return () => { alive = false }
-  }, [query, index, apiKey])
-
-  return state
-}
 
 export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES, currency = "USD" }) {
   const p = perfumes[new Date().getDate() % perfumes.length]
@@ -55,21 +15,10 @@ export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES, currenc
   const mBg = light ? "rgba(0,0,0,.08)" : "rgba(0,0,0,.18)"
   const mTxt = light ? "rgba(44,24,16,.65)" : "rgba(255,255,255,.85)"
 
-  const moodKey   = p.mood.split(' ')[0].toLowerCase()
-  const bannerImg = useBannerImage(`${moodKey} luxury perfume bottle editorial`, p.id)
-
   return (
     <div className="sotd-banner" style={{ background: p.gradient }} role="banner" aria-label="Scent of the Day">
       <div style={{ position: "absolute", right: -80, top: -80, width: 280, height: 280, borderRadius: "50%", background: "rgba(255,255,255,.07)", pointerEvents: "none" }} aria-hidden="true" />
       <div style={{ position: "absolute", left: -40, bottom: -40, width: 180, height: 180, borderRadius: "50%", background: "rgba(0,0,0,.08)", pointerEvents: "none" }} aria-hidden="true" />
-
-      {/* Bottle image anchored right, fading left into the gradient */}
-      <div
-        className={`sotd-img-bg${bannerImg.loaded ? ' loaded' : ''}`}
-        style={bannerImg.src ? { backgroundImage: `url(${bannerImg.src})` } : {}}
-        aria-hidden="true"
-      />
-
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 28px", display: "flex", alignItems: "center", gap: 40, position: "relative", zIndex: 1, flexWrap: "wrap" }}>
         <div style={{ flex: 1, minWidth: 240 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 14px", borderRadius: 50, background: oBg, marginBottom: 14, backdropFilter: "blur(6px)", border: `0.5px solid ${oBd}` }}>
