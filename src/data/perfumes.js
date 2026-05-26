@@ -177,4 +177,64 @@ export const PERFUMES = [
     gradient: "linear-gradient(155deg,#0a1a08 0%,#1a3818 50%,#4a7a40 100%)", accent: "#b0d8a0", textCol: "#FAF3E8",
     notes: { top: ["Bergamot", "Lemon", "Pepper"], mid: ["Incense", "Orris", "Pine Needles"], base: ["Sandalwood", "Vanilla", "Amber"] },
     dupe: { brand: "Dossier", name: "Woody Pine", price: "$29.00", match: 85 } },
+
+  { id: 49, designer: "Thierry Mugler", name: "Angel", badge: "Mainstream Luxury", mood: "Gourmand Oriental", height: 455, retail: 115,
+    gradient: "linear-gradient(155deg,#020818 0%,#0a1840 50%,#1a3880 100%)", accent: "#80b0ff", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Melon", "Cotton Candy"], mid: ["Honey", "Jasmine", "Peach"], base: ["Vanilla", "Patchouli", "Chocolate"] },
+    dupe: { brand: "Dossier", name: "Gourmand Patchouli", price: "$29.00", match: 88 } },
+
+  { id: 50, designer: "Narciso Rodriguez", name: "For Her", badge: "Prestige", mood: "Musky Floral", height: 405, retail: 120,
+    gradient: "linear-gradient(155deg,#3a1828 0%,#7a3858 50%,#c07888 100%)", accent: "#ffd0e0", textCol: "#FAF3E8",
+    notes: { top: ["Rose", "Peach", "Osmanthus"], mid: ["Muguet", "Jasmine", "Magnolia"], base: ["Musk", "Vetiver", "Amber"] },
+    dupe: { brand: "Zara", name: "White Tuberose", price: "$18.00", match: 87 } },
+
+  { id: 51, designer: "Acqua di Parma", name: "Colonia", badge: "Niche Luxury", mood: "Fresh Citrus", height: 425, retail: 155,
+    gradient: "linear-gradient(155deg,#5a4800 0%,#c89800 50%,#f0d840 100%)", accent: "#2C1810", textCol: "#2C1810",
+    notes: { top: ["Calabrian Bergamot", "Lemon", "Grapefruit"], mid: ["Lavender", "Rose", "Neroli"], base: ["Sandalwood", "Vetiver", "Oakmoss"] },
+    dupe: { brand: "Zara", name: "Mediterraneo", price: "$15.00", match: 84 } },
+
+  { id: 52, designer: "Amouage", name: "Interlude Man", badge: "Ultra-Niche", mood: "Oriental Aromatic", height: 495, retail: 350,
+    gradient: "linear-gradient(155deg,#050808 0%,#151818 50%,#303820 100%)", accent: "#c8a840", textCol: "#FAF3E8",
+    notes: { top: ["Oregano", "Bergamot", "Amber Accord"], mid: ["Incense", "Labdanum", "Agarwood"], base: ["Sandalwood", "Benzoin", "Leather"] },
+    dupe: { brand: "Lattafa", name: "Khamrah", price: "$25.00", match: 86 } },
+
+  { id: 53, designer: "Frédéric Malle", name: "Portrait of a Lady", badge: "Ultra-Niche", mood: "Floral Oriental", height: 480, retail: 365,
+    gradient: "linear-gradient(155deg,#280a10 0%,#680820 50%,#a82838 100%)", accent: "#ffa8b8", textCol: "#FAF3E8",
+    notes: { top: ["Blackcurrant", "Raspberry", "Cinnamon"], mid: ["Turkish Rose", "Patchouli", "Sandalwood"], base: ["Musk", "Benzoin", "Frankincense"] },
+    dupe: { brand: "Dossier", name: "Floral Rose", price: "$29.00", match: 88 } },
+
+  { id: 54, designer: "Xerjoff", name: "Naxos", badge: "Ultra-Niche", mood: "Gourmand Woody", height: 485, retail: 390,
+    gradient: "linear-gradient(155deg,#3a1800 0%,#8a4800 50%,#d89030 100%)", accent: "#ffe8b0", textCol: "#2C1810",
+    notes: { top: ["Bergamot", "Lemon", "Lavender"], mid: ["Honey", "Tobacco", "Immortelle"], base: ["Tonka Bean", "Vanilla", "Sandalwood"] },
+    dupe: { brand: "Dossier", name: "Gourmand Tobacco", price: "$29.00", match: 89 } },
+
+  { id: 55, designer: "Prada", name: "Candy", badge: "Prestige", mood: "Gourmand", height: 395, retail: 135,
+    gradient: "linear-gradient(155deg,#400820 0%,#902858 50%,#e07898 100%)", accent: "#ffe8f0", textCol: "#FAF3E8",
+    notes: { top: ["Caramel", "Musk"], mid: ["Benzyl Salicylate", "White Musk"], base: ["Vanilla", "Caramel", "Benzoin"] },
+    dupe: { brand: "Zara", name: "Sweet Vanilla", price: "$15.00", match: 86 } },
+
+  { id: 56, designer: "By Kilian", name: "Black Phantom", badge: "Ultra-Niche", mood: "Gourmand Dark", height: 475, retail: 280,
+    gradient: "linear-gradient(155deg,#020202 0%,#100808 50%,#281410 100%)", accent: "#c07840", textCol: "#FAF3E8",
+    notes: { top: ["Rum Accord", "Black Pepper"], mid: ["Coffee", "Almond", "Dark Rum"], base: ["Sugar Cane", "Sandalwood", "Vetiver"] },
+    dupe: { brand: "Dossier", name: "Gourmand Rum", price: "$29.00", match: 88 } },
+
+  { id: 57, designer: "YSL", name: "Mon Paris", badge: "Mainstream Luxury", mood: "Floral Fruity", height: 408, retail: 105,
+    gradient: "linear-gradient(155deg,#380010 0%,#900828 50%,#e03058 100%)", accent: "#ffb0c8", textCol: "#FAF3E8",
+    notes: { top: ["Strawberry", "Raspberry", "White Datura"], mid: ["Peony", "Rose", "Jasmine"], base: ["Patchouli", "White Musk", "Ambroxan"] },
+    dupe: { brand: "Zara", name: "Femme", price: "$18.00", match: 85 } },
+
+  { id: 58, designer: "Dolce & Gabbana", name: "Light Blue", badge: "Mainstream Luxury", mood: "Fresh Citrus", height: 390, retail: 95,
+    gradient: "linear-gradient(155deg,#001830 0%,#004870 50%,#00a0c0 100%)", accent: "#b0f0ff", textCol: "#FAF3E8",
+    notes: { top: ["Sicilian Lemon", "Apple", "Bluebell"], mid: ["Bamboo", "Jasmine", "White Rose"], base: ["Cedarwood", "Amber", "Musk"] },
+    dupe: { brand: "Zara", name: "Fresh Water", price: "$15.00", match: 87 } },
+
+  { id: 59, designer: "Maison Margiela", name: "Replica Jazz Club", badge: "Artisan", mood: "Warm Woody", height: 445, retail: 175,
+    gradient: "linear-gradient(155deg,#200808 0%,#501820 50%,#904838 100%)", accent: "#f0c090", textCol: "#FAF3E8",
+    notes: { top: ["Neroli", "Vetiver", "Pink Pepper"], mid: ["Tobacco Leaf", "Rum Accord", "Clary Sage"], base: ["Vanilla", "Musk", "Styrax"] },
+    dupe: { brand: "Lattafa", name: "Raghba", price: "$22.00", match: 86 } },
+
+  { id: 60, designer: "Diptyque", name: "Philosykos", badge: "Niche Luxury", mood: "Woody Green", height: 460, retail: 190,
+    gradient: "linear-gradient(155deg,#080f00 0%,#1a2808 50%,#4a6820 100%)", accent: "#c8e880", textCol: "#FAF3E8",
+    notes: { top: ["Fig Leaf", "Fig Tree Bark"], mid: ["Fig Blossom", "White Cedar"], base: ["Fig Wood", "Creamy Woods", "Benzoin"] },
+    dupe: { brand: "Dossier", name: "Woody Fig", price: "$29.00", match: 85 } },
 ]
