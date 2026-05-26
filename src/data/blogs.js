@@ -83,4 +83,32 @@ export const BLOGS = [
       "The story of 2025 isn't just that dupes are cheaper — it's that they've become genuinely good. Dossier's Ambery Vanilla captures the coffee-vanilla-patchouli soul of Black Opium with ingredient transparency that the original can't match. The gap between original and alternative has never been smaller.",
     ],
   },
+  {
+    id: 7,
+    category: "Dupe Guide",
+    title: "The Best Oud Dupes of 2025: From Saffron to Smoke",
+    excerpt: "Oud is the world's most expensive raw material. These affordable alternatives capture its smoky, resinous magic without the four-figure price tag.",
+    gradient: "linear-gradient(155deg,#1a0505 0%,#3a0a0a 50%,#7a3010 100%)",
+    readTime: "6 min read",
+    content: [
+      "Oud — agarwood — is the raw material that defines luxury perfumery in the Middle East and increasingly dominates Western niche collections. A single kilogram of genuine oud can cost more than $30,000. The fragrance it produces: smoky, animalic, resinous, deeply complex. It's the kind of scent that commands a room and stays on skin for days.",
+      "The challenge of duping oud is that the original is so variable. Wild agarwood from Cambodia smells different from plantation-grown Indian oud, which bears little resemblance to the sweet, rose-tinged oud from Laos. Most 'oud' fragrances — at any price — use a blend of synthetic agarwood molecules, ISO butyl quinoline, and carefully chosen companions. The opportunity for affordable alternatives is real.",
+      "Lattafa's Velvet Oud is the standout under-$20 option for MFK Oud Satin Mood lovers. It replicates the velvety rose-oud accord with surprising sophistication — the benzoin base gives it warmth and longevity that punches well above its price. For Tom Ford Tobacco Vanille devotees, Maison Alhambra's Tobacco Wood captures the honeyed tobacco and vanilla backbone almost identically at a fifth of the retail price.",
+      "What separates a good oud dupe from a poor one is always the drydown. Cheap synthetics betray themselves in the base — turning plasticky or overly sweet. The brands worth trusting — Lattafa, Maison Alhambra, Al Haramain — use better agarwood molecules and give their base notes room to breathe. Start your oud journey with an affordable clone, then work backwards to the originals that inspire them.",
+    ],
+  },
+  {
+    id: 8,
+    category: "Dupe Guide",
+    title: "Top 10 Designer Fragrance Alternatives Under $30",
+    excerpt: "A complete rotation of luxury scents doesn't have to cost a luxury budget. Our definitive list of the best designer alternatives available right now.",
+    gradient: "linear-gradient(155deg,#1a3a10 0%,#3a6a20 50%,#8a9a40 100%)",
+    readTime: "7 min read",
+    content: [
+      "The case for building an affordable fragrance rotation isn't about settling — it's about abundance. At $30 per bottle you can own ten fragrances for the price of one Chanel. You can wear something different every day. You can match your scent to your mood, the season, the occasion. That flexibility is genuinely luxurious.",
+      "The starting five: Armaf Club de Nuit for Creed Aventus (92% match, $35), Lattafa Badee Al Oud for Baccarat Rouge 540 (93%, $25), Lattafa Asad for Dior Sauvage (90%, $22), Armaf Club de Nuit Blue for Bleu de Chanel (91%, $25), and Al Haramain Aqua for Acqua di Gio (90%, $22). These five cover the most-requested men's categories — woody chypre, oriental amber, fresh spicy, fresh woody, and fresh aquatic — entirely for under $130 combined.",
+      "The women's top five: Dossier Ambery Vanilla for YSL Black Opium (94%, $29), Lattafa Mayar for Viktor & Rolf Flowerbomb (89%, $20), Maison Alhambra Tobacco Wood for Tom Ford Tobacco Vanille (91%, $25), Lattafa La Vita for Lancôme La Vie Est Belle (89%, $18), and Armaf Tres Belle for Lady Million (88%, $25). These cover gourmand, floral, woody, and chypre — a wardrobe in five purchases.",
+      "One note on purchasing: buy from established retailers, not resellers. Lattafa, Armaf, Maison Alhambra, and Al Haramain all sell through legitimate online retailers globally. Avoid suspicious 'niche perfume' sellers on marketplace platforms — counterfeit dupes of dupes do exist, and they're universally terrible. The originals are worth the trust.",
+    ],
+  },
 ]

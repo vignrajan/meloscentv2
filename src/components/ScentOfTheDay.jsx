@@ -19,7 +19,7 @@ export default function ScentOfTheDay({ onOpenQuiz, perfumes = PERFUMES, currenc
     <div className="sotd-banner" style={{ background: p.gradient }} role="banner" aria-label="Scent of the Day">
       <div style={{ position: "absolute", right: -80, top: -80, width: 280, height: 280, borderRadius: "50%", background: "rgba(255,255,255,.07)", pointerEvents: "none" }} aria-hidden="true" />
       <div style={{ position: "absolute", left: -40, bottom: -40, width: 180, height: 180, borderRadius: "50%", background: "rgba(0,0,0,.08)", pointerEvents: "none" }} aria-hidden="true" />
-      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 28px", display: "flex", alignItems: "center", gap: 40, position: "relative", zIndex: 1, flexWrap: "wrap" }}>
+      <div className="sotd-inner" style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 28px", display: "flex", alignItems: "center", gap: 40, position: "relative", zIndex: 1, flexWrap: "wrap" }}>
         <div style={{ flex: 1, minWidth: 240 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 14px", borderRadius: 50, background: oBg, marginBottom: 14, backdropFilter: "blur(6px)", border: `0.5px solid ${oBd}` }}>
             <span style={{ fontSize: 10, color: oTxt, letterSpacing: 1.5, textTransform: "uppercase", fontFamily: "'DM Sans',sans-serif", fontWeight: 500 }}>✦ Today's Pick</span>
