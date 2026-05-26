@@ -17,13 +17,14 @@ import { fetchPerfumes } from './services/perfumes'
 import { fetchBlogs } from './services/blogs'
 import { CURRENCIES } from './utils/currency'
 
-const MOOD_FILTERS = ["Woody", "Floral", "Gourmand", "Fresh", "Oriental", "Niche"]
+const MOOD_FILTERS = ["Woody", "Floral", "Gourmand", "Fresh", "Oriental", "Niche", "Under $25"]
 
 export default function App() {
   const [page, setPage] = useState("discovery")
   const [query, setQuery] = useState("")
   const [activeFilter, setActiveFilter] = useState("")
   const [noteFilter, setNoteFilter] = useState("")
+  const [sort, setSort] = useState("featured")
   const [compareIds, setCompareIds] = useState([])
   const [showQuiz, setShowQuiz] = useState(false)
   const [showProfile, setShowProfile] = useState(false)
@@ -96,9 +97,9 @@ export default function App() {
   const handleNoteClick = note => setNoteFilter(f => f === note ? "" : note)
   const handleSearch = v => { setQuery(v); setActiveFilter("") }
   const handleFilter = t => { setActiveFilter(a => a === t ? "" : t); setQuery("") }
-  const clearAll = () => { setQuery(""); setActiveFilter(""); setNoteFilter("") }
+  const clearAll = () => { setQuery(""); setActiveFilter(""); setNoteFilter(""); setSort("featured") }
 
-  const eq = activeFilter || query
+  const eq = activeFilter === "Under $25" ? "" : (activeFilter || query)
   const filtered = perfumes.filter(p => {
     const q = eq.toLowerCase()
     const mS = !q || p.designer.toLowerCase().includes(q) || p.name.toLowerCase().includes(q)
@@ -106,7 +107,15 @@ export default function App() {
       || [...p.notes.top, ...p.notes.mid, ...p.notes.base].some(n => n.toLowerCase().includes(q))
       || p.dupe.brand.toLowerCase().includes(q) || p.dupe.name.toLowerCase().includes(q)
     const mN = !noteFilter || [...p.notes.top, ...p.notes.mid, ...p.notes.base].includes(noteFilter)
-    return mS && mN
+    const mP = activeFilter !== "Under $25" || parseFloat(p.dupe.price.replace("$", "")) < 25
+    return mS && mN && mP
+  })
+
+  const sorted = sort === "featured" ? filtered : [...filtered].sort((a, b) => {
+    if (sort === "price-asc") return parseFloat(a.dupe.price.replace("$", "")) - parseFloat(b.dupe.price.replace("$", ""))
+    if (sort === "match-desc") return b.dupe.match - a.dupe.match
+    if (sort === "az") return a.name.localeCompare(b.name)
+    return 0
   })
 
   const earnedCount = BADGES.filter(b => b.earned(stats)).length
@@ -186,11 +195,20 @@ export default function App() {
         </div>
       )}
 
-      <div style={{ maxWidth: 1400, margin: "0 auto 26px", padding: "0 28px" }} aria-hidden="true">
+      <div style={{ maxWidth: 1400, margin: "0 auto 26px", padding: "0 28px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,transparent,rgba(193,127,58,.35))" }} />
-          <span style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 2, color: "#C17F3A", textTransform: "uppercase", whiteSpace: "nowrap" }}>{filtered.length} Fragrance{filtered.length !== 1 ? "s" : ""}</span>
-          <div style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,rgba(193,127,58,.35),transparent)" }} />
+          <div style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,transparent,rgba(193,127,58,.35))" }} aria-hidden="true" />
+          <span style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 2, color: "#C17F3A", textTransform: "uppercase", whiteSpace: "nowrap" }} aria-live="polite">{sorted.length} Fragrance{sorted.length !== 1 ? "s" : ""}</span>
+          <div style={{ flex: 1, height: ".5px", background: "linear-gradient(90deg,rgba(193,127,58,.35),transparent)" }} aria-hidden="true" />
+          <select
+            value={sort} onChange={e => setSort(e.target.value)}
+            aria-label="Sort fragrances"
+            style={{ fontSize: 12, fontFamily: "'DM Sans',sans-serif", color: "#2C1810", background: "rgba(193,127,58,.07)", border: "0.5px solid rgba(193,127,58,.3)", borderRadius: 50, padding: "5px 12px", cursor: "pointer", outline: "none", letterSpacing: .3 }}>
+            <option value="featured">Featured</option>
+            <option value="match-desc">Best Match</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="az">A → Z</option>
+          </select>
         </div>
       </div>
 
@@ -203,7 +221,7 @@ export default function App() {
       )}
 
       <section style={{ maxWidth: 1400, margin: "0 auto", padding: "0 24px" }} aria-label="Fragrance collection">
-        {filtered.length === 0 ? (
+        {sorted.length === 0 ? (
           <div style={{ textAlign: "center", padding: "80px 20px" }}>
             <div style={{ fontSize: 48, marginBottom: 16, opacity: .28 }} aria-hidden="true">◎</div>
             <h2 style={{ fontSize: 24, fontFamily: "'Playfair Display',serif", color: "#2C1810", marginBottom: 10 }}>No Scents Found</h2>
@@ -212,7 +230,7 @@ export default function App() {
           </div>
         ) : (
           <div className="melo-masonry">
-            {filtered.map(p => (
+            {sorted.map(p => (
               <PerfumeCard key={p.id} p={p} onFlip={flip}
                 onNoteClick={handleNoteClick} noteFilter={noteFilter}
                 compareIds={compareIds} onCompare={compare}

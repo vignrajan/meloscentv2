@@ -44,6 +44,62 @@ export const PERFUMES = [
     notes: { top: ["Bergamot", "Lavender"], mid: ["Jasmine Sambac", "Lavender"], base: ["Sandalwood", "Vanilla", "Tonka Bean"] },
     dupe: { brand: "L'Oreal", name: "La Vie Est Belle", price: "$24.00", match: 88 } },
 
+  // IDs 12–22 (synced from Supabase)
+  { id: 12, designer: "Dolce & Gabbana", name: "Light Blue", badge: "Mainstream Luxury", mood: "Fresh", height: 420, retail: 95,
+    gradient: "linear-gradient(155deg,#1a3a5c 0%,#2d7ab0 50%,#88ccee 100%)", accent: "#c8eeff", textCol: "#FAF3E8",
+    notes: { top: ["Sicilian Citron", "Apple", "Cedar"], mid: ["Bamboo", "Jasmine", "White Rose"], base: ["Cedarwood", "Amber", "Musk"] },
+    dupe: { brand: "Zara", name: "Sea Flowers", price: "$18.00", match: 88 } },
+
+  { id: 13, designer: "Versace", name: "Eros", badge: "Mainstream Luxury", mood: "Fresh Spicy", height: 430, retail: 110,
+    gradient: "linear-gradient(155deg,#003d3d 0%,#006666 50%,#00a693 100%)", accent: "#aafff0", textCol: "#FAF3E8",
+    notes: { top: ["Mint", "Green Apple", "Lemon"], mid: ["Tonka Bean", "Ambroxan", "Geranium"], base: ["Vanilla", "Vetiver", "Oakmoss"] },
+    dupe: { brand: "Armaf", name: "Tres Nuit", price: "$30.00", match: 87 } },
+
+  { id: 14, designer: "Chanel", name: "Bleu de Chanel", badge: "Prestige", mood: "Fresh Woody", height: 410, retail: 165,
+    gradient: "linear-gradient(155deg,#0a1628 0%,#1a2d5a 50%,#2a4a8a 100%)", accent: "#88aadd", textCol: "#FAF3E8",
+    notes: { top: ["Citrus", "Mint", "Pink Pepper"], mid: ["Ginger", "Nutmeg", "Jasmine"], base: ["Sandalwood", "Cedar", "Vetiver"] },
+    dupe: { brand: "Armaf", name: "Club de Nuit Blue", price: "$25.00", match: 91 } },
+
+  { id: 15, designer: "Paco Rabanne", name: "1 Million", badge: "Mainstream Luxury", mood: "Oriental Spicy", height: 450, retail: 110,
+    gradient: "linear-gradient(155deg,#7a5500 0%,#c49b2a 50%,#f0d060 100%)", accent: "#fff0b0", textCol: "#2C1810",
+    notes: { top: ["Blood Mandarin", "Mint", "Grapefruit"], mid: ["Rose", "Cinnamon", "Spices"], base: ["Leather", "Ambergris", "Patchouli"] },
+    dupe: { brand: "Lattafa", name: "Asad", price: "$22.00", match: 87 } },
+
+  { id: 16, designer: "Chanel", name: "Coco Mademoiselle", badge: "Heritage", mood: "Oriental Floral", height: 440, retail: 155,
+    gradient: "linear-gradient(155deg,#3a1a00 0%,#6b3a10 50%,#c4843a 100%)", accent: "#ffd8a0", textCol: "#FAF3E8",
+    notes: { top: ["Orange", "Bergamot", "Grapefruit"], mid: ["Rose", "Jasmine", "Mimosa"], base: ["Patchouli", "Vetiver", "Musk"] },
+    dupe: { brand: "Zara", name: "Red Temptation", price: "$20.00", match: 88 } },
+
+  { id: 17, designer: "Giorgio Armani", name: "Acqua di Gio", badge: "Prestige", mood: "Fresh Aquatic", height: 390, retail: 130,
+    gradient: "linear-gradient(155deg,#0d2d3a 0%,#1a6a8a 50%,#4aaabb 100%)", accent: "#88eeff", textCol: "#FAF3E8",
+    notes: { top: ["Lime", "Lemon", "Bergamot"], mid: ["Jasmine", "Calone", "Rosemary"], base: ["Cedar", "Patchouli", "Musk"] },
+    dupe: { brand: "Al Haramain", name: "Aqua", price: "$22.00", match: 90 } },
+
+  { id: 18, designer: "Marc Jacobs", name: "Daisy", badge: "Mainstream Luxury", mood: "Floral", height: 400, retail: 120,
+    gradient: "linear-gradient(155deg,#a04060 0%,#c87090 50%,#f0c0d0 100%)", accent: "#ffd8e8", textCol: "#FAF3E8",
+    notes: { top: ["Strawberry", "Violet Leaf", "Grapefruit"], mid: ["Gardenia", "Violet", "Jasmine"], base: ["White Woods", "Vanilla", "Musk"] },
+    dupe: { brand: "Zara", name: "Wild Gardenia", price: "$16.00", match: 85 } },
+
+  { id: 19, designer: "Thierry Mugler", name: "Angel", badge: "Mainstream Luxury", mood: "Oriental Gourmand", height: 480, retail: 125,
+    gradient: "linear-gradient(155deg,#0a0820 0%,#1a0a40 40%,#3a1a70 80%,#6a2aaa 100%)", accent: "#c8b0ff", textCol: "#FAF3E8",
+    notes: { top: ["Bergamot", "Melon", "Mandarin"], mid: ["Honey", "Red Fruits", "Plum"], base: ["Patchouli", "Caramel", "Chocolate", "Vanilla"] },
+    dupe: { brand: "Dossier", name: "Gourmand Patchouli", price: "$29.00", match: 90 } },
+
+  { id: 20, designer: "Narciso Rodriguez", name: "For Her", badge: "Niche Luxury", mood: "Floral Musk", height: 420, retail: 140,
+    gradient: "linear-gradient(155deg,#c8a090 0%,#d8b8a8 50%,#ead0c0 100%)", accent: "#5a3020", textCol: "#2C1810",
+    notes: { top: ["Rose", "Peach", "Osmanthus"], mid: ["Rose", "Musk", "Vetiver"], base: ["Sandalwood", "Musk", "Cedar"] },
+    dupe: { brand: "Dossier", name: "Floral Musk", price: "$29.00", match: 87 } },
+
+  { id: 21, designer: "Paco Rabanne", name: "Olympea", badge: "Mainstream Luxury", mood: "Floral Gourmand", height: 430, retail: 105,
+    gradient: "linear-gradient(155deg,#c0a0d0 0%,#a080b0 50%,#8060a0 100%)", accent: "#ffe0f8", textCol: "#FAF3E8",
+    notes: { top: ["Green Mandarin", "Ginger"], mid: ["Jasmine", "Water Jasmine"], base: ["Sandalwood", "Cashmere Wood", "Ambergris"] },
+    dupe: { brand: "Zara", name: "Vibrant Leather", price: "$19.00", match: 85 } },
+
+  { id: 22, designer: "Burberry", name: "Her", badge: "British Niche", mood: "Fruity Floral", height: 395, retail: 120,
+    gradient: "linear-gradient(155deg,#6b1a2a 0%,#a03050 50%,#d06080 100%)", accent: "#ffc0d0", textCol: "#FAF3E8",
+    notes: { top: ["Blackcurrant", "Strawberry", "Raspberry"], mid: ["Jasmine", "Violet"], base: ["Amber", "Musk", "Sandalwood"] },
+    dupe: { brand: "Zara", name: "Rich Warm", price: "$18.00", match: 84 } },
+
   // Expanded catalog
   { id: 23, designer: "YSL", name: "Libre", badge: "Mainstream Luxury", mood: "Floral Woody", height: 440, retail: 115,
     gradient: "linear-gradient(155deg,#2a1050 0%,#6a2a90 45%,#d4602a 100%)", accent: "#ffaa60", textCol: "#FAF3E8",
