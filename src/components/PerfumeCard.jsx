@@ -42,6 +42,7 @@ function MatchRing({ score }) {
 
 export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compareIds, onCompare, wardrobeIds, onWardrobeToggle, currency = "USD" }) {
   const [flipped, setFlipped] = useState(false)
+  const [copied, setCopied] = useState(false)
   const inCmp = compareIds.includes(p.id)
   const cmpFull = compareIds.length === 2 && !inCmp
   const inWd = wardrobeIds.includes(p.id)
@@ -53,6 +54,15 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
   }
   const handleCmp = e => { e.stopPropagation(); if (!cmpFull) onCompare(p.id) }
   const handleWd  = e => { e.stopPropagation(); onWardrobeToggle(p.id) }
+  const handleShare = async e => {
+    e.stopPropagation()
+    const text = `I found a ${p.dupe.price} dupe for ${p.designer} ${p.name} that's ${p.dupe.match}% identical 💫 meloscent.com`
+    if (navigator.share) {
+      try { await navigator.share({ title: 'Meloscent', text }) } catch {}
+    } else {
+      try { await navigator.clipboard.writeText(text); setCopied(true); setTimeout(() => setCopied(false), 2000) } catch {}
+    }
+  }
 
   const dupePrice  = fmt(parsePx(p.dupe.price), currency)
   const retailPrice = fmt(p.retail, currency)
@@ -126,6 +136,10 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
                      aria-label={`Buy ${p.dupe.name} by ${p.dupe.brand}`}>
                     Buy Now →
                   </a>
+                  <button onClick={handleShare} aria-label="Share this dupe"
+                    style={{ width: 38, height: 38, borderRadius: 10, border: "0.5px solid rgba(193,127,58,.3)", background: copied ? "rgba(193,127,58,.12)" : "transparent", color: copied ? "#8b5a1a" : "rgba(44,24,16,.45)", cursor: "pointer", fontSize: copied ? 10 : 15, fontFamily: "'DM Sans',sans-serif", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, transition: "all .2s", fontWeight: copied ? 600 : 400 }}>
+                    {copied ? "✓" : "↗"}
+                  </button>
                 </div>
               </div>
               <div style={{ borderTop: "0.5px solid rgba(193,127,58,.2)", paddingTop: 13 }}>

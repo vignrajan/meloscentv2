@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import NavBar from './components/NavBar'
 import ScentOfTheDay from './components/ScentOfTheDay'
 import PerfumeCard from './components/PerfumeCard'
+import LazyCard from './components/LazyCard'
 import BlogCard from './components/BlogCard'
 import QuizModal from './components/QuizModal'
 import ProfileDrawer from './components/ProfileDrawer'
@@ -142,7 +143,7 @@ export default function App() {
     <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
       <NavBar {...sharedNavProps} />
       <BlogDetail blog={selectedBlog} onBack={closeBlog} blogs={blogs} />
-      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
+      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} perfumes={perfumes} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
       <Toast message={toast} />
@@ -155,7 +156,7 @@ export default function App() {
       <WardrobePage wIds={stats.wIds} onBack={() => navigateTo("discovery")}
         onRemove={wardrobeToggle} onGoQuiz={() => { navigateTo("discovery"); setShowQuiz(true) }}
         perfumes={perfumes} currency={currency} />
-      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
+      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} perfumes={perfumes} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
       <Toast message={toast} />
@@ -239,12 +240,14 @@ export default function App() {
           </div>
         ) : (
           <div className="melo-masonry">
-            {sorted.map(p => (
-              <PerfumeCard key={p.id} p={p} onFlip={flip}
-                onNoteClick={handleNoteClick} noteFilter={noteFilter}
-                compareIds={compareIds} onCompare={compare}
-                wardrobeIds={stats.wIds} onWardrobeToggle={wardrobeToggle}
-                currency={currency} />
+            {sorted.map((p, i) => (
+              <LazyCard key={p.id} p={p} index={i}>
+                <PerfumeCard key={p.id} p={p} onFlip={flip}
+                  onNoteClick={handleNoteClick} noteFilter={noteFilter}
+                  compareIds={compareIds} onCompare={compare}
+                  wardrobeIds={stats.wIds} onWardrobeToggle={wardrobeToggle}
+                  currency={currency} />
+              </LazyCard>
             ))}
           </div>
         )}
@@ -272,7 +275,7 @@ export default function App() {
         </nav>
       </footer>
 
-      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} />}
+      {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} perfumes={perfumes} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
       <ComparePanel ids={compareIds} onClear={() => setCompareIds([])} perfumes={perfumes} currency={currency} />

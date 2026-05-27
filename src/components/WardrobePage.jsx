@@ -1,10 +1,24 @@
+import { useState } from 'react'
 import { PERFUMES } from '../data/perfumes'
 import { parsePx } from '../utils/storage'
 import { fmt } from '../utils/currency'
 import { getBuyUrl } from '../utils/affiliates'
 
+const SORT_OPTS = [
+  { v: "match", l: "Best Match" },
+  { v: "savings", l: "Most Savings" },
+  { v: "price-asc", l: "Price ↑" },
+]
+
 export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfumes = PERFUMES, currency = "USD" }) {
-  const items = perfumes.filter(p => wIds.includes(p.id))
+  const [sort, setSort] = useState("match")
+  const base = perfumes.filter(p => wIds.includes(p.id))
+  const items = [...base].sort((a, b) => {
+    if (sort === "match") return b.dupe.match - a.dupe.match
+    if (sort === "savings") return (b.retail - parsePx(b.dupe.price)) - (a.retail - parsePx(a.dupe.price))
+    if (sort === "price-asc") return parsePx(a.dupe.price) - parsePx(b.dupe.price)
+    return 0
+  })
   const totalRetail_usd = items.reduce((s, p) => s + p.retail, 0)
   const totalDupe_usd   = items.reduce((s, p) => s + parsePx(p.dupe.price), 0)
   const saved_usd       = totalRetail_usd - totalDupe_usd
@@ -17,7 +31,19 @@ export default function WardrobePage({ wIds, onBack, onRemove, onGoQuiz, perfume
           <div style={{ fontSize: 11, fontFamily: "'DM Sans',sans-serif", letterSpacing: 3, textTransform: "uppercase", color: "#C17F3A", marginBottom: 4 }}>✦ My Collection</div>
           <h1 style={{ fontSize: "2.2rem", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#2C1810", lineHeight: 1 }}>My Wardrobe</h1>
         </div>
-        {items.length > 0 && <div style={{ textAlign: "right" }}><div style={{ fontSize: 13, fontFamily: "'DM Sans',sans-serif", color: "#C17F3A", fontWeight: 500 }}>{items.length} saved</div></div>}
+        {items.length > 0 && (
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <div style={{ fontSize: 13, fontFamily: "'DM Sans',sans-serif", color: "#C17F3A", fontWeight: 500 }}>{items.length} saved</div>
+            <div style={{ display: "flex", gap: 6 }} role="group" aria-label="Sort wardrobe">
+              {SORT_OPTS.map(o => (
+                <button key={o.v} onClick={() => setSort(o.v)} aria-pressed={sort === o.v}
+                  style={{ padding: "4px 12px", borderRadius: 50, fontFamily: "'DM Sans',sans-serif", fontSize: 11, cursor: "pointer", letterSpacing: .3, transition: "all .2s", border: `0.5px solid ${sort === o.v ? "#C17F3A" : "rgba(193,127,58,.3)"}`, background: sort === o.v ? "#C17F3A" : "transparent", color: sort === o.v ? "white" : "#8b5a1a" }}>
+                  {o.l}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {items.length === 0 ? (
