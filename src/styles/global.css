@@ -190,3 +190,72 @@ body { background: #FAF3E8; }
   /* Toast: clear mobile browser nav bar */
   .melo-toast { bottom: 20px; font-size: 12px; padding: 10px 20px; }
 }
+
+/* ── Rich Blog Post ─────────────────────────────────────────── */
+.blog-hero-img { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 18px 50px rgba(44,24,16,.18); margin: 0; }
+.blog-hero-img img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.blog-hero-img figcaption { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px 48px; background: linear-gradient(to top, rgba(44,24,16,.72) 0%, rgba(44,24,16,.22) 45%, rgba(44,24,16,0) 72%); }
+.blog-hero-chip { display: inline-flex; align-self: flex-start; margin-bottom: 14px; padding: 4px 14px; border-radius: 50px; background: rgba(0,0,0,.32); color: rgba(255,255,255,.92); font-size: 11px; font-family: 'DM Sans',sans-serif; letter-spacing: .8px; }
+.blog-hero-h1 { font-size: clamp(1.7rem,4.2vw,3rem); font-family: 'Playfair Display',serif; font-weight: 700; color: #fff; line-height: 1.18; max-width: 760px; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+
+.blog-byline { padding-bottom: 22px; border-bottom: .5px solid rgba(193,127,58,.2); }
+.blog-byline-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.blog-byline-author { font-family: 'DM Sans',sans-serif; font-size: 14px; font-weight: 500; color: #2C1810; letter-spacing: .2px; }
+.blog-byline-role { font-weight: 400; color: rgba(44,24,16,.5); }
+.blog-byline-meta { font-family: 'DM Sans',sans-serif; font-size: 12px; color: #C17F3A; letter-spacing: .5px; }
+.blog-byline-dates { font-family: 'DM Sans',sans-serif; font-size: 12.5px; color: rgba(44,24,16,.5); margin-top: 4px; }
+.blog-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.blog-tag { font-family: 'DM Sans',sans-serif; font-size: 11px; letter-spacing: .3px; color: #8b5a1a; background: rgba(193,127,58,.1); border: .5px solid rgba(193,127,58,.22); padding: 3px 11px; border-radius: 50px; }
+
+.blog-p { font-size: 16px; font-family: 'DM Sans',sans-serif; font-weight: 300; color: rgba(44,24,16,.78); line-height: 1.85; margin-bottom: 22px; }
+.blog-h2 { font-size: 1.6rem; font-family: 'Playfair Display',serif; font-weight: 700; color: #2C1810; line-height: 1.25; margin: 44px 0 18px; letter-spacing: -.2px; scroll-margin-top: 90px; }
+
+.blog-callout { display: flex; gap: 10px; align-items: flex-start; background: rgba(193,127,58,.08); border: .5px solid rgba(193,127,58,.25); border-radius: 14px; padding: 14px 18px; margin-bottom: 30px; font-family: 'DM Sans',sans-serif; font-size: 13.5px; color: #8b5a1a; line-height: 1.6; }
+
+.blog-tldr { background: #fff; border: .5px solid rgba(193,127,58,.25); border-left: 3px solid #C17F3A; border-radius: 16px; padding: 22px 26px; margin: 8px 0 34px; box-shadow: 0 6px 24px rgba(44,24,16,.06); }
+.blog-tldr-title { font-family: 'DM Sans',sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #C17F3A; margin-bottom: 14px; }
+.blog-tldr ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.blog-tldr li { font-family: 'DM Sans',sans-serif; font-size: 14.5px; font-weight: 300; color: rgba(44,24,16,.8); line-height: 1.6; padding-left: 18px; position: relative; }
+.blog-tldr li::before { content: "✦"; position: absolute; left: 0; color: #C17F3A; font-size: 11px; top: 3px; }
+.blog-tldr strong { font-weight: 600; color: #2C1810; }
+
+.blog-perfume { background: #fff; border: .5px solid rgba(193,127,58,.18); border-radius: 18px; padding: 24px 26px; margin-bottom: 20px; box-shadow: 0 4px 22px rgba(44,24,16,.06); transition: transform .25s, box-shadow .25s; }
+.blog-perfume:hover { transform: translateY(-3px); box-shadow: 0 16px 44px rgba(44,24,16,.12); }
+.blog-perfume-head { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 12px; }
+.blog-perfume-rank { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,#C17F3A,#d4af37); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display',serif; font-weight: 700; font-size: 16px; box-shadow: 0 4px 12px rgba(193,127,58,.35); }
+.blog-perfume-name { font-family: 'Playfair Display',serif; font-size: 20px; font-weight: 700; color: #2C1810; line-height: 1.25; }
+.blog-perfume-brand { font-family: 'DM Sans',sans-serif; font-size: 13px; font-weight: 400; color: #C17F3A; letter-spacing: .3px; }
+.blog-bestfor { display: inline-block; margin-top: 6px; font-family: 'DM Sans',sans-serif; font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: #8b5a1a; background: rgba(193,127,58,.1); padding: 3px 10px; border-radius: 50px; }
+.blog-notes { background: rgba(193,127,58,.05); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; }
+
+.blog-ilink { display: inline-flex; align-items: center; gap: 5px; padding: 8px 18px; border-radius: 50px; background: transparent; border: 1px solid rgba(193,127,58,.4); color: #8b5a1a; font-family: 'DM Sans',sans-serif; font-size: 12.5px; font-weight: 500; letter-spacing: .3px; cursor: pointer; transition: all .2s; }
+.blog-ilink:hover { background: rgba(193,127,58,.1); border-color: #C17F3A; color: #C17F3A; }
+
+.blog-tips { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin: 6px 0 26px; }
+@media (max-width: 560px) { .blog-tips { grid-template-columns: 1fr; } }
+.blog-tip { background: #fff; border: .5px solid rgba(193,127,58,.18); border-radius: 14px; padding: 18px 20px; }
+.blog-tip-title { font-family: 'DM Sans',sans-serif; font-size: 14px; font-weight: 600; color: #2C1810; margin-bottom: 8px; }
+.blog-tip-title::before { content: "✦ "; color: #C17F3A; }
+
+.blog-faq { margin: 6px 0 30px; }
+.blog-faq-item { border-bottom: .5px solid rgba(193,127,58,.2); }
+.blog-faq-item summary { list-style: none; cursor: pointer; padding: 18px 0; font-family: 'Playfair Display',serif; font-size: 17px; font-weight: 600; color: #2C1810; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.blog-faq-item summary::-webkit-details-marker { display: none; }
+.blog-faq-item summary::after { content: "+"; color: #C17F3A; font-size: 22px; font-family: 'DM Sans',sans-serif; line-height: 1; transition: transform .2s; }
+.blog-faq-item[open] summary::after { transform: rotate(45deg); }
+.blog-faq-item[open] summary { color: #C17F3A; }
+.blog-faq-item p { padding-bottom: 18px; }
+
+.blog-related { background: rgba(193,127,58,.06); border-radius: 16px; padding: 24px 26px; margin-top: 30px; }
+.blog-related-title { font-family: 'DM Sans',sans-serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #C17F3A; margin-bottom: 14px; }
+.blog-related ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.blog-related-link { background: none; border: none; padding: 9px 0; text-align: left; cursor: pointer; font-family: 'DM Sans',sans-serif; font-size: 15px; color: #8b5a1a; letter-spacing: .2px; transition: color .2s, padding-left .2s; border-bottom: .5px solid rgba(193,127,58,.12); width: 100%; }
+.blog-related li:last-child .blog-related-link { border-bottom: none; }
+.blog-related-link::before { content: "→ "; color: #C17F3A; }
+.blog-related-link:hover { color: #C17F3A; padding-left: 6px; }
+
+@media (max-width: 620px) {
+  .blog-hero-img figcaption { padding: 22px 22px; }
+  .blog-perfume { padding: 20px; }
+  .blog-h2 { font-size: 1.4rem; }
+}

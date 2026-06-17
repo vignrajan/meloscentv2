@@ -41,17 +41,41 @@ export default function App() {
   })
 
   useEffect(() => {
+    const SITE = "https://www.meloscent.com"
     const base = "Meloscent · Discover Affordable Fragrance Dupes"
-    const desc = document.querySelector('meta[name="description"]')
-    if (selectedBlog) {
-      document.title = `${selectedBlog.title} — Meloscent`
-      if (desc) desc.content = selectedBlog.excerpt
+    const baseDesc = "Find affordable dupes for luxury fragrances like Chanel, YSL, Dior and more. Take our free scent quiz, compare perfumes side by side, and build your personal wardrobe."
+    const setMeta = (sel, val) => { const el = document.querySelector(sel); if (el && val != null) el.setAttribute(sel.startsWith("link") ? "href" : "content", val) }
+
+    const apply = ({ title, desc, ogTitle, ogDesc, image, url, type }) => {
+      document.title = title
+      setMeta('meta[name="description"]', desc)
+      setMeta('meta[property="og:title"]', ogTitle ?? title)
+      setMeta('meta[property="og:description"]', ogDesc ?? desc)
+      setMeta('meta[property="og:image"]', image)
+      setMeta('meta[property="og:url"]', url)
+      setMeta('meta[property="og:type"]', type)
+      setMeta('meta[name="twitter:title"]', ogTitle ?? title)
+      setMeta('meta[name="twitter:description"]', ogDesc ?? desc)
+      setMeta('meta[name="twitter:image"]', image)
+      setMeta('link[rel="canonical"]', url)
+    }
+
+    if (selectedBlog && Array.isArray(selectedBlog.body)) {
+      const url = selectedBlog.slug ? `${SITE}/#${selectedBlog.slug}` : SITE
+      const img = selectedBlog.heroImage ? `${SITE}${selectedBlog.heroImage}` : `${SITE}/og.png`
+      apply({
+        title: selectedBlog.metaTitle || `${selectedBlog.title} — Meloscent`,
+        desc: selectedBlog.metaDescription || selectedBlog.excerpt,
+        ogTitle: selectedBlog.metaTitle || selectedBlog.title,
+        ogDesc: selectedBlog.metaDescription || selectedBlog.excerpt,
+        image: img, url, type: "article",
+      })
+    } else if (selectedBlog) {
+      apply({ title: `${selectedBlog.title} — Meloscent`, desc: selectedBlog.excerpt, image: `${SITE}/og.png`, url: SITE, type: "website" })
     } else if (page === "wardrobe") {
-      document.title = "My Wardrobe — Meloscent"
-      if (desc) desc.content = "Your personal fragrance wardrobe. Track your saved dupes and build your perfect scent collection."
+      apply({ title: "My Wardrobe — Meloscent", desc: "Your personal fragrance wardrobe. Track your saved dupes and build your perfect scent collection.", image: `${SITE}/og.png`, url: SITE, type: "website" })
     } else {
-      document.title = base
-      if (desc) desc.content = "Find affordable dupes for luxury fragrances like Chanel, YSL, Dior and more. Take our free scent quiz, compare perfumes side by side, and build your personal wardrobe."
+      apply({ title: base, desc: baseDesc, image: `${SITE}/og.png`, url: SITE, type: "website" })
     }
   }, [page, selectedBlog])
 
@@ -80,12 +104,34 @@ export default function App() {
 
   const showToast = msg => { setToast(msg); setTimeout(() => setToast(null), 2400) }
 
-  const navigateTo = pg => { setPage(pg); setSelectedBlog(null); window.scrollTo({ top: 0, behavior: "smooth" }) }
-  const openBlog = blog => { setSelectedBlog(blog); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const setHash = slug => { try { history.replaceState(null, "", slug ? `#${slug}` : window.location.pathname + window.location.search) } catch { /* no-op */ } }
+  const navigateTo = pg => { setPage(pg); setSelectedBlog(null); setHash(); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const openBlog = blog => { setSelectedBlog(blog); setHash(blog?.slug); window.scrollTo({ top: 0, behavior: "smooth" }) }
   const closeBlog = blog => {
-    if (blog && typeof blog === 'object') { setSelectedBlog(blog); window.scrollTo({ top: 0, behavior: "smooth" }); return }
-    setSelectedBlog(null)
+    if (blog && typeof blog === 'object') { setSelectedBlog(blog); setHash(blog?.slug); window.scrollTo({ top: 0, behavior: "smooth" }); return }
+    setSelectedBlog(null); setHash()
     setTimeout(() => { const el = document.getElementById("melo-blog"); if (el) el.scrollIntoView({ behavior: "smooth" }) }, 80)
+  }
+
+  // Deep-link: open a post directly when the URL carries its #slug
+  useEffect(() => {
+    const slug = decodeURIComponent(window.location.hash.replace(/^#/, ""))
+    if (!slug) return
+    const match = BLOGS.find(b => b.slug === slug) || blogs.find(b => b.slug === slug)
+    if (match) setSelectedBlog(match)
+  }, [])
+
+  // Internal links from a post → drive in-app navigation (no per-page routing)
+  const handleInternalLink = link => {
+    if (!link) return
+    if (link.kind === "blog") {
+      const b = blogs.find(x => x.slug === link.value) || BLOGS.find(x => x.slug === link.value)
+      if (b) { openBlog(b); return }
+    }
+    setSelectedBlog(null); setHash(); setPage("discovery")
+    if (link.kind === "note") { setNoteFilter(link.value); setQuery(""); setActiveFilter("") }
+    else if (link.kind === "search") { setQuery(link.value); setActiveFilter(""); setNoteFilter("") }
+    setTimeout(() => { const el = document.querySelector(".melo-cards-section"); if (el) el.scrollIntoView({ behavior: "smooth" }); else window.scrollTo({ top: 0, behavior: "smooth" }) }, 80)
   }
   const scrollToBlog = () => { const el = document.getElementById("melo-blog"); if (el) el.scrollIntoView({ behavior: "smooth" }) }
   const filterNiche = () => { setActiveFilter("Niche"); setQuery(""); setNoteFilter("") }
@@ -142,7 +188,7 @@ export default function App() {
   if (selectedBlog) return (
     <div style={{ background: "#FAF3E8", minHeight: "100vh", fontFamily: "'DM Sans',sans-serif" }}>
       <NavBar {...sharedNavProps} />
-      <BlogDetail blog={selectedBlog} onBack={closeBlog} blogs={blogs} />
+      <BlogDetail blog={selectedBlog} onBack={closeBlog} blogs={blogs} onInternalLink={handleInternalLink} />
       {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} perfumes={perfumes} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
