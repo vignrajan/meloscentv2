@@ -254,6 +254,12 @@ body { background: #FAF3E8; }
 .blog-related-link::before { content: "→ "; color: #C17F3A; }
 .blog-related-link:hover { color: #C17F3A; padding-left: 6px; }
 
+.blog-author-card { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: .5px solid rgba(193,127,58,.2); border-radius: 16px; padding: 22px 24px; margin-top: 34px; box-shadow: 0 6px 24px rgba(44,24,16,.06); }
+.blog-author-avatar { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg,#C17F3A,#d4af37); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display',serif; font-weight: 700; font-size: 24px; box-shadow: 0 4px 14px rgba(193,127,58,.35); }
+.blog-author-name { font-family: 'Playfair Display',serif; font-size: 18px; font-weight: 700; color: #2C1810; }
+.blog-author-role { font-family: 'DM Sans',sans-serif; font-size: 12px; letter-spacing: .4px; color: #C17F3A; margin-top: 2px; }
+.blog-author-bio { font-family: 'DM Sans',sans-serif; font-size: 14px; font-weight: 300; color: rgba(44,24,16,.72); line-height: 1.7; margin-top: 10px; }
+
 @media (max-width: 620px) {
   .blog-hero-img figcaption { padding: 22px 22px; }
   .blog-perfume { padding: 20px; }

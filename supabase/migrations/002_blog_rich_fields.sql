@@ -12,6 +12,7 @@ ALTER TABLE blog_posts
   ADD COLUMN IF NOT EXISTS hero_alt         text,
   ADD COLUMN IF NOT EXISTS author           text,
   ADD COLUMN IF NOT EXISTS author_role      text,
+  ADD COLUMN IF NOT EXISTS author_bio       text,
   ADD COLUMN IF NOT EXISTS date_published   date,
   ADD COLUMN IF NOT EXISTS date_modified    date,
   ADD COLUMN IF NOT EXISTS tags             text[] NOT NULL DEFAULT '{}',
@@ -34,7 +35,7 @@ UPDATE blog_posts SET slug = 'top-10-alternatives-under-30' WHERE id = 8 AND slu
 -- ── Seed the rich summer 2026 post ───────────────────────────
 INSERT INTO blog_posts
   (id, slug, category, title, excerpt, gradient, read_time, content, published,
-   hero_image, hero_alt, author, author_role, date_published, date_modified,
+   hero_image, hero_alt, author, author_role, author_bio, date_published, date_modified,
    tags, meta_title, meta_description, body)
 VALUES (
   9,
@@ -50,6 +51,7 @@ VALUES (
   'An amber glass perfume bottle in warm golden-hour light beside fresh citrus and green leaves — Meloscent''s best summer perfumes 2026 edit.',
   'Sofia Avery',
   'Fragrance Editor, Meloscent',
+  'Sofia Avery is Meloscent''s fragrance editor. She has spent years testing designer and niche scents across climates — from humid coastal summers to dry heat — and writes about how fragrances actually perform on skin, rather than how they''re marketed.',
   '2026-06-17'::date,
   '2026-06-17'::date,
   ARRAY['Summer','Seasonal','Citrus','Aquatic','Long-Lasting','Buying Guide']::text[],

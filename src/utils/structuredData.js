@@ -12,9 +12,9 @@ const ORG = {
   logo: { "@type": "ImageObject", url: `${SITE}/og.png` },
 }
 
-// No per-post routing exists, so posts are addressed by hash slug.
+// Posts are prerendered to real /blog/<slug> URLs at build time.
 export function postUrl(post) {
-  return post?.slug ? `${SITE}/#${post.slug}` : SITE
+  return post?.slug ? `${SITE}/blog/${post.slug}` : SITE
 }
 
 function abs(path) {
@@ -32,7 +32,13 @@ export function buildArticleSchema(post) {
     datePublished: post.datePublished,
     dateModified: post.dateModified || post.datePublished,
     author: post.author
-      ? { "@type": "Person", name: post.author, jobTitle: post.authorRole || undefined }
+      ? {
+          "@type": "Person",
+          name: post.author,
+          jobTitle: post.authorRole || undefined,
+          description: post.authorBio || undefined,
+          url: `${SITE}/#melo-blog`,
+        }
       : ORG,
     publisher: ORG,
     mainEntityOfPage: { "@type": "WebPage", "@id": postUrl(post) },

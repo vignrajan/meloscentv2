@@ -13,6 +13,8 @@ export const BLOGS = [
       "An amber glass perfume bottle in warm golden-hour light beside fresh citrus and green leaves — Meloscent's best summer perfumes 2026 edit.",
     author: "Sofia Avery",
     authorRole: "Fragrance Editor, Meloscent",
+    authorBio:
+      "Sofia Avery is Meloscent's fragrance editor. She has spent years testing designer and niche scents across climates — from humid coastal summers to dry heat — and writes about how fragrances actually perform on skin, rather than how they're marketed.",
     datePublished: "2026-06-17",
     dateModified: "2026-06-17",
     tags: ["Summer", "Seasonal", "Citrus", "Aquatic", "Long-Lasting", "Buying Guide"],
