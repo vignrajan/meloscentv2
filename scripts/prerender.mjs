@@ -47,8 +47,20 @@ function renderBlock(b) {
       return `<aside class="blog-tldr" aria-label="${attr(b.title || 'Summary')}">${b.title ? `<div class="blog-tldr-title">${esc(b.title)}</div>` : ''}<ul>${b.items.map(it => `<li><strong>${esc(it.label)}:</strong> ${esc(it.text)}</li>`).join('')}</ul></aside>`
     case 'perfume': {
       const notes = b.notes ? `<div class="blog-notes">${notesRow('Top', b.notes.top)}${notesRow('Heart', b.notes.mid)}${notesRow('Base', b.notes.base)}</div>` : ''
+      const rating = b.rating ? `<span class="blog-rating" aria-label="Rating ${attr(b.rating)}">★ ${esc(b.rating)}</span>` : ''
+      const specs = Array.isArray(b.specs) && b.specs.length
+        ? `<dl class="blog-specs">${b.specs.map(s => `<div class="blog-spec"><dt>${esc(s.label)}</dt><dd>${esc(s.value)}</dd></div>`).join('')}</dl>` : ''
+      const pros = b.pros?.length ? `<ul class="blog-pros">${b.pros.map(p => `<li>${esc(p)}</li>`).join('')}</ul>` : ''
+      const cons = b.cons?.length ? `<ul class="blog-cons">${b.cons.map(c => `<li>${esc(c)}</li>`).join('')}</ul>` : ''
+      const proscons = (b.pros?.length || b.cons?.length) ? `<div class="blog-proscons">${pros}${cons}</div>` : ''
+      const verdict = b.verdict ? `<p class="blog-verdict"><strong>Verdict:</strong> ${esc(b.verdict)}</p>` : ''
       const link = b.link ? `<a class="blog-ilink" href="${attr(linkHref(b.link))}">${esc(b.link.label)}</a>` : ''
-      return `<article class="blog-perfume"><div class="blog-perfume-head"><span class="blog-perfume-rank" aria-hidden="true">${b.rank}</span><div style="flex:1"><h3 class="blog-perfume-name">${esc(b.name)} <span class="blog-perfume-brand">${esc(b.brand)}</span></h3>${b.bestFor ? `<span class="blog-bestfor">${esc(b.bestFor)}</span>` : ''}</div></div><p class="blog-p" style="margin-bottom:14px">${esc(b.blurb)}</p>${notes}${link}</article>`
+      return `<article class="blog-perfume"><div class="blog-perfume-head"><span class="blog-perfume-rank" aria-hidden="true">${b.rank}</span><div style="flex:1"><h3 class="blog-perfume-name">${esc(b.name)} <span class="blog-perfume-brand">${esc(b.brand)}</span></h3>${b.bestFor ? `<span class="blog-bestfor">${esc(b.bestFor)}</span>` : ''}</div>${rating}</div><p class="blog-p" style="margin-bottom:14px">${esc(b.blurb)}</p>${notes}${specs}${proscons}${verdict}${link}</article>`
+    }
+    case 'table': {
+      const head = b.headers ? `<thead><tr>${b.headers.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead>` : ''
+      const body = `<tbody>${b.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody>`
+      return `<div class="blog-table-wrap">${b.caption ? `<div class="blog-table-caption">${esc(b.caption)}</div>` : ''}<div class="blog-table-scroll"><table class="blog-table">${head}${body}</table></div></div>`
     }
     case 'tips':
       return `<div class="blog-tips">${b.items.map(it => `<div class="blog-tip"><div class="blog-tip-title">${esc(it.title)}</div><p class="blog-p" style="margin-bottom:0">${esc(it.text)}</p></div>`).join('')}</div>`
