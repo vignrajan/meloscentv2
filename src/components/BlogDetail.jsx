@@ -65,6 +65,7 @@ function renderBlock(block, i, onInternalLink) {
               </h3>
               {block.bestFor && <span className="blog-bestfor">{block.bestFor}</span>}
             </div>
+            {block.rating && <span className="blog-rating" aria-label={`Rating ${block.rating}`}>★ {block.rating}</span>}
           </div>
           <p className="blog-p" style={{ marginBottom: 14 }}>{block.blurb}</p>
           {block.notes && (
@@ -74,8 +75,42 @@ function renderBlock(block, i, onInternalLink) {
               <NotesRow label="Base" items={block.notes.base} />
             </div>
           )}
+          {Array.isArray(block.specs) && block.specs.length > 0 && (
+            <dl className="blog-specs">
+              {block.specs.map((s, k) => (
+                <div key={k} className="blog-spec"><dt>{s.label}</dt><dd>{s.value}</dd></div>
+              ))}
+            </dl>
+          )}
+          {(block.pros?.length || block.cons?.length) && (
+            <div className="blog-proscons">
+              {block.pros?.length > 0 && (
+                <ul className="blog-pros">{block.pros.map((p, k) => <li key={k}>{p}</li>)}</ul>
+              )}
+              {block.cons?.length > 0 && (
+                <ul className="blog-cons">{block.cons.map((c, k) => <li key={k}>{c}</li>)}</ul>
+              )}
+            </div>
+          )}
+          {block.verdict && <p className="blog-verdict"><strong>Verdict:</strong> {block.verdict}</p>}
           <LinkBtn link={block.link} onInternalLink={onInternalLink} />
         </article>
+      )
+    case "table":
+      return (
+        <div key={i} className="blog-table-wrap">
+          {block.caption && <div className="blog-table-caption">{block.caption}</div>}
+          <div className="blog-table-scroll">
+            <table className="blog-table">
+              {block.headers && <thead><tr>{block.headers.map((h, k) => <th key={k}>{h}</th>)}</tr></thead>}
+              <tbody>
+                {block.rows.map((row, r) => (
+                  <tr key={r}>{row.map((cell, c) => <td key={c}>{cell}</td>)}</tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       )
     case "tips":
       return (
