@@ -209,6 +209,17 @@ export default function BlogDetail({ blog, onBack, blogs = BLOGS, onInternalLink
               {para}
             </p>
           ))}
+
+        {isRich && blog.author && blog.authorBio && (
+          <aside className="blog-author-card" aria-label="About the author">
+            <div className="blog-author-avatar" aria-hidden="true">{blog.author.trim().charAt(0)}</div>
+            <div>
+              <div className="blog-author-name">{blog.author}</div>
+              {blog.authorRole && <div className="blog-author-role">{blog.authorRole}</div>}
+              <p className="blog-author-bio">{blog.authorBio}</p>
+            </div>
+          </aside>
+        )}
       </div>
 
       {/* Divider */}

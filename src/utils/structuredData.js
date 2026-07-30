@@ -32,7 +32,13 @@ export function buildArticleSchema(post) {
     datePublished: post.datePublished,
     dateModified: post.dateModified || post.datePublished,
     author: post.author
-      ? { "@type": "Person", name: post.author, jobTitle: post.authorRole || undefined }
+      ? {
+          "@type": "Person",
+          name: post.author,
+          jobTitle: post.authorRole || undefined,
+          description: post.authorBio || undefined,
+          url: `${SITE}/#melo-blog`,
+        }
       : ORG,
     publisher: ORG,
     mainEntityOfPage: { "@type": "WebPage", "@id": postUrl(post) },

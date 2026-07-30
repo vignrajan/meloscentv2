@@ -16,6 +16,7 @@ function transform(b) {
     heroAlt:         b.hero_alt,
     author:          b.author,
     authorRole:      b.author_role,
+    authorBio:       b.author_bio,
     datePublished:   b.date_published,
     dateModified:    b.date_modified,
     tags:            b.tags,

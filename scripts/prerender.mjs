@@ -77,13 +77,17 @@ function renderArticle(post) {
     ? post.body.map(renderBlock).join('')
     : (post.content || []).map(p => `<p class="blog-p">${esc(p)}</p>`).join('')
 
+  const authorCard = post.author && post.authorBio
+    ? `<aside class="blog-author-card" aria-label="About the author"><div class="blog-author-avatar" aria-hidden="true">${esc(post.author.trim().charAt(0))}</div><div><div class="blog-author-name">${esc(post.author)}</div>${post.authorRole ? `<div class="blog-author-role">${esc(post.authorRole)}</div>` : ''}<p class="blog-author-bio">${esc(post.authorBio)}</p></div></aside>`
+    : ''
+
   // Cross-links to other posts help crawl the internal link graph.
   const others = BLOGS.filter(b => b.id !== post.id && b.slug).slice(0, 3)
   const more = others.length
     ? `<nav class="blog-related" aria-label="More from the Journal" style="margin-top:40px"><div class="blog-related-title">More from the Journal</div><ul>${others.map(b => `<li><a class="blog-related-link" href="/blog/${attr(b.slug)}">${esc(b.title)}</a></li>`).join('')}</ul></nav>`
     : ''
 
-  return `<main style="max-width:1400px;margin:0 auto;padding:0 24px 88px">${hero}<div style="max-width:720px;margin:40px auto 0">${byline}<p style="font-size:18px;font-family:'Playfair Display',serif;font-style:italic;color:rgba(44,24,16,.65);line-height:1.75;margin:28px 0 36px;border-left:3px solid #C17F3A;padding-left:20px">${esc(post.excerpt)}</p>${bodyHtml}${more}</div></main>`
+  return `<main style="max-width:1400px;margin:0 auto;padding:0 24px 88px">${hero}<div style="max-width:720px;margin:40px auto 0">${byline}<p style="font-size:18px;font-family:'Playfair Display',serif;font-style:italic;color:rgba(44,24,16,.65);line-height:1.75;margin:28px 0 36px;border-left:3px solid #C17F3A;padding-left:20px">${esc(post.excerpt)}</p>${bodyHtml}${authorCard}${more}</div></main>`
 }
 
 // ── Head/meta rewriting ───────────────────────────────────────
@@ -151,4 +155,14 @@ const urls = [
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join('\n')}\n</urlset>\n`
 writeFileSync(new URL('sitemap.xml', DIST), sitemap)
 
-console.log(`Prerendered ${count} blog page(s) + sitemap.xml`)
+// RSS feed — powers feed readers and Chrome's "Follow" (a Discover-adjacent surface).
+const rfc822 = d => { const [y, m, day] = String(d).split('-').map(Number); return new Date(Date.UTC(y, m - 1, day, 9)).toUTCString() }
+const items = posts.map(p => {
+  const link = `${SITE}/blog/${p.slug}`
+  const enclosure = p.heroImage ? `\n      <enclosure url="${SITE}${p.heroImage}" type="image/png" length="0"/>` : ''
+  return `    <item>\n      <title>${esc(p.metaTitle || p.title)}</title>\n      <link>${link}</link>\n      <guid isPermaLink="true">${link}</guid>\n      <description>${esc(p.metaDescription || p.excerpt)}</description>\n      <category>${esc(p.category)}</category>\n      <pubDate>${rfc822(p.datePublished || '2026-05-26')}</pubDate>${enclosure}\n    </item>`
+}).join('\n')
+const rss = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>Meloscent · The Journal</title>\n    <link>${SITE}/</link>\n    <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml"/>\n    <description>Fragrance guides, reviews, and seasonal edits from Meloscent.</description>\n    <language>en-us</language>\n${items}\n  </channel>\n</rss>\n`
+writeFileSync(new URL('rss.xml', DIST), rss)
+
+console.log(`Prerendered ${count} blog page(s) + sitemap.xml + rss.xml`)
