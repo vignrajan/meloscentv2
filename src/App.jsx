@@ -61,7 +61,7 @@ export default function App() {
     }
 
     if (selectedBlog && Array.isArray(selectedBlog.body)) {
-      const url = selectedBlog.slug ? `${SITE}/#${selectedBlog.slug}` : SITE
+      const url = selectedBlog.slug ? `${SITE}/blog/${selectedBlog.slug}` : SITE
       const img = selectedBlog.heroImage ? `${SITE}${selectedBlog.heroImage}` : `${SITE}/og.png`
       apply({
         title: selectedBlog.metaTitle || `${selectedBlog.title} — Meloscent`,
@@ -104,33 +104,45 @@ export default function App() {
 
   const showToast = msg => { setToast(msg); setTimeout(() => setToast(null), 2400) }
 
-  const setHash = slug => { try { history.replaceState(null, "", slug ? `#${slug}` : window.location.pathname + window.location.search) } catch { /* no-op */ } }
-  const navigateTo = pg => { setPage(pg); setSelectedBlog(null); setHash(); window.scrollTo({ top: 0, behavior: "smooth" }) }
-  const openBlog = blog => { setSelectedBlog(blog); setHash(blog?.slug); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const pushUrl = url => { try { history.pushState(null, "", url) } catch { /* no-op */ } }
+  const findBySlug = slug => blogs.find(b => b.slug === slug) || BLOGS.find(b => b.slug === slug)
+  const navigateTo = pg => { setPage(pg); setSelectedBlog(null); pushUrl("/"); window.scrollTo({ top: 0, behavior: "smooth" }) }
+  const openBlog = blog => { setSelectedBlog(blog); if (blog?.slug) pushUrl(`/blog/${blog.slug}`); window.scrollTo({ top: 0, behavior: "smooth" }) }
   const closeBlog = blog => {
-    if (blog && typeof blog === 'object') { setSelectedBlog(blog); setHash(blog?.slug); window.scrollTo({ top: 0, behavior: "smooth" }); return }
-    setSelectedBlog(null); setHash()
+    if (blog && typeof blog === 'object') { setSelectedBlog(blog); if (blog?.slug) pushUrl(`/blog/${blog.slug}`); window.scrollTo({ top: 0, behavior: "smooth" }); return }
+    setSelectedBlog(null); pushUrl("/")
     setTimeout(() => { const el = document.getElementById("melo-blog"); if (el) el.scrollIntoView({ behavior: "smooth" }) }, 80)
   }
 
-  // Deep-link: open a post directly when the URL carries its #slug
+  // Resolve app state from the URL — real /blog/<slug> paths, legacy #slug
+  // hashes, and ?q=/?note= filter links (used by prerendered static pages).
+  const resolveFromLocation = () => {
+    const path = window.location.pathname.match(/^\/blog\/([^/]+)\/?$/)
+    const slug = path ? decodeURIComponent(path[1]) : (window.location.hash ? decodeURIComponent(window.location.hash.slice(1)) : "")
+    if (slug) { const match = findBySlug(slug); if (match) { setSelectedBlog(match); return } }
+    setSelectedBlog(null)
+    const sp = new URLSearchParams(window.location.search)
+    const q = sp.get("q"), note = sp.get("note")
+    if (q) { setPage("discovery"); setQuery(q); setActiveFilter(""); setNoteFilter("") }
+    else if (note) { setPage("discovery"); setNoteFilter(note); setQuery(""); setActiveFilter("") }
+  }
   useEffect(() => {
-    const slug = decodeURIComponent(window.location.hash.replace(/^#/, ""))
-    if (!slug) return
-    const match = BLOGS.find(b => b.slug === slug) || blogs.find(b => b.slug === slug)
-    if (match) setSelectedBlog(match)
+    resolveFromLocation()
+    const onPop = () => resolveFromLocation()
+    window.addEventListener("popstate", onPop)
+    return () => window.removeEventListener("popstate", onPop)
   }, [])
 
-  // Internal links from a post → drive in-app navigation (no per-page routing)
+  // Internal links from a post → drive in-app navigation (SPA path routing)
   const handleInternalLink = link => {
     if (!link) return
     if (link.kind === "blog") {
-      const b = blogs.find(x => x.slug === link.value) || BLOGS.find(x => x.slug === link.value)
+      const b = findBySlug(link.value)
       if (b) { openBlog(b); return }
     }
-    setSelectedBlog(null); setHash(); setPage("discovery")
-    if (link.kind === "note") { setNoteFilter(link.value); setQuery(""); setActiveFilter("") }
-    else if (link.kind === "search") { setQuery(link.value); setActiveFilter(""); setNoteFilter("") }
+    setSelectedBlog(null); setPage("discovery")
+    if (link.kind === "note") { setNoteFilter(link.value); setQuery(""); setActiveFilter(""); pushUrl(`/?note=${encodeURIComponent(link.value)}`) }
+    else if (link.kind === "search") { setQuery(link.value); setActiveFilter(""); setNoteFilter(""); pushUrl(`/?q=${encodeURIComponent(link.value)}`) }
     setTimeout(() => { const el = document.querySelector(".melo-cards-section"); if (el) el.scrollIntoView({ behavior: "smooth" }); else window.scrollTo({ top: 0, behavior: "smooth" }) }, 80)
   }
   const scrollToBlog = () => { const el = document.getElementById("melo-blog"); if (el) el.scrollIntoView({ behavior: "smooth" }) }
