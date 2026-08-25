@@ -1,5 +1,179 @@
 export const BLOGS = [
   {
+    id: 11,
+    slug: "lattafa-ramz-silver-vs-gold",
+    category: "Head-to-Head",
+    title: "Lattafa Ramz Silver vs Gold: Which One Should You Buy?",
+    excerpt:
+      "Two of Lattafa's most popular budget fragrances, side by side. Silver is the fresh, cozy, everyday one; Gold is the sweet, fruity-floral, dressed-up one — here's exactly which suits you.",
+    gradient: "linear-gradient(155deg,#8a8f96 0%,#5a4a2a 55%,#2c1810 100%)",
+    readTime: "8 min read",
+    heroImage: "/blog/lattafa-ramz-silver-vs-gold-hero.png",
+    heroAlt:
+      "A cool silver-toned perfume bottle beside a warm gold-toned bottle on a dark reflective surface — Lattafa Ramz Silver vs Gold.",
+    author: "Sofia Avery",
+    authorRole: "Fragrance Editor, Meloscent",
+    authorBio:
+      "Sofia Avery is Meloscent's fragrance editor. She has spent years testing designer, niche and affordable Middle Eastern releases across climates, and writes about how fragrances actually perform on skin, rather than how they're marketed.",
+    datePublished: "2026-08-25",
+    dateModified: "2026-08-25",
+    tags: ["Lattafa", "Ramz", "Comparison", "Affordable", "Vanilla", "Fruity Floral"],
+    metaTitle: "Lattafa Ramz Silver vs Gold: Which to Buy?",
+    metaDescription:
+      "Ramz Silver vs Gold compared — notes, performance, seasons and who each suits, so you know which affordable Lattafa to buy first.",
+    body: [
+      {
+        type: "callout",
+        text: "Short answer: pick Silver for a fresh, versatile everyday scent, and Gold for a sweeter, fruity-floral fragrance that shines on cool evenings. They're cheap enough that owning both is a genuinely reasonable move.",
+      },
+      {
+        type: "p",
+        text:
+          "Lattafa's Ramz line is one of the best value plays in fragrance — striking bottles, respectable performance, and prices that make blind-buying painless. The two everyone weighs against each other are Silver and Gold, and they're often assumed to be the same scent in different colours. They're not.",
+      },
+      {
+        type: "p",
+        text:
+          "They do share a family resemblance in the base — a soft vanilla-and-patchouli warmth runs through both — but the journey there is completely different. One is cool and clean; the other is sweet and juicy. Here's how they actually compare, and which one belongs on your shelf.",
+      },
+      {
+        type: "tldr",
+        title: "The quick call",
+        items: [
+          { label: "Choose Silver if", text: "you want one easy, versatile daily scent that leans fresh and slightly masculine." },
+          { label: "Choose Gold if", text: "you love sweet, fruity-floral fragrances and want something for evenings and cooler weather." },
+          { label: "Most versatile", text: "Ramz Silver — it goes almost anywhere, any time of year." },
+          { label: "Best value move", text: "Both. They cover two different moods for the price of one designer bottle." },
+        ],
+      },
+      {
+        type: "table",
+        caption: "Silver vs Gold at a glance",
+        headers: ["Attribute", "Ramz Silver", "Ramz Gold"],
+        rows: [
+          ["Scent family", "Aromatic-vanilla", "Fruity floral"],
+          ["Overall vibe", "Fresh, clean, cozy", "Sweet, juicy, warm"],
+          ["Opening", "Pear, mint, lavender, bergamot", "Apple, peach, blackcurrant, orange"],
+          ["Dry-down", "Vanilla, amber, musk", "Sandalwood, vanilla, white musk"],
+          ["Gender lean", "Slightly masculine (unisex)", "Slightly feminine (unisex)"],
+          ["Best season", "Spring / Fall", "Fall / Winter"],
+          ["Best for", "Daily, office, casual", "Evenings, dates, gifting"],
+          ["Longevity", "6–8 hrs", "7–9 hrs"],
+          ["Projection", "Moderate", "Moderate–strong"],
+        ],
+      },
+      { type: "h2", text: "Ramz Silver at a Glance" },
+      {
+        type: "perfume",
+        rank: "S",
+        name: "Ramz Lattafa Silver",
+        brand: "Lattafa · 2021",
+        bestFor: "Fresh-aromatic vanilla",
+        rating: "8.5/10",
+        blurb:
+          "Silver opens cool and clean — pear, mint and lavender over a whisper of bergamot — before settling into a soft, cozy vanilla-amber base. It's the more versatile and slightly more masculine-leaning of the two, though it wears easily on anyone. Think fresh but comforting: the kind of scent that works from a morning commute to a low-key dinner.",
+        notes: { top: ["Pear", "Lavender", "Mint", "Bergamot"], mid: ["Cardamom", "Sage"], base: ["Vanilla", "Amber", "Musk", "Patchouli"] },
+        specs: [
+          { label: "Family", value: "Aromatic / vanilla" },
+          { label: "Vibe", value: "Fresh, clean, cozy" },
+          { label: "Longevity", value: "6–8 hrs" },
+          { label: "Projection", value: "Moderate" },
+          { label: "Best season", value: "Spring / Fall" },
+          { label: "Best for", value: "Daily, office, casual" },
+        ],
+        pros: ["Versatile and easy to wear", "Fresh opening with a warm, comforting dry-down", "Slightly masculine-leaning but genuinely unisex"],
+        cons: ["Not a big projector", "Less distinctive than louder Lattafas"],
+        verdict: "The safer, more office-friendly, more versatile of the two.",
+        link: { kind: "note", value: "Vanilla", label: "Browse cozy vanilla scents →" },
+      },
+      { type: "h2", text: "Ramz Gold at a Glance" },
+      {
+        type: "perfume",
+        rank: "G",
+        name: "Ramz Lattafa Gold",
+        brand: "Lattafa",
+        bestFor: "Fruity-floral warmth",
+        rating: "8.5/10",
+        blurb:
+          "Gold is the sweeter, juicier sibling — apple, peach and blackcurrant tumbling into a rose-and-jasmine heart, then a warm sandalwood-vanilla base. It leans a touch more feminine and more dressed-up, with a fruity-floral glow that reads beautifully in cooler weather and on nights out. Where Silver whispers, Gold flirts.",
+        notes: { top: ["Apple", "Peach", "Black Currant", "Pear", "Sweet Orange"], mid: ["Rose", "Jasmine Sambac", "Orange Blossom"], base: ["Sandalwood", "White Musk", "Patchouli", "Vanilla"] },
+        specs: [
+          { label: "Family", value: "Fruity floral" },
+          { label: "Vibe", value: "Sweet, juicy, warm" },
+          { label: "Longevity", value: "7–9 hrs" },
+          { label: "Projection", value: "Moderate–strong" },
+          { label: "Best season", value: "Fall / Winter" },
+          { label: "Best for", value: "Evenings, dates, gifting" },
+        ],
+        pros: ["Crowd-pleasing fruity-floral sweetness", "Warmer, richer dry-down", "Great cool-weather and going-out scent"],
+        cons: ["Sweetness can feel heavy in high heat", "Leans feminine, though still unisex"],
+        verdict: "The sweeter, dressier, more feminine-leaning of the two.",
+        link: { kind: "note", value: "Rose", label: "Explore fruity-floral scents →" },
+      },
+      { type: "h2", text: "Silver vs Gold: The Real Differences" },
+      {
+        type: "p",
+        text:
+          "The opening is where they split hardest. Silver greets you with something crisp and almost herbal — cool pear, a mint lift, soft lavender. Gold does the opposite, spilling out a bag of ripe fruit: apple, peach and tart blackcurrant with a squeeze of sweet orange. Within the first ten seconds you already know which mood you're in.",
+      },
+      {
+        type: "p",
+        text:
+          "The hearts keep that contrast going. Silver turns gently spiced and aromatic with cardamom and sage, staying dry and composed. Gold blooms into a proper floral bouquet — rose, jasmine sambac and orange blossom — that makes it feel more romantic and dressed-up.",
+      },
+      {
+        type: "p",
+        text:
+          "Then they quietly shake hands at the base. Both land on a vanilla-and-patchouli warmth that's the Ramz house signature. But Silver's stays airier and more ambery, while Gold's is richer, sweeter and more woody thanks to the sandalwood. Performance is close, with Gold projecting a touch harder and lasting an hour or so longer on most skin.",
+      },
+      { type: "h2", text: "Which Ramz Should You Buy?" },
+      {
+        type: "p",
+        text:
+          "If you want a single, do-everything bottle, get Silver. It's the easy answer for daily wear, the office, and warmer months, and it won't ruffle anyone in close quarters. If you specifically love sweet, fruity, floral scents — or you want something with a bit of occasion to it — Gold is the more exciting choice, especially once the weather cools.",
+      },
+      {
+        type: "p",
+        text:
+          "Season splits them cleanly: reach for Silver in spring and summer when you want to smell fresh, and Gold in fall and winter when a sweeter, warmer trail feels right. For gifting, Gold's fruity-floral profile and richer character tend to land as the more obviously 'nice' present, while Silver is the more universally safe unisex pick.",
+      },
+      {
+        type: "tips",
+        items: [
+          { title: "Moisturize first", text: "Both cling far better to hydrated skin. An unscented lotion before spraying is the easiest longevity boost for either bottle." },
+          { title: "Silver by day, Gold by night", text: "Let Silver handle work and daytime, and save Gold's sweeter warmth for evenings and dates." },
+          { title: "Go lighter with Gold in heat", text: "Its fruity-floral sweetness can turn heavy when it's hot. One or two sprays is plenty in summer." },
+          { title: "Try layering them", text: "Because they share a vanilla base, a spritz of Silver over Gold can freshen the sweetness — a cheap way to get a third scent." },
+        ],
+      },
+      { type: "h2", text: "Frequently Asked Questions" },
+      {
+        type: "faq",
+        items: [
+          { q: "Is Ramz Silver or Gold better?", a: "Neither is objectively better — they're built for different moods. Silver is the more versatile everyday fresh scent, while Gold is the sweeter, dressier fruity-floral. Pick based on which vibe you want." },
+          { q: "Are Ramz Silver and Gold unisex?", a: "Both are marketed as unisex and wear that way. Silver leans slightly masculine and Gold slightly feminine, but either can be worn by anyone comfortably." },
+          { q: "Which Ramz lasts longer?", a: "Gold usually edges it, lasting around 7 to 9 hours versus Silver's 6 to 8, with a slightly stronger projection. Both are respectable performers for the price." },
+          { q: "Which is better for summer?", a: "Silver. Its fresh, cool opening and lighter feel suit heat far better than Gold's sweeter, warmer profile." },
+          { q: "Which is better for winter?", a: "Gold. The fruity-floral sweetness and warm sandalwood-vanilla base come alive in cold weather." },
+          { q: "Is Ramz a clone of a designer fragrance?", a: "Neither is sold as a specific designer dupe — they're original compositions in Lattafa's affordable Ramz line. Both simply offer a lot of quality and performance for the money." },
+          { q: "Are they good for beginners?", a: "Very. They're inexpensive, easy to wear, and cover two distinct moods, which makes them a low-risk way to figure out whether you prefer fresh or sweet fragrances." },
+          { q: "Can you layer Silver and Gold together?", a: "Yes. Because they share a vanilla-patchouli base, a light spray of Silver over Gold freshens the sweetness and effectively gives you a third scent for free." },
+        ],
+      },
+      {
+        type: "related",
+        title: "Related reading",
+        items: [
+          { kind: "blog", value: "best-clone-fragrances-2026", label: "Best Clone Fragrances of 2026" },
+          { kind: "blog", value: "best-summer-perfumes-2026", label: "Best Summer Perfumes 2026" },
+          { kind: "blog", value: "understanding-scent-families", label: "Understanding Scent Families" },
+          { kind: "note", value: "Vanilla", label: "Browse vanilla fragrances" },
+          { kind: "search", value: "Lattafa", label: "See Lattafa scents in the catalog" },
+        ],
+      },
+    ],
+  },
+  {
     id: 10,
     slug: "best-clone-fragrances-2026",
     category: "Dupe Guide",
