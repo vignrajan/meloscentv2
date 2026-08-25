@@ -4,7 +4,7 @@
 // tag (VITE_AMAZON_AFFILIATE_TAG) is used as a fallback so existing setups keep
 // working, but ideally set the per-market vars once you have all three accounts.
 const MARKETS = {
-  USD: { store: 'amazon.com',   tag: import.meta.env.VITE_AMAZON_TAG_US },
+  USD: { store: 'amazon.com',   tag: import.meta.env.VITE_AMAZON_TAG_US || 'meloscent88-20' },
   GBP: { store: 'amazon.co.uk', tag: import.meta.env.VITE_AMAZON_TAG_UK },
   INR: { store: 'amazon.in',    tag: import.meta.env.VITE_AMAZON_TAG_IN },
 }
