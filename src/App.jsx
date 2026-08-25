@@ -9,6 +9,7 @@ import ProfileDrawer from './components/ProfileDrawer'
 import WardrobePage from './components/WardrobePage'
 import ComparePanel from './components/ComparePanel'
 import BlogDetail from './components/BlogDetail'
+import AffiliateDisclosure from './components/AffiliateDisclosure'
 import Toast from './components/Toast'
 import { PERFUMES } from './data/perfumes'
 import { BLOGS } from './data/blogs'
@@ -214,6 +215,7 @@ export default function App() {
       <WardrobePage wIds={stats.wIds} onBack={() => navigateTo("discovery")}
         onRemove={wardrobeToggle} onGoQuiz={() => { navigateTo("discovery"); setShowQuiz(true) }}
         perfumes={perfumes} currency={currency} />
+      <AffiliateDisclosure style={{ padding: "8px 24px 48px" }} />
       {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} perfumes={perfumes} />}
       <ProfileDrawer stats={stats} open={showProfile} onClose={() => setShowProfile(false)}
         onGoWardrobe={() => { setShowProfile(false); navigateTo("wardrobe") }} />
@@ -331,6 +333,7 @@ export default function App() {
             <a key={s} href="#" onClick={e => e.preventDefault()} className="nav-link" style={{ fontSize: 13 }} rel="noopener">{s}</a>
           ))}
         </nav>
+        <AffiliateDisclosure style={{ flexBasis: "100%", paddingTop: 6 }} />
       </footer>
 
       {showQuiz && <QuizModal onClose={() => setShowQuiz(false)} onAddToWardrobe={wardrobeToggle} perfumes={perfumes} />}

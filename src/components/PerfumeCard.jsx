@@ -76,6 +76,13 @@ export default function PerfumeCard({ p, onFlip, onNoteClick, noteFilter, compar
 
           {/* FRONT */}
           <div className="mcard-face" style={{ background: p.gradient }}>
+            {p.image && (
+              <>
+                <img src={p.image} alt={`${p.designer} ${p.name} bottle`} loading="lazy" decoding="async"
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }} />
+                <div style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none", background: "linear-gradient(to top, rgba(18,9,4,.74) 0%, rgba(18,9,4,.30) 42%, rgba(18,9,4,.12) 66%, rgba(18,9,4,.42) 100%)" }} />
+              </>
+            )}
             <div style={{ position: "absolute", right: -28, top: -28, width: 110, height: 110, borderRadius: "50%", background: "rgba(255,255,255,.06)", pointerEvents: "none" }} />
             <button className="cmp-btn" onClick={handleCmp}
               aria-label={inCmp ? "Remove from compare" : "Add to compare"}
