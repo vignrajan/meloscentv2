@@ -12,9 +12,17 @@ const MARKETS = {
 const FALLBACK_TAG = import.meta.env.VITE_AMAZON_AFFILIATE_TAG
 
 export function getBuyUrl(brand, name, currency = 'USD') {
-  const market = MARKETS[currency] || MARKETS.USD
-  const tag    = market.tag || FALLBACK_TAG
-  const q      = encodeURIComponent(`${brand} ${name} perfume`)
-  const url    = `https://www.${market.store}/s?k=${q}`
+  let market = MARKETS[currency] || MARKETS.USD
+  let tag    = market.tag || FALLBACK_TAG
+  // Guarantee every buy link carries an affiliate tag: if the selected market
+  // has no tag of its own (e.g. no UK/IN account yet), route to the US store
+  // with the US tag rather than sending an untagged link that earns nothing.
+  // Once VITE_AMAZON_TAG_UK / _IN are set, those markets use their own store+tag.
+  if (!tag) {
+    market = MARKETS.USD
+    tag    = market.tag || FALLBACK_TAG
+  }
+  const q   = encodeURIComponent(`${brand} ${name} perfume`)
+  const url = `https://www.${market.store}/s?k=${q}`
   return tag ? `${url}&tag=${tag}` : url
 }
