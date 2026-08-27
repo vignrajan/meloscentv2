@@ -13,6 +13,13 @@
  *   export AMAZON_MARKETPLACE=www.amazon.com
  *
  * Then run:   node scripts/fetch-amazon-images.mjs
+ *   --region us|uk|in   which marketplace to query (default us). Picks the
+ *                       right PA-API endpoint and reads region-specific creds:
+ *                       AMAZON_ACCESS_KEY_UK / AMAZON_SECRET_KEY_UK /
+ *                       AMAZON_PARTNER_TAG_UK (or VITE_AMAZON_TAG_UK), falling
+ *                       back to the un-suffixed vars. Product images are the
+ *                       same across marketplaces, so you normally only need one
+ *                       region — use another to fill any gaps the first missed.
  *   --dupes   also fetch images for the dupe products (writes dupe:<id> keys)
  *   --force   re-fetch ids that already have an image (default: skip them)
  *
@@ -29,24 +36,46 @@ import crypto from 'node:crypto'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { PERFUMES } from '../src/data/perfumes.js'
 
-const ACCESS = process.env.AMAZON_ACCESS_KEY
-const SECRET = process.env.AMAZON_SECRET_KEY
-const TAG = process.env.AMAZON_PARTNER_TAG || process.env.VITE_AMAZON_AFFILIATE_TAG
-const HOST = process.env.AMAZON_HOST || 'webservices.amazon.com'
-const REGION = process.env.AMAZON_REGION || 'us-east-1'
-const MARKETPLACE = process.env.AMAZON_MARKETPLACE || 'www.amazon.com'
-const SERVICE = 'ProductAdvertisingAPI'
-const PATH = '/paapi5/searchitems'
-const TARGET = 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems'
+// PA-API endpoints per marketplace. Access is granted per region, so each
+// region uses its own credentials + partner tag (see credential resolution).
+const REGIONS = {
+  us: { host: 'webservices.amazon.com',   region: 'us-east-1', marketplace: 'www.amazon.com' },
+  uk: { host: 'webservices.amazon.co.uk', region: 'eu-west-1', marketplace: 'www.amazon.co.uk' },
+  in: { host: 'webservices.amazon.in',    region: 'eu-west-1', marketplace: 'www.amazon.in' },
+}
 
 const args = process.argv.slice(2)
 const DO_DUPES = args.includes('--dupes')
 const FORCE = args.includes('--force')
+const regionArg = (args.find(a => a.startsWith('--region=')) || '').split('=')[1]
+  || (args.includes('--region') ? args[args.indexOf('--region') + 1] : '')
+const REGION_KEY = (regionArg || 'us').toLowerCase()
 
-if (!ACCESS || !SECRET || !TAG) {
-  console.error('Missing credentials. Set AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY and AMAZON_PARTNER_TAG (or VITE_AMAZON_AFFILIATE_TAG).')
+const preset = REGIONS[REGION_KEY]
+if (!preset) {
+  console.error(`Unknown --region "${REGION_KEY}". Use one of: ${Object.keys(REGIONS).join(', ')}.`)
   process.exit(1)
 }
+
+// Region-specific env wins, then generic env, then the preset default.
+const RK = REGION_KEY.toUpperCase()
+const env = (base) => process.env[`${base}_${RK}`] || process.env[base]
+const ACCESS = env('AMAZON_ACCESS_KEY')
+const SECRET = env('AMAZON_SECRET_KEY')
+const TAG = process.env[`AMAZON_PARTNER_TAG_${RK}`] || process.env[`VITE_AMAZON_TAG_${RK}`]
+  || process.env.AMAZON_PARTNER_TAG || process.env.VITE_AMAZON_AFFILIATE_TAG
+const HOST = process.env.AMAZON_HOST || preset.host
+const REGION = process.env.AMAZON_REGION || preset.region
+const MARKETPLACE = process.env.AMAZON_MARKETPLACE || preset.marketplace
+const SERVICE = 'ProductAdvertisingAPI'
+const PATH = '/paapi5/searchitems'
+const TARGET = 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems'
+
+if (!ACCESS || !SECRET || !TAG) {
+  console.error(`Missing ${RK} credentials. Set AMAZON_ACCESS_KEY_${RK} / AMAZON_SECRET_KEY_${RK} (or the un-suffixed AMAZON_ACCESS_KEY / AMAZON_SECRET_KEY) and a partner tag (AMAZON_PARTNER_TAG_${RK} / VITE_AMAZON_TAG_${RK}).`)
+  process.exit(1)
+}
+console.log(`Region: ${REGION_KEY} · ${MARKETPLACE} · tag ${TAG}`)
 
 const OUT = new URL('../src/data/perfumeImages.json', import.meta.url)
 let images = {}
@@ -128,7 +157,7 @@ for (const job of jobs) {
   process.stdout.write(`[${done}/${jobs.length}] ${job.q} … `)
   const r = await searchImage(job.q)
   if (r.image) {
-    images[job.key] = { image: r.image, title: r.title, asin: r.asin }
+    images[job.key] = { image: r.image, title: r.title, asin: r.asin, region: REGION_KEY }
     ok++
     console.log('ok')
     // save incrementally so a crash doesn't lose progress
